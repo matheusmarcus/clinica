@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Acesso
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="acesso", uniqueConstraints={@ORM\UniqueConstraint(name="idacesso_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_acesso_perfil1_idx", columns={"perfil_idperfil"})})
  * @ORM\Entity
  */
-class Acesso
+class Acesso implements UserInterface
 {
     /**
      * @var int
@@ -34,6 +35,11 @@ class Acesso
      * @ORM\Column(name="password", type="decimal", precision=8, scale=0, nullable=false)
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $roles;
 
     /**
      * @var \Perfil
@@ -110,4 +116,45 @@ class Acesso
     }
 
 
+    public function getRoles()
+    {
+        return !$this->roles ? [] : explode(',', $this->roles);
+    }
+
+    public function setRoles($roles):Acesso
+    {
+        $this->roles = implode(',' , $roles);
+        return $this;
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+    }
+
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        return $this->getUsuario();
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+    }
 }

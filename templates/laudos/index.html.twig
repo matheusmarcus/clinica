@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Laudos index{% endblock %}
+
+{% block body %}
+    <h1>Laudos index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DsLaudo</th>
+                <th>Data</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for laudo in laudos %}
+            <tr>
+                <td>{{ laudo.id }}</td>
+                <td>{{ laudo.dsLaudo }}</td>
+                <td>{{ laudo.data ? laudo.data|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('laudos_show', {'id': laudo.id}) }}">show</a>
+                    <a href="{{ path('laudos_edit', {'id': laudo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('laudos_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Consultas{% endblock %}
+
+{% block body %}
+    <h1>Create new Consultas</h1>
+
+    {{ include('consultas/_form.html.twig') }}
+
+    <a href="{{ path('consultas_index') }}">back to list</a>
+{% endblock %}

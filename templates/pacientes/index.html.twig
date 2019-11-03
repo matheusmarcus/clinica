@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pacientes index{% endblock %}
+
+{% block body %}
+    <h1>Pacientes index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>DataNascimento</th>
+                <th>DataCadastro</th>
+                <th>Sexo</th>
+                <th>EstadoCivil</th>
+                <th>Profissao</th>
+                <th>TelefoneCelular</th>
+                <th>Email</th>
+                <th>Endereco</th>
+                <th>Uf</th>
+                <th>Cidade</th>
+                <th>Cep</th>
+                <th>Bairro</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paciente in pacientes %}
+            <tr>
+                <td>{{ paciente.id }}</td>
+                <td>{{ paciente.nome }}</td>
+                <td>{{ paciente.dataNascimento ? paciente.dataNascimento|date('Y-m-d') : '' }}</td>
+                <td>{{ paciente.dataCadastro ? paciente.dataCadastro|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ paciente.sexo }}</td>
+                <td>{{ paciente.estadoCivil }}</td>
+                <td>{{ paciente.profissao }}</td>
+                <td>{{ paciente.telefoneCelular }}</td>
+                <td>{{ paciente.email }}</td>
+                <td>{{ paciente.endereco }}</td>
+                <td>{{ paciente.uf }}</td>
+                <td>{{ paciente.cidade }}</td>
+                <td>{{ paciente.cep }}</td>
+                <td>{{ paciente.bairro }}</td>
+                <td>
+                    <a href="{{ path('pacientes_show', {'id': paciente.id}) }}">show</a>
+                    <a href="{{ path('pacientes_edit', {'id': paciente.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('pacientes_new') }}">Create new</a>
+{% endblock %}

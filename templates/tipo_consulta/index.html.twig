@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TipoConsulta index{% endblock %}
+
+{% block body %}
+    <h1>TipoConsulta index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdtipoConsulta</th>
+                <th>Nome</th>
+                <th>Descricao</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tipo_consultum in tipo_consultas %}
+            <tr>
+                <td>{{ tipo_consultum.idtipoConsulta }}</td>
+                <td>{{ tipo_consultum.nome }}</td>
+                <td>{{ tipo_consultum.descricao }}</td>
+                <td>
+                    <a href="{{ path('tipo_consulta_show', {'idtipoConsulta': tipo_consultum.idtipoConsulta}) }}">show</a>
+                    <a href="{{ path('tipo_consulta_edit', {'idtipoConsulta': tipo_consultum.idtipoConsulta}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('tipo_consulta_new') }}">Create new</a>
+{% endblock %}

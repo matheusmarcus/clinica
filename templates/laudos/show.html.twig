@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Laudos{% endblock %}
+
+{% block body %}
+    <h1>Laudos</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ laudo.id }}</td>
+            </tr>
+            <tr>
+                <th>DsLaudo</th>
+                <td>{{ laudo.dsLaudo }}</td>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <td>{{ laudo.data ? laudo.data|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('laudos_index') }}">back to list</a>
+
+    <a href="{{ path('laudos_edit', {'id': laudo.id}) }}">edit</a>
+
+    {{ include('laudos/_delete_form.html.twig') }}
+{% endblock %}

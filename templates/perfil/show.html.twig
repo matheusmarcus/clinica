@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block body %}
+    <h1>Perfil</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idperfil</th>
+                <td>{{ perfil.idperfil }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ perfil.nome }}</td>
+            </tr>
+            <tr>
+                <th>Descricao</th>
+                <td>{{ perfil.descricao }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('perfil_index') }}">back to list</a>
+
+    <a href="{{ path('perfil_edit', {'idperfil': perfil.idperfil}) }}">edit</a>
+
+    {{ include('perfil/_delete_form.html.twig') }}
+{% endblock %}

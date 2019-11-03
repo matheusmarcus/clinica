@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Acesso{% endblock %}
+
+{% block body %}
+    <h1>Create new Acesso</h1>
+
+    {{ include('acesso/_form.html.twig') }}
+
+    <a href="{{ path('acesso_index') }}">back to list</a>
+{% endblock %}

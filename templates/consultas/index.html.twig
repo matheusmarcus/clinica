@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Consultas index{% endblock %}
+
+{% block body %}
+    <h1>Consultas index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Data</th>
+                <th>ValorConsulta</th>
+                <th>ConsultaConfirmada</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for consulta in consultas %}
+            <tr>
+                <td>{{ consulta.id }}</td>
+                <td>{{ consulta.data ? consulta.data|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ consulta.valorConsulta }}</td>
+                <td>{{ consulta.consultaConfirmada ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('consultas_show', {'id': consulta.id}) }}">show</a>
+                    <a href="{{ path('consultas_edit', {'id': consulta.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('consultas_new') }}">Create new</a>
+{% endblock %}
