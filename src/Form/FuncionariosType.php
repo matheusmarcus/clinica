@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Funcionarios;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,10 +15,10 @@ class FuncionariosType extends AbstractType
     {
         $builder
             ->add('nome')
-            ->add('dataNascimento')
+            ->add('dataNascimento', BirthdayType::class)
             ->add('dataAdmissao')
             ->add('sexo')
-            ->add('telefoneCelular')
+            ->add('telefoneCelular', TelType::class)
             ->add('idacesso')
         ;
     }

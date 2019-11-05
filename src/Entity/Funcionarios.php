@@ -50,14 +50,14 @@ class Funcionarios
     private $sexo;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="telefone_celular", type="integer", nullable=false)
+     * @ORM\Column(name="telefone_celular", type="string", length=11, nullable=false)
      */
     private $telefoneCelular;
 
     /**
-     * @var \Acesso
+     * @var Acesso
      *
      * @ORM\ManyToOne(targetEntity="Acesso")
      * @ORM\JoinColumns({
@@ -69,7 +69,7 @@ class Funcionarios
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -85,7 +85,7 @@ class Funcionarios
     /**
      * @return string
      */
-    public function getNome(): string
+    public function getNome(): ?string
     {
         return $this->nome;
     }
@@ -101,7 +101,7 @@ class Funcionarios
     /**
      * @return \DateTime
      */
-    public function getDataNascimento(): \DateTime
+    public function getDataNascimento(): ?\DateTime
     {
         return $this->dataNascimento;
     }
@@ -117,7 +117,7 @@ class Funcionarios
     /**
      * @return \DateTime
      */
-    public function getDataAdmissao(): \DateTime
+    public function getDataAdmissao(): ?\DateTime
     {
         return $this->dataAdmissao;
     }
@@ -133,7 +133,7 @@ class Funcionarios
     /**
      * @return string
      */
-    public function getSexo(): string
+    public function getSexo(): ?string
     {
         return $this->sexo;
     }
@@ -149,7 +149,7 @@ class Funcionarios
     /**
      * @return int
      */
-    public function getTelefoneCelular(): int
+    public function getTelefoneCelular(): ?string
     {
         return $this->telefoneCelular;
     }
@@ -157,23 +157,23 @@ class Funcionarios
     /**
      * @param int $telefoneCelular
      */
-    public function setTelefoneCelular(int $telefoneCelular): void
+    public function setTelefoneCelular(string $telefoneCelular): void
     {
         $this->telefoneCelular = $telefoneCelular;
     }
 
     /**
-     * @return \Acesso
+     * @return Acesso
      */
-    public function getIdacesso(): \Acesso
+    public function getIdacesso(): ?Acesso
     {
         return $this->idacesso;
     }
 
     /**
-     * @param \Acesso $idacesso
+     * @param Acesso $idacesso
      */
-    public function setIdacesso(\Acesso $idacesso): void
+    public function setIdacesso(Acesso $idacesso): void
     {
         $this->idacesso = $idacesso;
     }

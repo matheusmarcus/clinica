@@ -75,6 +75,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     {
         // Check the user's password or other credentials and return true or false
         // If there are no credentials to check, you can just return true
+
         return sha1(md5($credentials['password'])) === $user->getPassword();
     }
 

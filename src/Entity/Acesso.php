@@ -32,10 +32,14 @@ class Acesso implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=64, nullable=false)
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $roles;
 
     /**
      * @var Perfil
@@ -50,7 +54,7 @@ class Acesso implements UserInterface
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -114,9 +118,14 @@ class Acesso implements UserInterface
 
     public function getRoles()
     {
-        return '';
+        return !$this->roles ? [] : explode(',', $this->roles);
     }
 
+    public function setRoles($roles):Acesso
+    {
+        $this->roles = implode(',' , $roles);
+        return $this;
+    }
 
     /**
      * Returns the salt that was originally used to encode the password.
@@ -147,5 +156,10 @@ class Acesso implements UserInterface
      */
     public function eraseCredentials()
     {
+    }
+
+    public function __toString()
+    {
+        return $this->getUsuario();
     }
 }

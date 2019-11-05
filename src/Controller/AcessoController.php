@@ -39,6 +39,7 @@ class AcessoController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $acesso->setPassword(sha1(md5($acesso->getPassword())));
             $entityManager->persist($acesso);
             $entityManager->flush();
 
@@ -70,6 +71,7 @@ class AcessoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $acesso->setPassword(sha1(md5($acesso->getPassword())));
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('acesso_index');

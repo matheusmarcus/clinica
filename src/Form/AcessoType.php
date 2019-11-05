@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Acesso;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,8 +15,17 @@ class AcessoType extends AbstractType
     {
         $builder
             ->add('usuario')
-            ->add('password')
+            ->add('password', PasswordType::class)
             ->add('perfilperfil')
+            ->add('roles', ChoiceType::class,[
+                'label' => 'Permissões:',
+                'multiple' => true,
+                'choices' => [
+                    'Administrador' => 'ROLE_ADMIN',
+                    'Psicologo' => 'ROLE_PSICOLOGO',
+                    'Atendente' => 'ROLE_ATENDENTE',
+                ]
+            ]);
         ;
     }
 
