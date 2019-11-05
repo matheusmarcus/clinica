@@ -32,17 +32,13 @@ class Acesso implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="decimal", precision=8, scale=0, nullable=false)
+     * @ORM\Column(name="password", type="string", length=64, nullable=false)
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $roles;
 
     /**
-     * @var \Perfil
+     * @var Perfil
      *
      * @ORM\ManyToOne(targetEntity="Perfil")
      * @ORM\JoinColumns({
@@ -70,7 +66,7 @@ class Acesso implements UserInterface
     /**
      * @return string
      */
-    public function getUsuario(): string
+    public function getUsuario(): ?string
     {
         return $this->usuario;
     }
@@ -86,7 +82,7 @@ class Acesso implements UserInterface
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -100,17 +96,17 @@ class Acesso implements UserInterface
     }
 
     /**
-     * @return \Perfil
+     * @return Perfil
      */
-    public function getPerfilperfil(): \Perfil
+    public function getPerfilperfil(): ?Perfil
     {
         return $this->perfilperfil;
     }
 
     /**
-     * @param \Perfil $perfilperfil
+     * @param Perfil $perfilperfil
      */
-    public function setPerfilperfil(\Perfil $perfilperfil): void
+    public function setPerfilperfil(Perfil $perfilperfil): void
     {
         $this->perfilperfil = $perfilperfil;
     }
@@ -118,14 +114,9 @@ class Acesso implements UserInterface
 
     public function getRoles()
     {
-        return !$this->roles ? [] : explode(',', $this->roles);
+        return '';
     }
 
-    public function setRoles($roles):Acesso
-    {
-        $this->roles = implode(',' , $roles);
-        return $this;
-    }
 
     /**
      * Returns the salt that was originally used to encode the password.

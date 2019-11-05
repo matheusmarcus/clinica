@@ -31,7 +31,7 @@ class Perfil
     /**
      * @var string
      *
-     * @ORM\Column(name="descricao", type="string", length=45, nullable=false)
+     * @ORM\Column(name="descricao", type="string", length=255, nullable=false)
      */
     private $descricao;
 
@@ -54,7 +54,7 @@ class Perfil
     /**
      * @return string
      */
-    public function getNome(): string
+    public function getNome(): ?string
     {
         return $this->nome;
     }
@@ -70,7 +70,7 @@ class Perfil
     /**
      * @return string
      */
-    public function getDescricao(): string
+    public function getDescricao(): ?string
     {
         return $this->descricao;
     }
@@ -83,5 +83,9 @@ class Perfil
         $this->descricao = $descricao;
     }
 
+    public function __toString()
+    {
+        return $this->getNome();
+    }
 
 }
