@@ -65,7 +65,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Usuario could not be found.');
+            throw new CustomUserMessageAuthenticationException('Credenciais Invalidas.');
         }
 
         return $user;

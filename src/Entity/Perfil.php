@@ -31,14 +31,14 @@ class Perfil
     /**
      * @var string
      *
-     * @ORM\Column(name="descricao", type="string", length=255, nullable=false)
+     * @ORM\Column(name="descricao", type="string", length=45, nullable=false)
      */
     private $descricao;
 
     /**
      * @return int
      */
-    public function getIdperfil(): int
+    public function getIdperfil(): ?int
     {
         return $this->idperfil;
     }
@@ -87,5 +87,6 @@ class Perfil
     {
         return $this->getNome();
     }
+
 
 }

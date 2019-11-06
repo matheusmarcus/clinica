@@ -16,6 +16,7 @@ class AcessoType extends AbstractType
         $builder
             ->add('usuario')
             ->add('password', PasswordType::class)
+            ->add('funcionarios')
             ->add('perfilperfil')
             ->add('roles', ChoiceType::class,[
                 'label' => 'Permissões:',

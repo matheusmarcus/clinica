@@ -64,16 +64,16 @@
                                         <div class="btn-group">
                                             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
                                                 <div class="widget-heading">
-                                                    Alina Mclourd
+                                                    {{ app.user.funcionarios.nome }}
                                                 </div>
                                                 <div class="widget-subheading">
-                                                    VP People Manager
+                                                    {{ app.user.perfil.nome }}
                                                 </div>
                                             </a>
                                             <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                                <button type="button" tabindex="0" class="dropdown-item">
+                                                <a href="{{ path('funcionarios_show', {id: app.user.funcionarios.id}) }}" tabindex="0" class="dropdown-item">
                                                     Perfil
-                                                </button>
+                                                </a>
                                                 <a href="{{ path('app_logout') }}" tabindex="0" class="dropdown-item">
                                                     Logout
                                                 </a>
@@ -124,7 +124,7 @@
                             <ul class="vertical-nav-menu">
                                 <li class="app-sidebar__heading">Dashboards</li>
                                 <li>
-                                    <a href="#" class="mm-active">
+                                    <a href="#" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         Dashboard Example 1
                                     </a>
@@ -263,9 +263,9 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ path('funcionarios_index') }}">
                                         <i class="metismenu-icon pe-7s-display2"></i>
-                                        Tables
+                                        Funcionarios
                                     </a>
                                 </li>
                             </ul>

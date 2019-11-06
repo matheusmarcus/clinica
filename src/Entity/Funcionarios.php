@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Funcionarios
  *
- * @ORM\Table(name="funcionarios", indexes={@ORM\Index(name="fk_funcionarios_acesso1_idx", columns={"idacesso"})})
+ * @ORM\Table(name="funcionarios")
  * @ORM\Entity
  */
 class Funcionarios
@@ -50,21 +50,11 @@ class Funcionarios
     private $sexo;
 
     /**
-     * @var string
+     * @var int
      *
      * @ORM\Column(name="telefone_celular", type="string", length=11, nullable=false)
      */
     private $telefoneCelular;
-
-    /**
-     * @var Acesso
-     *
-     * @ORM\ManyToOne(targetEntity="Acesso")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idacesso", referencedColumnName="id")
-     * })
-     */
-    private $idacesso;
 
     /**
      * @return int
@@ -130,6 +120,7 @@ class Funcionarios
         $this->dataAdmissao = $dataAdmissao;
     }
 
+
     /**
      * @return string
      */
@@ -162,20 +153,9 @@ class Funcionarios
         $this->telefoneCelular = $telefoneCelular;
     }
 
-    /**
-     * @return Acesso
-     */
-    public function getIdacesso(): ?Acesso
+    public function __toString()
     {
-        return $this->idacesso;
-    }
-
-    /**
-     * @param Acesso $idacesso
-     */
-    public function setIdacesso(Acesso $idacesso): void
-    {
-        $this->idacesso = $idacesso;
+        return $this->getNome();
     }
 
 

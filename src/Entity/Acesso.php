@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Acesso
  *
- * @ORM\Table(name="acesso", uniqueConstraints={@ORM\UniqueConstraint(name="idacesso_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_acesso_perfil1_idx", columns={"perfil_idperfil"})})
+ * @ORM\Table(name="acesso", indexes={@ORM\Index(name="fk_acesso_funcionarios1_idx", columns={"funcionarios_id"}), @ORM\Index(name="fk_acesso_perfil1_idx", columns={"perfil_idperfil"})})
  * @ORM\Entity
  */
 class Acesso implements UserInterface
@@ -42,7 +42,17 @@ class Acesso implements UserInterface
     private $roles;
 
     /**
-     * @var Perfil
+     * @var \Funcionarios
+     *
+     * @ORM\ManyToOne(targetEntity="Funcionarios")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="funcionarios_id", referencedColumnName="id")
+     * })
+     */
+    private $funcionarios;
+
+    /**
+     * @var \Perfil
      *
      * @ORM\ManyToOne(targetEntity="Perfil")
      * @ORM\JoinColumns({
@@ -50,6 +60,8 @@ class Acesso implements UserInterface
      * })
      */
     private $perfilperfil;
+
+
 
     /**
      * @return int
@@ -99,10 +111,37 @@ class Acesso implements UserInterface
         $this->password = $password;
     }
 
+
+    public function getRoles()
+    {
+        return !$this->roles ? [] : explode(',', $this->roles);
+    }
+    public function setRoles($roles):Acesso
+    {
+        $this->roles = implode(',' , $roles);
+        return $this;
+    }
+
+    /**
+     * @return Funcionarios
+     */
+    public function getFuncionarios(): ?Funcionarios
+    {
+        return $this->funcionarios;
+    }
+
+    /**
+     * @param Funcionarios $funcionarios
+     */
+    public function setFuncionarios(Funcionarios $funcionarios): void
+    {
+        $this->funcionarios = $funcionarios;
+    }
+
     /**
      * @return Perfil
      */
-    public function getPerfilperfil(): ?Perfil
+    public function getPerfil(): ?Perfil
     {
         return $this->perfilperfil;
     }
@@ -110,21 +149,9 @@ class Acesso implements UserInterface
     /**
      * @param Perfil $perfilperfil
      */
-    public function setPerfilperfil(Perfil $perfilperfil): void
+    public function setPerfil(Perfil $perfilperfil): void
     {
         $this->perfilperfil = $perfilperfil;
-    }
-
-
-    public function getRoles()
-    {
-        return !$this->roles ? [] : explode(',', $this->roles);
-    }
-
-    public function setRoles($roles):Acesso
-    {
-        $this->roles = implode(',' , $roles);
-        return $this;
     }
 
     /**
@@ -162,4 +189,6 @@ class Acesso implements UserInterface
     {
         return $this->getUsuario();
     }
+
+
 }
