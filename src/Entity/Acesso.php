@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Acesso
  *
- * @ORM\Table(name="acesso", indexes={@ORM\Index(name="fk_acesso_funcionarios1_idx", columns={"funcionarios_id"}), @ORM\Index(name="fk_acesso_perfil1_idx", columns={"perfil_idperfil"})})
+ * @ORM\Table(name="acesso", indexes={@ORM\Index(name="fk_acesso_funcionarios1_idx", columns={"funcionarios_id"}), @ORM\Index(name="fk_acesso_pacientes1_idx", columns={"pacientes_id"}), @ORM\Index(name="fk_acesso_perfil1_idx", columns={"perfil_idperfil"})})
  * @ORM\Entity
  */
 class Acesso implements UserInterface
@@ -42,7 +42,7 @@ class Acesso implements UserInterface
     private $roles;
 
     /**
-     * @var \Funcionarios
+     * @var Funcionarios
      *
      * @ORM\ManyToOne(targetEntity="Funcionarios")
      * @ORM\JoinColumns({
@@ -52,16 +52,24 @@ class Acesso implements UserInterface
     private $funcionarios;
 
     /**
-     * @var \Perfil
+     * @var Pacientes
+     *
+     * @ORM\ManyToOne(targetEntity="Pacientes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pacientes_id", referencedColumnName="id")
+     * })
+     */
+    private $pacientes;
+
+    /**
+     * @var Perfil
      *
      * @ORM\ManyToOne(targetEntity="Perfil")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="perfil_idperfil", referencedColumnName="idperfil")
      * })
      */
-    private $perfilperfil;
-
-
+    private $perfil;
 
     /**
      * @return int
@@ -111,12 +119,12 @@ class Acesso implements UserInterface
         $this->password = $password;
     }
 
-
     public function getRoles()
     {
         return !$this->roles ? [] : explode(',', $this->roles);
     }
-    public function setRoles($roles):Acesso
+
+    public function setRoles($roles):?Acesso
     {
         $this->roles = implode(',' , $roles);
         return $this;
@@ -139,20 +147,37 @@ class Acesso implements UserInterface
     }
 
     /**
+     * @return Pacientes
+     */
+    public function getPacientes(): ?Pacientes
+    {
+        return $this->pacientes;
+    }
+
+    /**
+     * @param Pacientes $pacientes
+     */
+    public function setPacientes(Pacientes $pacientes): void
+    {
+        $this->pacientes = $pacientes;
+    }
+
+    /**
      * @return Perfil
      */
     public function getPerfil(): ?Perfil
     {
-        return $this->perfilperfil;
+        return $this->perfil;
     }
 
     /**
-     * @param Perfil $perfilperfil
+     * @param Perfil $perfil
      */
-    public function setPerfil(Perfil $perfilperfil): void
+    public function setPerfil(Perfil $perfil): void
     {
-        $this->perfilperfil = $perfilperfil;
+        $this->perfil = $perfil;
     }
+
 
     /**
      * Returns the salt that was originally used to encode the password.
@@ -172,7 +197,7 @@ class Acesso implements UserInterface
      */
     public function getUsername()
     {
-        return $this->getUsuario();
+        return $this->usuario;
     }
 
     /**
@@ -189,6 +214,4 @@ class Acesso implements UserInterface
     {
         return $this->getUsuario();
     }
-
-
 }

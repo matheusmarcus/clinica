@@ -43,7 +43,7 @@ class Consultas
     private $consultaConfirmada;
 
     /**
-     * @var \Funcionarios
+     * @var Funcionarios
      *
      * @ORM\ManyToOne(targetEntity="Funcionarios")
      * @ORM\JoinColumns({
@@ -53,7 +53,7 @@ class Consultas
     private $funcionarios;
 
     /**
-     * @var \Pacientes
+     * @var Pacientes
      *
      * @ORM\ManyToOne(targetEntity="Pacientes")
      * @ORM\JoinColumns({
@@ -63,7 +63,7 @@ class Consultas
     private $idpacientes;
 
     /**
-     * @var \TipoConsulta
+     * @var TipoConsulta
      *
      * @ORM\ManyToOne(targetEntity="TipoConsulta")
      * @ORM\JoinColumns({
@@ -71,6 +71,119 @@ class Consultas
      * })
      */
     private $tipoConsultatipoConsulta;
+
+    /**
+     * @return int
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getData(): ?\DateTime
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param \DateTime $data
+     */
+    public function setData(\DateTime $data): void
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * @return float
+     */
+    public function getValorConsulta(): ?float
+    {
+        return $this->valorConsulta;
+    }
+
+    /**
+     * @param float $valorConsulta
+     */
+    public function setValorConsulta(float $valorConsulta): void
+    {
+        $this->valorConsulta = $valorConsulta;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isConsultaConfirmada(): ?bool
+    {
+        return $this->consultaConfirmada;
+    }
+
+    /**
+     * @param bool $consultaConfirmada
+     */
+    public function setConsultaConfirmada(bool $consultaConfirmada): void
+    {
+        $this->consultaConfirmada = $consultaConfirmada;
+    }
+
+    /**
+     * @return Funcionarios
+     */
+    public function getFuncionarios(): ?Funcionarios
+    {
+        return $this->funcionarios;
+    }
+
+    /**
+     * @param Funcionarios $funcionarios
+     */
+    public function setFuncionarios(Funcionarios $funcionarios): void
+    {
+        $this->funcionarios = $funcionarios;
+    }
+
+    /**
+     * @return Pacientes
+     */
+    public function getIdpacientes(): ?Pacientes
+    {
+        return $this->idpacientes;
+    }
+
+    /**
+     * @param Pacientes $idpacientes
+     */
+    public function setIdpacientes(Pacientes $idpacientes): void
+    {
+        $this->idpacientes = $idpacientes;
+    }
+
+    /**
+     * @return TipoConsulta
+     */
+    public function getTipoConsultatipoConsulta(): ?TipoConsulta
+    {
+        return $this->tipoConsultatipoConsulta;
+    }
+
+    /**
+     * @param TipoConsulta $tipoConsultatipoConsulta
+     */
+    public function setTipoConsultatipoConsulta(TipoConsulta $tipoConsultatipoConsulta): void
+    {
+        $this->tipoConsultatipoConsulta = $tipoConsultatipoConsulta;
+    }
+
 
 
 }

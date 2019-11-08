@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Acesso;
 use App\Entity\Pacientes;
+use App\Form\AcessoType;
 use App\Form\PacientesType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,11 +38,21 @@ class PacientesController extends AbstractController
         $paciente = new Pacientes();
         $form = $this->createForm(PacientesType::class, $paciente);
         $form->handleRequest($request);
+        $acesso = new Acesso();
+        $form2 = $this->createForm(AcessoType::class, $acesso);
+        $form2->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($paciente);
             $entityManager->flush();
+            if ($form2->isSubmitted() && $form2->isValid()) {
+                $entityManager = $this->getDoctrine()->getManagerForClass(Acesso::class);
+                $acesso->setPacientes($paciente);
+                $acesso->setPassword(sha1(md5($acesso->getPassword())));
+                $entityManager->persist($acesso);
+                $entityManager->flush();
+            }
 
             return $this->redirectToRoute('pacientes_index');
         }
@@ -48,6 +60,7 @@ class PacientesController extends AbstractController
         return $this->render('pacientes/new.html.twig', [
             'paciente' => $paciente,
             'form' => $form->createView(),
+            'form2' => $form2->createView(),
         ]);
     }
 

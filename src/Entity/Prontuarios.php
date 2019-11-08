@@ -36,7 +36,7 @@ class Prontuarios
     private $data;
 
     /**
-     * @var \Laudos
+     * @var Laudos
      *
      * @ORM\ManyToOne(targetEntity="Laudos")
      * @ORM\JoinColumns({
@@ -46,7 +46,7 @@ class Prontuarios
     private $laudos;
 
     /**
-     * @var \Pacientes
+     * @var Pacientes
      *
      * @ORM\ManyToOne(targetEntity="Pacientes")
      * @ORM\JoinColumns({
@@ -54,6 +54,88 @@ class Prontuarios
      * })
      */
     private $idpacientes;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDsProntuario(): ?string
+    {
+        return $this->dsProntuario;
+    }
+
+    /**
+     * @param string $dsProntuario
+     */
+    public function setDsProntuario(string $dsProntuario): void
+    {
+        $this->dsProntuario = $dsProntuario;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getData(): ?\DateTime
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param \DateTime $data
+     */
+    public function setData(\DateTime $data): void
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * @return Laudos
+     */
+    public function getLaudos(): ?Laudos
+    {
+        return $this->laudos;
+    }
+
+    /**
+     * @param Laudos $laudos
+     */
+    public function setLaudos(Laudos $laudos): void
+    {
+        $this->laudos = $laudos;
+    }
+
+    /**
+     * @return Pacientes
+     */
+    public function getIdpacientes(): ?Pacientes
+    {
+        return $this->idpacientes;
+    }
+
+    /**
+     * @param Pacientes $idpacientes
+     */
+    public function setIdpacientes(Pacientes $idpacientes): void
+    {
+        $this->idpacientes = $idpacientes;
+    }
+
+
 
 
 }

@@ -5,7 +5,15 @@
 {% block body %}
     <h1>Create new Pacientes</h1>
 
-    {{ include('pacientes/_form.html.twig') }}
+    {{ include('pacientes/_form2.html.twig') }}
 
-    <a href="{{ path('pacientes_index') }}">back to list</a>
+    <script>
+
+        $('#btnFormPaciente').click(function(){
+            var form = $('form[name="pacientes"]');
+            form.validate({
+            });
+            form.submit();
+        });
+    </script>
 {% endblock %}

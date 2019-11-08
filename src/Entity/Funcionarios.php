@@ -50,7 +50,7 @@ class Funcionarios
     private $sexo;
 
     /**
-     * @var int
+     * @var string
      *
      * @ORM\Column(name="telefone_celular", type="string", length=11, nullable=false)
      */
@@ -59,7 +59,7 @@ class Funcionarios
     /**
      * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -120,7 +120,6 @@ class Funcionarios
         $this->dataAdmissao = $dataAdmissao;
     }
 
-
     /**
      * @return string
      */
@@ -138,7 +137,7 @@ class Funcionarios
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getTelefoneCelular(): ?string
     {
@@ -146,7 +145,7 @@ class Funcionarios
     }
 
     /**
-     * @param int $telefoneCelular
+     * @param string $telefoneCelular
      */
     public function setTelefoneCelular(string $telefoneCelular): void
     {

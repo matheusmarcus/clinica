@@ -16,8 +16,12 @@ class AcessoType extends AbstractType
         $builder
             ->add('usuario')
             ->add('password', PasswordType::class)
-            ->add('funcionarios')
-            ->add('perfilperfil')
+//            ->add('funcionarios')
+//            ->add('pacientes')
+            ->add('perfil', null, [
+                'required' => true,
+                'placeholder' => 'Selecione'
+            ])
             ->add('roles', ChoiceType::class,[
                 'label' => 'Permissões:',
                 'multiple' => true,
@@ -25,8 +29,9 @@ class AcessoType extends AbstractType
                     'Administrador' => 'ROLE_ADMIN',
                     'Psicologo' => 'ROLE_PSICOLOGO',
                     'Atendente' => 'ROLE_ATENDENTE',
+                    'Paciente' => 'ROLE_PACIENTE',
                 ]
-            ]);
+            ])
         ;
     }
 

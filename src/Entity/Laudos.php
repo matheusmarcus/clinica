@@ -36,7 +36,7 @@ class Laudos
     private $data;
 
     /**
-     * @var \Exames
+     * @var Exames
      *
      * @ORM\ManyToOne(targetEntity="Exames")
      * @ORM\JoinColumns({
@@ -44,6 +44,70 @@ class Laudos
      * })
      */
     private $exames;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDsLaudo(): ?string
+    {
+        return $this->dsLaudo;
+    }
+
+    /**
+     * @param string $dsLaudo
+     */
+    public function setDsLaudo(string $dsLaudo): void
+    {
+        $this->dsLaudo = $dsLaudo;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getData(): ?\DateTime
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param \DateTime $data
+     */
+    public function setData(\DateTime $data): void
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * @return Exames
+     */
+    public function getExames(): ?Exames
+    {
+        return $this->exames;
+    }
+
+    /**
+     * @param Exames $exames
+     */
+    public function setExames(Exames $exames): void
+    {
+        $this->exames = $exames;
+    }
 
 
 }

@@ -20,6 +20,12 @@
         * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
         -->
         <link href="/assets/css/main.css" rel="stylesheet">
+        <script
+                src="https://code.jquery.com/jquery-3.4.1.js"
+                integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+                crossorigin="anonymous"></script>
+        <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -27,6 +33,7 @@
             <div class="app-header header-shadow bg-night-sky header-text-light">
                 <div class="app-header__logo">
                     <div class="logo-src"></div>
+                    <div style="color: #fff; font-family: 'Courier New', Courier, monospace;">JJM</div>
                     <div class="header__pane ml-auto">
                         <div>
                             <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -64,16 +71,22 @@
                                         <div class="btn-group">
                                             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
                                                 <div class="widget-heading">
-                                                    {{ app.user.funcionarios.nome }}
+                                                    {{ app.user.funcionarios ? app.user.funcionarios.nome : app.user.pacientes.nome }}
                                                 </div>
                                                 <div class="widget-subheading">
                                                     {{ app.user.perfil.nome }}
                                                 </div>
                                             </a>
                                             <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                                <a href="{{ path('funcionarios_show', {id: app.user.funcionarios.id}) }}" tabindex="0" class="dropdown-item">
-                                                    Perfil
-                                                </a>
+                                                {% if is_granted('ROLE_ATENDENTE') %}
+                                                    <a href="{{ path('funcionarios_show', {id: app.user.funcionarios.id}) }}" tabindex="0" class="dropdown-item">
+                                                        Perfil
+                                                    </a>
+                                                {% else %}
+                                                    <a href="{{ path('pacientes_show', {id: app.user.pacientes.id}) }}" tabindex="0" class="dropdown-item">
+                                                        Perfil
+                                                    </a>
+                                                {% endif %}
                                                 <a href="{{ path('app_logout') }}" tabindex="0" class="dropdown-item">
                                                     Logout
                                                 </a>
@@ -290,6 +303,29 @@
             </div>
         </div>
         <script type="text/javascript" src="/assets/scripts/main.js"></script>
+        <script>
+            $.extend( $.validator.messages, {
+
+                // Core
+                required: "<span class='text-danger'>Este campo &eacute; obrigat&oacute;rio!</span>",
+                remote: "<span class='text-danger'>Por favor, corrija este campo.</span>",
+                email: "<span class='text-danger'>Por favor, forne&ccedil;a um endere&ccedil;o de email v&aacute;lido.</span>",
+                url: "<span class='text-danger'>Por favor, forne&ccedil;a uma URL v&aacute;lida.</span>",
+                date: "<span class='text-danger'>Por favor, forne&ccedil;a uma data v&aacute;lida.</span>",
+                dateISO: "<span class='text-danger'>Por favor, forne&ccedil;a uma data v&aacute;lida (ISO).</span>",
+                number: "<span class='text-danger'>Forne&ccedil;a um n&uacute;mero v&aacute;lido</span>",
+                digits: "<span class='text-danger'>Forne&ccedil;a somente d&iacute;gitos</span>",
+                creditcard: "<span class='text-danger'>Por favor, forne&ccedil;a um cart&atilde;o de cr&eacute;dito v&aacute;lido.</span>",
+                equalTo: "<span class='text-danger'>Por favor, forne&ccedil;a o mesmo valor novamente.</span>",
+                maxlength: $.validator.format( "<span class='text-danger'>Por favor, forne&ccedil;a n&atilde;o mais que {0} caracteres.</span>" ),
+                minlength: $.validator.format( "<span class='text-danger'>Por favor, forne&ccedil;a ao menos {0} caracteres.</span>" ),
+                rangelength: $.validator.format( "<span class='text-danger'>Por favor, forne&ccedil;a um valor entre {0} e {1} caracteres de comprimento.</span>" ),
+                range: $.validator.format( "<span class='text-danger'>Por favor, forne&ccedil;a um valor entre {0} e {1}.</span>" ),
+                max: $.validator.format( "<span class='text-danger'>Forne&ccedil;a um valor menor ou igual a {0}</span>" ),
+                min: $.validator.format( "<span class='text-danger'>Forne&ccedil;a um valor maior ou igual a {0}</span>" )
+
+            } );
+        </script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

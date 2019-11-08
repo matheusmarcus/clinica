@@ -5,7 +5,15 @@
 {% block body %}
     <h1>Create new Funcionarios</h1>
 
-    {{ include('funcionarios/_form.html.twig') }}
+    {{ include('funcionarios/_form2.html.twig') }}
+    <script>
 
-    <a href="{{ path('funcionarios_index') }}">back to list</a>
+        $('#btnFormFuncionario').click(function(){
+            var form = $('form[name="funcionarios"]');
+            form.validate({
+
+            });
+            form.submit();
+        });
+    </script>
 {% endblock %}

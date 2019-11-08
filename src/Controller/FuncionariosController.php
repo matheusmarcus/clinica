@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Acesso;
 use App\Entity\Funcionarios;
+use App\Form\AcessoType;
 use App\Form\FuncionariosType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,11 +38,21 @@ class FuncionariosController extends AbstractController
         $funcionario = new Funcionarios();
         $form = $this->createForm(FuncionariosType::class, $funcionario);
         $form->handleRequest($request);
+        $acesso = new Acesso();
+        $form2 = $this->createForm(AcessoType::class, $acesso);
+        $form2->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($funcionario);
             $entityManager->flush();
+            if ($form2->isSubmitted() && $form2->isValid()) {
+                $entityManager = $this->getDoctrine()->getManagerForClass(Acesso::class);
+                $acesso->setFuncionarios($funcionario);
+                $acesso->setPassword(sha1(md5($acesso->getPassword())));
+                $entityManager->persist($acesso);
+                $entityManager->flush();
+            }
 
             return $this->redirectToRoute('funcionarios_index');
         }
@@ -48,6 +60,7 @@ class FuncionariosController extends AbstractController
         return $this->render('funcionarios/new.html.twig', [
             'funcionario' => $funcionario,
             'form' => $form->createView(),
+            'form2' => $form2->createView(),
         ]);
     }
 

@@ -1,0 +1,8 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_start(form2) }}
+        {{ form_widget(form2) }}
+    {{ form_end(form2) }}
+    <a class="btn btn-secondary" href="{{ path('funcionarios_index') }}">Voltar</a>
+    <button class="btn btn-success" id="btnFormFuncionario">{{ button_label|default('Salvar') }}</button>
+{{ form_end(form) }}

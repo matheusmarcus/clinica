@@ -38,7 +38,7 @@ class Perfil
     /**
      * @return int
      */
-    public function getIdperfil(): ?int
+    public function getIdperfil(): int
     {
         return $this->idperfil;
     }
@@ -82,7 +82,6 @@ class Perfil
     {
         $this->descricao = $descricao;
     }
-
     public function __toString()
     {
         return $this->getNome();

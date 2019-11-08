@@ -36,7 +36,7 @@ class Exames
     private $imagens;
 
     /**
-     * @var \Funcionarios
+     * @var Funcionarios
      *
      * @ORM\ManyToOne(targetEntity="Funcionarios")
      * @ORM\JoinColumns({
@@ -46,7 +46,7 @@ class Exames
     private $funcionarios;
 
     /**
-     * @var \Pacientes
+     * @var Pacientes
      *
      * @ORM\ManyToOne(targetEntity="Pacientes")
      * @ORM\JoinColumns({
@@ -54,6 +54,87 @@ class Exames
      * })
      */
     private $idpacientes;
+
+    /**
+     * @return int
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getData(): ?\DateTime
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param \DateTime $data
+     */
+    public function setData(\DateTime $data): void
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImagens(): ?string
+    {
+        return $this->imagens;
+    }
+
+    /**
+     * @param string $imagens
+     */
+    public function setImagens(string $imagens): void
+    {
+        $this->imagens = $imagens;
+    }
+
+    /**
+     * @return Funcionarios
+     */
+    public function getFuncionarios(): ?Funcionarios
+    {
+        return $this->funcionarios;
+    }
+
+    /**
+     * @param Funcionarios $funcionarios
+     */
+    public function setFuncionarios(Funcionarios $funcionarios): void
+    {
+        $this->funcionarios = $funcionarios;
+    }
+
+    /**
+     * @return Pacientes
+     */
+    public function getIdpacientes(): ?Pacientes
+    {
+        return $this->idpacientes;
+    }
+
+    /**
+     * @param Pacientes $idpacientes
+     */
+    public function setIdpacientes(Pacientes $idpacientes): void
+    {
+        $this->idpacientes = $idpacientes;
+    }
+
 
 
 }
