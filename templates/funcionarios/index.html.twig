@@ -3,41 +3,126 @@
 {% block title %}Funcionarios index{% endblock %}
 
 {% block body %}
-    <h1>Funcionarios index</h1>
+    <style>
+    </style>
+    {#    <h1>Funcionarios index</h1>#}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>DataNascimento</th>
-                <th>DataAdmissao</th>
-                <th>Sexo</th>
-                <th>TelefoneCelular</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for funcionario in funcionarios %}
-            <tr>
-                <td>{{ funcionario.id }}</td>
-                <td>{{ funcionario.nome }}</td>
-                <td>{{ funcionario.dataNascimento ? funcionario.dataNascimento|date('Y-m-d') : '' }}</td>
-                <td>{{ funcionario.dataAdmissao ? funcionario.dataAdmissao|date('Y-m-d') : '' }}</td>
-                <td>{{ funcionario.sexo }}</td>
-                <td>{{ funcionario.telefoneCelular }}</td>
-                <td>
-                    <a href="{{ path('funcionarios_show', {'id': funcionario.id}) }}">show</a>
-                    <a href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {#    <div class="page-header">#}
+    {#        <div class="col-sm-6"><h1>#}
+    {#                Listagem de Controle de Visitante#}
+    {#            </h1></div>#}
+    {#        <div class="col-sm-6 text-right"><a href="#" data-toggle="modal" data-target="#filterForm"#}
+    {#                                            class="btn btn-primary btn-icon-text"><i class="fa fa-search"></i> Filtrar#}
+    {#            </a><a href="/admin/visitante/cvvisitante/new" class="btn btn-success m-l-2"><i class="fa fa-plus"></i>#}
+    {#                Cadastrar#}
+    {#            </a></div>#}
+    {#    </div>#}
 
-    <a href="{{ path('funcionarios_new') }}">Create new</a>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 style='font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'>
+                    Listagem de Funcion&aacute;rios
+                </h1>
+            </div>
+            <div class="col-sm-6 text-right" style="display: block">
+                <a class="btn btn-success m-3" href="{{ path('funcionarios_new') }}"><i class="fa fa-plus"></i>
+                    Cadastrar</a>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="main-card mb-3 card">
+            <div class="card-body">
+                {#            <h5 class="card-title">Listagem de Funcionários</h5>#}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Data de Nascimento</th>
+                        <th>Data de Admissão</th>
+                        <th>Sexo</th>
+                        <th>Telefone Celular</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for funcionario in funcionarios %}
+                        <tr>
+                            <td>{{ funcionario.id }}</td>
+                            <td>{{ funcionario.nome }}</td>
+                            <td>{{ funcionario.dataNascimento ? funcionario.dataNascimento|date('Y-m-d') : '' }}</td>
+                            <td>{{ funcionario.dataAdmissao ? funcionario.dataAdmissao|date('Y-m-d') : '' }}</td>
+                            <td>
+                                {% if funcionario.sexo == 'm' %}
+                                    Masculino
+                                {% elseif funcionario.sexo == 'f' %}
+                                    Feminino
+                                {% else %}
+                                    Não declarar
+                                {% endif %}
+                            </td>
+                            <td>{{ funcionario.telefoneCelular }}</td>
+                            <td>
+                                <a class="mb-2 mr-2 btn btn-primary"
+                                   href="{{ path('funcionarios_show', {'id': funcionario.id}) }}" title="Ver"><i
+                                            class="fa fa-eye"></i></a>
+                                <a class="mb-2 mr-2 btn btn-success"
+                                   href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}" title="Editar"><i
+                                            class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
+                        an unknown printer took a galley of type and scrambled.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#    <a href="{{ path('funcionarios_new') }}">Create new</a>#}
+
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json"
+                },
+                "columnDefs": [
+                    {
+                        "targets": 6,
+                        "orderable": false
+                    },
+                ],
+                "responsive": true
+            });
+        });
+    </script>
 {% endblock %}

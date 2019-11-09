@@ -4,15 +4,16 @@
 
 {% block body %}
     <h1>Create new Funcionarios</h1>
+{#    <div class="panel">#}
+{#        <div class="main-card mb-3 card">#}
+            {{ include('funcionarios/_form2.html.twig') }}
+{#        </div>#}
+{#    </div>#}
 
-    {{ include('funcionarios/_form2.html.twig') }}
     <script>
-
-        $('#btnFormFuncionario').click(function(){
+        $('#btnFormFuncionario').click(function () {
             var form = $('form[name="funcionarios"]');
-            form.validate({
-
-            });
+            form.validate({});
             form.submit();
         });
     </script>

@@ -69,8 +69,12 @@ class FuncionariosController extends AbstractController
      */
     public function show(Funcionarios $funcionario): Response
     {
+        $em = $this->getDoctrine()->getManager();
+        $perfil = $em->getRepository(Acesso::class)->find($funcionario->getId());
+
         return $this->render('funcionarios/show.html.twig', [
             'funcionario' => $funcionario,
+            'perfil' => $perfil
         ]);
     }
 
@@ -99,7 +103,7 @@ class FuncionariosController extends AbstractController
      */
     public function delete(Request $request, Funcionarios $funcionario): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$funcionario->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $funcionario->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($funcionario);
             $entityManager->flush();
