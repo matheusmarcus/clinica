@@ -3,7 +3,7 @@
 {% block title %}Acesso index{% endblock %}
 
 {% block body %}
-{#    <h1>Acesso index</h1>#}
+    {#    <h1>Acesso index</h1>#}
     <div class="page-header">
         <div class="row">
             <div class="col-sm-6">
@@ -23,10 +23,10 @@
                 <table id="tabela-acessos" class="table">
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Usuario</th>
-                        <th>Password</th>
-                        <th>actions</th>
+                        <th>ID</th>
+                        <th>Usuário</th>
+                        <th>Senha</th>
+                        <th>Ações</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,6 +42,9 @@
                                 <a class="mb-2 mr-2 btn btn-success"
                                    href="{{ path('acesso_edit', {'id': acesso.id}) }}" title="Editar"><i
                                             class="fa fa-edit"></i></a>
+                                <a class="mb-2 mr-2 btn btn-danger"
+                                   href="#" title="Desativar" data-toggle="tooltip" data-placement="bottom"><i
+                                            class="fas fa-user-slash"></i></a>
                             </td>
                         </tr>
                     {% else %}

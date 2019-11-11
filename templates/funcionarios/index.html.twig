@@ -49,53 +49,66 @@
                             </td>
                             <td>{{ funcionario.telefoneCelular }}</td>
                             <td>
-                                {{ include('funcionarios/_delete_form.html.twig') }}
-{#                                <div class="d-inline-block dropdown">#}
-{#                                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">#}
-{#                                        <span class="btn-icon-wrapper pr-2 opacity-7">#}
-{#                                            <i class="fa fa-business-time fa-w-20"></i>#}
-{#                                        </span>#}
-{#                                        Buttons#}
-{#                                    </button>#}
-{#                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-129px, 33px, 0px);">#}
-{#                                        <ul class="nav flex-column">#}
-{#                                            <li class="nav-item">#}
-{#                                                <a class="nav-link">#}
-{#                                                    <i class="nav-link-icon lnr-inbox"></i>#}
-{#                                                    <span>#}
-{#                                                        Inbox#}
-{#                                                    </span>#}
-{#                                                    <div class="ml-auto badge badge-pill badge-secondary">86</div>#}
-{#                                                </a>#}
-{#                                            </li>#}
-{#                                            <li class="nav-item">#}
-{#                                                <a class="nav-link">#}
-{#                                                    <i class="nav-link-icon lnr-book"></i>#}
-{#                                                    <span>#}
-{#                                                        Book#}
-{#                                                    </span>#}
-{#                                                    <div class="ml-auto badge badge-pill badge-danger">5</div>#}
-{#                                                </a>#}
-{#                                            </li>#}
-{#                                            <li class="nav-item">#}
-{#                                                <a class="nav-link">#}
-{#                                                    <i class="nav-link-icon lnr-picture"></i>#}
-{#                                                    <span>#}
-{#                                                        Picture#}
-{#                                                    </span>#}
-{#                                                </a>#}
-{#                                            </li>#}
-{#                                            <li class="nav-item">#}
-{#                                                <a disabled="" class="nav-link disabled">#}
-{#                                                    <i class="nav-link-icon lnr-file-empty"></i>#}
-{#                                                    <span>#}
-{#                                                        File Disabled#}
-{#                                                    </span>#}
-{#                                                </a>#}
-{#                                            </li>#}
-{#                                        </ul>#}
-{#                                    </div>#}
-{#                                </div>#}
+                                <a class="mb-2 mr-2 btn btn-primary"
+                                   href="{{ path('funcionarios_show', {'id': funcionario.id}) }}" title="Ver"
+                                   data-toggle="tooltip" data-placement="bottom"><i
+                                            class="fa fa-eye"></i></a>
+
+                                <a class="mb-2 mr-2 btn btn-success"
+                                   href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}" title="Editar"
+                                   data-toggle="tooltip" data-placement="bottom"><i
+                                            class="fa fa-edit"></i></a>
+
+                                <a class="mb-2 mr-2 btn btn-danger"
+                                   href="#" title="Desativar" data-toggle="tooltip" data-placement="bottom"><i
+                                            class="fas fa-user-slash"></i></a>
+                                {#                                {{ include('funcionarios/_delete_form.html.twig') }}#}
+                                {#                                <div class="d-inline-block dropdown">#}
+                                {#                                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">#}
+                                {#                                        <span class="btn-icon-wrapper pr-2 opacity-7">#}
+                                {#                                            <i class="fa fa-business-time fa-w-20"></i>#}
+                                {#                                        </span>#}
+                                {#                                        Buttons#}
+                                {#                                    </button>#}
+                                {#                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-129px, 33px, 0px);">#}
+                                {#                                        <ul class="nav flex-column">#}
+                                {#                                            <li class="nav-item">#}
+                                {#                                                <a class="nav-link">#}
+                                {#                                                    <i class="nav-link-icon lnr-inbox"></i>#}
+                                {#                                                    <span>#}
+                                {#                                                        Inbox#}
+                                {#                                                    </span>#}
+                                {#                                                    <div class="ml-auto badge badge-pill badge-secondary">86</div>#}
+                                {#                                                </a>#}
+                                {#                                            </li>#}
+                                {#                                            <li class="nav-item">#}
+                                {#                                                <a class="nav-link">#}
+                                {#                                                    <i class="nav-link-icon lnr-book"></i>#}
+                                {#                                                    <span>#}
+                                {#                                                        Book#}
+                                {#                                                    </span>#}
+                                {#                                                    <div class="ml-auto badge badge-pill badge-danger">5</div>#}
+                                {#                                                </a>#}
+                                {#                                            </li>#}
+                                {#                                            <li class="nav-item">#}
+                                {#                                                <a class="nav-link">#}
+                                {#                                                    <i class="nav-link-icon lnr-picture"></i>#}
+                                {#                                                    <span>#}
+                                {#                                                        Picture#}
+                                {#                                                    </span>#}
+                                {#                                                </a>#}
+                                {#                                            </li>#}
+                                {#                                            <li class="nav-item">#}
+                                {#                                                <a disabled="" class="nav-link disabled">#}
+                                {#                                                    <i class="nav-link-icon lnr-file-empty"></i>#}
+                                {#                                                    <span>#}
+                                {#                                                        File Disabled#}
+                                {#                                                    </span>#}
+                                {#                                                </a>#}
+                                {#                                            </li>#}
+                                {#                                        </ul>#}
+                                {#                                    </div>#}
+                                {#                                </div>#}
                             </td>
                         </tr>
                     {% else %}
@@ -122,7 +135,8 @@
                         // "width" : "20%"
                     },
                 ],
-                "responsive": true
+                "responsive": true,
+                "autoWidth": true
             });
         });
     </script>

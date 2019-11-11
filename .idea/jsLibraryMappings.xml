@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{dataTables.responsive, jquery.dataTables, materialize, popper, select2, svgembedder}" />
+    <file url="PROJECT" libraries="{dataTables.responsive, jquery-3.4.1, jquery.dataTables, jquery.validate, materialize, popper, select2, svgembedder}" />
   </component>
 </project>
