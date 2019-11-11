@@ -3,21 +3,6 @@
 {% block title %}Funcionarios index{% endblock %}
 
 {% block body %}
-    <style>
-    </style>
-    {#    <h1>Funcionarios index</h1>#}
-
-    {#    <div class="page-header">#}
-    {#        <div class="col-sm-6"><h1>#}
-    {#                Listagem de Controle de Visitante#}
-    {#            </h1></div>#}
-    {#        <div class="col-sm-6 text-right"><a href="#" data-toggle="modal" data-target="#filterForm"#}
-    {#                                            class="btn btn-primary btn-icon-text"><i class="fa fa-search"></i> Filtrar#}
-    {#            </a><a href="/admin/visitante/cvvisitante/new" class="btn btn-success m-l-2"><i class="fa fa-plus"></i>#}
-    {#                Cadastrar#}
-    {#            </a></div>#}
-    {#    </div>#}
-
     <div class="page-header">
         <div class="row">
             <div class="col-sm-6">
@@ -31,10 +16,9 @@
             </div>
         </div>
     </div>
-    <div class="panel">
+    <div class="panel-body">
         <div class="main-card mb-3 card">
             <div class="card-body">
-                {#            <h5 class="card-title">Listagem de Funcionários</h5>#}
                 <table class="table">
                     <thead>
                     <tr>
@@ -65,12 +49,53 @@
                             </td>
                             <td>{{ funcionario.telefoneCelular }}</td>
                             <td>
-                                <a class="mb-2 mr-2 btn btn-primary"
-                                   href="{{ path('funcionarios_show', {'id': funcionario.id}) }}" title="Ver"><i
-                                            class="fa fa-eye"></i></a>
-                                <a class="mb-2 mr-2 btn btn-success"
-                                   href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}" title="Editar"><i
-                                            class="fa fa-edit"></i></a>
+                                {{ include('funcionarios/_delete_form.html.twig') }}
+{#                                <div class="d-inline-block dropdown">#}
+{#                                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">#}
+{#                                        <span class="btn-icon-wrapper pr-2 opacity-7">#}
+{#                                            <i class="fa fa-business-time fa-w-20"></i>#}
+{#                                        </span>#}
+{#                                        Buttons#}
+{#                                    </button>#}
+{#                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-129px, 33px, 0px);">#}
+{#                                        <ul class="nav flex-column">#}
+{#                                            <li class="nav-item">#}
+{#                                                <a class="nav-link">#}
+{#                                                    <i class="nav-link-icon lnr-inbox"></i>#}
+{#                                                    <span>#}
+{#                                                        Inbox#}
+{#                                                    </span>#}
+{#                                                    <div class="ml-auto badge badge-pill badge-secondary">86</div>#}
+{#                                                </a>#}
+{#                                            </li>#}
+{#                                            <li class="nav-item">#}
+{#                                                <a class="nav-link">#}
+{#                                                    <i class="nav-link-icon lnr-book"></i>#}
+{#                                                    <span>#}
+{#                                                        Book#}
+{#                                                    </span>#}
+{#                                                    <div class="ml-auto badge badge-pill badge-danger">5</div>#}
+{#                                                </a>#}
+{#                                            </li>#}
+{#                                            <li class="nav-item">#}
+{#                                                <a class="nav-link">#}
+{#                                                    <i class="nav-link-icon lnr-picture"></i>#}
+{#                                                    <span>#}
+{#                                                        Picture#}
+{#                                                    </span>#}
+{#                                                </a>#}
+{#                                            </li>#}
+{#                                            <li class="nav-item">#}
+{#                                                <a disabled="" class="nav-link disabled">#}
+{#                                                    <i class="nav-link-icon lnr-file-empty"></i>#}
+{#                                                    <span>#}
+{#                                                        File Disabled#}
+{#                                                    </span>#}
+{#                                                </a>#}
+{#                                            </li>#}
+{#                                        </ul>#}
+{#                                    </div>#}
+{#                                </div>#}
                             </td>
                         </tr>
                     {% else %}
@@ -84,31 +109,6 @@
         </div>
     </div>
 
-
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true" style="display: none;">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p class="mb-0">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
-                        an unknown printer took a galley of type and scrambled.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    {#    <a href="{{ path('funcionarios_new') }}">Create new</a>#}
-
     <script>
         $(document).ready(function () {
             $('.table').DataTable({
@@ -118,7 +118,8 @@
                 "columnDefs": [
                     {
                         "targets": 6,
-                        "orderable": false
+                        "orderable": false,
+                        // "width" : "20%"
                     },
                 ],
                 "responsive": true

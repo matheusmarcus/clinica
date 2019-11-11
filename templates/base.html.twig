@@ -57,6 +57,12 @@
     {#          integrity="sha256-AghQEDQh6JXTN1iI/BatwbIHpJRKQcg2lay7DE5U/RQ=" crossorigin="anonymous"/>#}
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/select2-bootstrap.css') }}">
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">#}
+    <style>
+        body{
+            table-layout: fixed;
+        }
+    </style>
     <!-- Fim do bloco -->
 
 
@@ -445,6 +451,7 @@
     }(jQuery);
 </script>
 <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>#}
 {#        <script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>#}
 {#        <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.4/countUp.js" integrity="sha256-loG/CTsZr+YlyHWCO8LI8FRqpWbYTHTgq3UTQg8G5cA=" crossorigin="anonymous"></script>#}
 {#        <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.4/countUp.min.js" integrity="sha256-xjpjb+xHwzwfkLAJ0vlYMNNJIIPATkKc2oaRSDRxSWc=" crossorigin="anonymous"></script>#}
@@ -452,6 +459,8 @@
 {#<script type="text/javascript" src="{{ asset('assets/scripts/jquery.inputmask.js') }}"></script>#}
 {#<script type="text/javascript" src="{{ asset('assets/scripts/inputmask.js') }}"></script>#}
 {#<script type="text/javascript" src="{{ asset('assets/scripts/bindings/inputmask.binding.js') }}"></script>#}
+<script type="text/javascript" src="https://nightly.datatables.net/responsive/js/dataTables.responsive.min.js"></script>
+{#<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>#}
 <!-- Fim do bloco de alterações -->
 {% block javascripts %}{% endblock %}
 </body>

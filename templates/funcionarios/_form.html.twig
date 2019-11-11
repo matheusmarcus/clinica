@@ -1,4 +1,6 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn btn-success" >{{ button_label|default('Salvar') }}</button>
+<button class="btn btn-success mr-2 mb-2">{{ button_label|default('Salvar') }}</button>
+<a class="btn btn-secondary mr-2 mb-2" href="{{ path('funcionarios_index') }}">Voltar à
+    Lista</a>
 {{ form_end(form) }}

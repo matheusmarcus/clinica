@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{1dbc7d90aa, bootstrap-clockpicker, bootstrap-datepicker, bootstrap-datepicker.pt-BR, countUp, countUp.withPolyfill, dataTables.bootstrap4, dataTables.material, dataTables.semanticui, datatables.mark, inputmask, inputmask.binding, inputmask.date.extensions, inputmask.dependencyLib, inputmask.dependencyLib.jqlite, inputmask.dependencyLib.jquery, inputmask.extensions, inputmask.numeric.extensions, jquery.dataTables, jquery.inputmask, jquery.inputmask.bundle, mdb, popper, select2, semantic, svgembedder, waypoints, window}" />
+    <file url="PROJECT" libraries="{dataTables.responsive, jquery.dataTables, materialize, popper, select2, svgembedder}" />
   </component>
 </project>

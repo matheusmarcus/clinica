@@ -140,5 +140,8 @@
     <orderEntry type="library" name="waypoints" level="application" />
     <orderEntry type="library" name="countUp" level="application" />
     <orderEntry type="library" name="countUp.withPolyfill" level="application" />
+    <orderEntry type="library" name="svgembedder" level="application" />
+    <orderEntry type="library" name="materialize" level="application" />
+    <orderEntry type="library" name="dataTables.responsive" level="application" />
   </component>
 </module>
