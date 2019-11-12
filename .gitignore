@@ -6,3 +6,5 @@
 /.web-server-pid
 .htaccess
 .idea/
+.idea
+*.bak
