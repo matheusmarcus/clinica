@@ -3,35 +3,77 @@
 {% block title %}Acesso index{% endblock %}
 
 {% block body %}
-    <h1>Acesso index</h1>
+    {#    <h1>Acesso index</h1>#}
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 style='font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'>
+                    Listagem de Acessos
+                </h1>
+            </div>
+            <div class="col-sm-6 text-right" style="display: block">
+                <a class="btn btn-success m-3" href="{{ path('acesso_new') }}"><i class="fa fa-plus"></i>
+                    Cadastrar</a>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="main-card mb-3 card">
+            <div class="card-body">
+                <table id="tabela-acessos" class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuário</th>
+                        <th>Senha</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for acesso in acessos %}
+                        <tr>
+                            <td>{{ acesso.id }}</td>
+                            <td>{{ acesso.usuario }}</td>
+                            <td>{{ acesso.password }}</td>
+                            <td>
+                                <a class="mb-2 mr-2 btn btn-primary"
+                                   href="{{ path('acesso_show', {'id': acesso.id}) }}" title="Ver"><i
+                                            class="fa fa-eye"></i></a>
+                                <a class="mb-2 mr-2 btn btn-success"
+                                   href="{{ path('acesso_edit', {'id': acesso.id}) }}" title="Editar"><i
+                                            class="fa fa-edit"></i></a>
+                                <a class="mb-2 mr-2 btn btn-danger"
+                                   href="#" title="Desativar" data-toggle="tooltip" data-placement="bottom"><i
+                                            class="fas fa-user-slash"></i></a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Usuario</th>
-                <th>Password</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for acesso in acessos %}
-            <tr>
-                <td>{{ acesso.id }}</td>
-                <td>{{ acesso.usuario }}</td>
-                <td>{{ acesso.password }}</td>
-                <td>
-                    <a href="{{ path('acesso_show', {'id': acesso.id}) }}">show</a>
-                    <a href="{{ path('acesso_edit', {'id': acesso.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {#    <a href="{{ path('acesso_new') }}">Create new</a>#}
 
-    <a href="{{ path('acesso_new') }}">Create new</a>
+    <script>
+        $(document).ready(function () {
+            $('#tabela-acessos').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json"
+                },
+                "columnDefs": [
+                    {
+                        "targets": 3,
+                        "orderable": false
+                    },
+                ],
+                "responsive": true
+            });
+        });
+    </script>
 {% endblock %}

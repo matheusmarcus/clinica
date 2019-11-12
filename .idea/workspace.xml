@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="ca9f932c-e93b-4c40-b12a-f2b8a0ef8651" name="Default Changelist" comment="" />
+=======
     <list default="true" id="ca9f932c-e93b-4c40-b12a-f2b8a0ef8651" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/clinica.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/clinica.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AcessoType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AcessoType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/acesso/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/acesso/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/acesso/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/acesso/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/acesso/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/acesso/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/acesso/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/acesso/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/funcionarios/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/funcionarios/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/funcionarios/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/funcionarios/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/funcionarios/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/funcionarios/index.html.twig" afterDir="false" />
+>>>>>>> 8023f234d943f97679ec069657c0c725c687a386
     </list>
+>>>>>>> a947126357b56270408702d5dacb795968cebcef
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +32,7 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
+<<<<<<< HEAD
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -66,8 +86,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/funcionarios/_form2.html.twig">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="136">
               <caret line="8" selection-start-line="8" selection-end-line="8" />
+=======
+            <state relative-caret-position="272">
+              <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
+>>>>>>> 8023f234d943f97679ec069657c0c725c687a386
             </state>
           </provider>
         </entry>
@@ -75,6 +100,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="1292">
               <caret line="76" column="59" selection-start-line="76" selection-start-column="59" selection-end-line="76" selection-end-column="59" />
             </state>
@@ -91,12 +117,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="578">
               <caret line="34" column="38" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="38" />
+=======
+            <state relative-caret-position="357">
+              <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+>>>>>>> 8023f234d943f97679ec069657c0c725c687a386
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+=======
+>>>>>>> a947126357b56270408702d5dacb795968cebcef
   <component name="FindInProjectRecents">
     <findStrings>
       <find>:hover</find>
@@ -117,6 +149,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -164,6 +197,8 @@
       </list>
     </option>
   </component>
+=======
+>>>>>>> 8023f234d943f97679ec069657c0c725c687a386
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
@@ -273,6 +308,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
     </include_path>
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
@@ -368,6 +404,9 @@
       </pane>
     </panes>
   </component>
+=======
+  <component name="ProjectId" id="1TTTvST50o4QMmeIoZ75bGZIPN8" />
+>>>>>>> 8023f234d943f97679ec069657c0c725c687a386
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -402,22 +441,31 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cceccb8b-abae-4d3f-80b2-2c603da0dd1e" name="Default Changelist" comment="" />
+      <changelist id="ca9f932c-e93b-4c40-b12a-f2b8a0ef8651" name="Default Changelist" comment="" />
       <created>1573048101012</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573048101012</updated>
       <workItem from="1573048102457" duration="13603000" />
       <workItem from="1573147194089" duration="10715000" />
+      <workItem from="1573483319318" duration="10091000" />
     </task>
     <servers />
   </component>
+<<<<<<< HEAD
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="74486000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
+=======
+    <option name="totallyTimeSpent" value="74556000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+>>>>>>> 8023f234d943f97679ec069657c0c725c687a386
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -725,18 +773,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/FuncionariosType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="35" column="51" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="51" />
+        <state relative-caret-position="357">
+          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/AcessoType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+        <state relative-caret-position="272">
+          <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$USER_HOME$/AppData/Local/Temp/scp44705/var/www/eventos/templates/security/login_inscricao.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -747,5 +796,22 @@
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+=======
+=======
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+>>>>>>> a947126357b56270408702d5dacb795968cebcef
+>>>>>>> 8023f234d943f97679ec069657c0c725c687a386
   </component>
 </project>
