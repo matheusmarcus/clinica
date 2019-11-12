@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>{% block title %}Grupo{% endblock %}</title>
+    <title>{% block title %}Clinica JJM{% endblock %}</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
@@ -24,7 +24,6 @@
 
     <!-- Bloco de Alterações - Vinicius Vasconcelos -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
           integrity="sha256-bLNUHzSMEvxBhoysBE7EXYlIrmo7+n7F4oJra1IgOaM=" crossorigin="anonymous"/>
@@ -48,6 +47,9 @@
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/select2-bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome-pro-5.11.1-web/css/all.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://nightly.datatables.net/responsive/css/responsive.bootstrap4.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese" rel="stylesheet">
     <style>
         body {
             table-layout: fixed;
@@ -70,7 +72,9 @@
     <div class="app-header header-shadow bg-night-sky header-text-light">
         <div class="app-header__logo">
             <div class="logo-src"></div>
-            <div style="color: #fff; font-family: 'Courier New', Courier, monospace;">JJM</div>
+            &nbsp;
+{#            <div style="color: #fff; font-family: 'Courier New', Courier, monospace;">JJM</div>#}
+            <div style="color: #fff; font-family: 'Pacifico', cursive, monospace;font-size: 18px"> JJM</div>
             <div class="header__pane ml-auto">
                 <div>
                     <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -344,6 +348,7 @@
 </script>
 <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
 <script type="text/javascript" src="https://nightly.datatables.net/responsive/js/dataTables.responsive.min.js"></script>
+<script src="https://nightly.datatables.net/responsive/js/responsive.bootstrap4.min.js"></script>
 {#<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>#}
 <!-- Fim do bloco de alterações -->
 {% block javascripts %}{% endblock %}

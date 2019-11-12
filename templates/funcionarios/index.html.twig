@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Clinica JJM{% endblock %}
-
 {% block body %}
     <div class="box box-primary">
         <div class="app-page-title">
@@ -28,7 +26,6 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nome</th>
                             <th>Data de Nascimento</th>
                             <th>Data de Admissão</th>
@@ -40,7 +37,6 @@
                         <tbody>
                         {% for funcionario in funcionarios %}
                             <tr>
-                                <td>{{ funcionario.id }}</td>
                                 <td>{{ funcionario.nome }}</td>
                                 <td>{{ funcionario.dataNascimento ? funcionario.dataNascimento|date('Y-m-d') : '' }}</td>
                                 <td>{{ funcionario.dataAdmissao ? funcionario.dataAdmissao|date('Y-m-d') : '' }}</td>
@@ -68,59 +64,12 @@
                                     <a class="mb-2 mr-2 btn btn-danger"
                                        href="#" title="Desativar" data-toggle="tooltip" data-placement="bottom"><i
                                                 class="fas fa-user-slash"></i></a>
-                                    {#                                {{ include('funcionarios/_delete_form.html.twig') }}#}
-                                    {#                                <div class="d-inline-block dropdown">#}
-                                    {#                                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">#}
-                                    {#                                        <span class="btn-icon-wrapper pr-2 opacity-7">#}
-                                    {#                                            <i class="fa fa-business-time fa-w-20"></i>#}
-                                    {#                                        </span>#}
-                                    {#                                        Buttons#}
-                                    {#                                    </button>#}
-                                    {#                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-129px, 33px, 0px);">#}
-                                    {#                                        <ul class="nav flex-column">#}
-                                    {#                                            <li class="nav-item">#}
-                                    {#                                                <a class="nav-link">#}
-                                    {#                                                    <i class="nav-link-icon lnr-inbox"></i>#}
-                                    {#                                                    <span>#}
-                                    {#                                                        Inbox#}
-                                    {#                                                    </span>#}
-                                    {#                                                    <div class="ml-auto badge badge-pill badge-secondary">86</div>#}
-                                    {#                                                </a>#}
-                                    {#                                            </li>#}
-                                    {#                                            <li class="nav-item">#}
-                                    {#                                                <a class="nav-link">#}
-                                    {#                                                    <i class="nav-link-icon lnr-book"></i>#}
-                                    {#                                                    <span>#}
-                                    {#                                                        Book#}
-                                    {#                                                    </span>#}
-                                    {#                                                    <div class="ml-auto badge badge-pill badge-danger">5</div>#}
-                                    {#                                                </a>#}
-                                    {#                                            </li>#}
-                                    {#                                            <li class="nav-item">#}
-                                    {#                                                <a class="nav-link">#}
-                                    {#                                                    <i class="nav-link-icon lnr-picture"></i>#}
-                                    {#                                                    <span>#}
-                                    {#                                                        Picture#}
-                                    {#                                                    </span>#}
-                                    {#                                                </a>#}
-                                    {#                                            </li>#}
-                                    {#                                            <li class="nav-item">#}
-                                    {#                                                <a disabled="" class="nav-link disabled">#}
-                                    {#                                                    <i class="nav-link-icon lnr-file-empty"></i>#}
-                                    {#                                                    <span>#}
-                                    {#                                                        File Disabled#}
-                                    {#                                                    </span>#}
-                                    {#                                                </a>#}
-                                    {#                                            </li>#}
-                                    {#                                        </ul>#}
-                                    {#                                    </div>#}
-                                    {#                                </div>#}
                                 </td>
                             </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="7">no records found</td>
-                            </tr>
+{#                        {% else %}#}
+{#                            <tr>#}
+{#                                <td colspan="7">no records found</td>#}
+{#                            </tr>#}
                         {% endfor %}
                         </tbody>
                     </table>
@@ -137,7 +86,7 @@
                 },
                 "columnDefs": [
                     {
-                        "targets": 6,
+                        "targets": 5,
                         "orderable": false,
                         // "width" : "20%"
                     },

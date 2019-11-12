@@ -1,37 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}TipoConsulta index{% endblock %}
+{#{% block title %}TipoConsulta index{% endblock %}#}
 
 {% block body %}
-    <h1>TipoConsulta index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>IdtipoConsulta</th>
-                <th>Nome</th>
-                <th>Descricao</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for tipo_consultum in tipo_consultas %}
-            <tr>
-                <td>{{ tipo_consultum.idtipoConsulta }}</td>
-                <td>{{ tipo_consultum.nome }}</td>
-                <td>{{ tipo_consultum.descricao }}</td>
-                <td>
-                    <a href="{{ path('tipo_consulta_show', {'idtipoConsulta': tipo_consultum.idtipoConsulta}) }}">show</a>
-                    <a href="{{ path('tipo_consulta_edit', {'idtipoConsulta': tipo_consultum.idtipoConsulta}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('tipo_consulta_new') }}">Create new</a>
+    {#    <h1>TipoConsulta index</h1>#}
+    {#    TODO: EDITAR#}
+    <div class="box box-primary">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-users icon-gradient bg-deep-blue">
+                        </i>
+                    </div>
+                    <div>Listagem de Tipos de Consultas
+                        <div class="page-title-subheading">Todos os tipos de consulta da Clinica JJM.
+                        </div>
+                    </div>
+                </div>
+                <div class="page-title-actions">
+                    <a class="btn btn-success m-3" href="{{ path('tipo_consulta_index') }}"><i class="fa fa-plus"></i>
+                        Cadastrar</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <table class="table" id="tabela-tipo-sessao">
+                        <thead>
+                        <tr>
+                            {#                <th>IdtipoConsulta</th>#}
+                            <th>Nome</th>
+                            <th>Descricao</th>
+                            <th>actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for tipo_consultum in tipo_consultas %}
+                            <tr>
+                                {#                <td>{{ tipo_consultum.idtipoConsulta }}</td>#}
+                                <td>{{ tipo_consultum.nome }}</td>
+                                <td>{{ tipo_consultum.descricao }}</td>
+                                <td>
+                                    <a href="{{ path('tipo_consulta_show', {'idtipoConsulta': tipo_consultum.idtipoConsulta}) }}">show</a>
+                                    <a href="{{ path('tipo_consulta_edit', {'idtipoConsulta': tipo_consultum.idtipoConsulta}) }}">edit</a>
+                                </td>
+                            </tr>
+                            {#        {% else %}#}
+                            {#            <tr>#}
+                            {#                <td colspan="4">no records found</td>#}
+                            {#            </tr>#}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#tabela-tipo-sessao').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json"
+                },
+                "columnDefs": [
+                    {
+                        "targets": 2,
+                        "orderable": false,
+                        // "width" : "20%"
+                    },
+                ],
+                "responsive": true,
+                "autoWidth": true
+            });
+        });
+    </script>
+    {#    <a href="{{ path('tipo_consulta_new') }}">Create new</a>#}
 {% endblock %}

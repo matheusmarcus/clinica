@@ -3,45 +3,64 @@
 {% block title %}Consultas index{% endblock %}
 
 {% block body %}
-    <h1>Consultas index</h1>
 
-    <div class="panel">
-        <div class="main-card mb-3 card">
-            <div class="card-body">
-                <table id="tabela-consultas" class="table">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Data</th>
-                        <th>ValorConsulta</th>
-                        <th>ConsultaConfirmada</th>
-                        <th>actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for consulta in consultas %}
+    {#TODO: EDITAR#}
+    <div class="box box-primary">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-add-user icon-gradient bg-tempting-azure">
+                        </i>
+                    </div>
+                    <div>Listagem de Consultas
+                        <div class="page-title-subheading">Todas as consultas da Clinica JJM.
+                        </div>
+                    </div>
+                </div>
+                <div class="page-title-actions">
+                    <a class="btn btn-success m-3" href="{{ path('consultas_index') }}"><i class="fa fa-plus"></i>
+                        Cadastrar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <table id="tabela-consultas" class="table">
+                        <thead>
                         <tr>
-                            <td>{{ consulta.id }}</td>
-                            <td>{{ consulta.data ? consulta.data|date('Y-m-d H:i:s') : '' }}</td>
-                            <td>{{ consulta.valorConsulta }}</td>
-                            <td>{{ consulta.consultaConfirmada ? 'Yes' : 'No' }}</td>
-                            <td>
-                                <a href="{{ path('consultas_show', {'id': consulta.id}) }}">show</a>
-                                <a href="{{ path('consultas_edit', {'id': consulta.id}) }}">edit</a>
-                            </td>
+                            <th>Data</th>
+                            <th>ValorConsulta</th>
+                            <th>ConsultaConfirmada</th>
+                            <th>actions</th>
                         </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="5">no records found</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {% for consulta in consultas %}
+                            <tr>
+                                <td>{{ consulta.data ? consulta.data|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ consulta.valorConsulta }}</td>
+                                <td>{{ consulta.consultaConfirmada ? 'Yes' : 'No' }}</td>
+                                <td>
+                                    <a href="{{ path('consultas_show', {'id': consulta.id}) }}">show</a>
+                                    <a href="{{ path('consultas_edit', {'id': consulta.id}) }}">edit</a>
+                                </td>
+                            </tr>
+{#                        {% else %}#}
+{#                            <tr>#}
+{#                                <td colspan="5">no records found</td>#}
+{#                            </tr>#}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
-    <a href="{{ path('consultas_new') }}">Create new</a>
+{#    <a href="{{ path('consultas_new') }}">Create new</a>#}
 
 
     <script>
@@ -52,7 +71,7 @@
                 },
                 "columnDefs": [
                     {
-                        "targets": 4,
+                        "targets": 3,
                         "orderable": false
                     },
                 ],
