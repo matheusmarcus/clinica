@@ -3,12 +3,18 @@
 {% block title %}New Funcionarios{% endblock %}
 
 {% block body %}
-    <h1>Create new Funcionarios</h1>
-{#    <div class="panel">#}
-{#        <div class="main-card mb-3 card">#}
+    <div class="page-header">
+        <h1>
+            <span class="text-muted font-weight-light">Funcionário / </span>Cadastrar Funcionário
+        </h1>
+    </div>
+
+    <div class="main-card mb-3 card">
+        <div class="card-body">
             {{ include('funcionarios/_form2.html.twig') }}
-{#        </div>#}
-{#    </div>#}
+        </div>
+    </div>
+
 
     <script>
         $('#btnFormFuncionario').click(function () {

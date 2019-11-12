@@ -30,7 +30,7 @@ class AcessoType extends AbstractType
                 'multiple' => true,
                 'placeholder' => '-- Selecione --',
                 'choices' => array(
-                    '-- Selecione --' => '',
+//                    '-- Selecione --' => '',
                     'Administrador' => 'ROLE_ADMIN',
                     'Psicologo' => 'ROLE_PSICOLOGO',
                     'Atendente' => 'ROLE_ATENDENTE',

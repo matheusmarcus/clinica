@@ -5,35 +5,59 @@
 {% block body %}
     <h1>Consultas index</h1>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Data</th>
-            <th>ValorConsulta</th>
-            <th>ConsultaConfirmada</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for consulta in consultas %}
-            <tr>
-                <td>{{ consulta.id }}</td>
-                <td>{{ consulta.data ? consulta.data|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ consulta.valorConsulta }}</td>
-                <td>{{ consulta.consultaConfirmada ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('consultas_show', {'id': consulta.id}) }}">show</a>
-                    <a href="{{ path('consultas_edit', {'id': consulta.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="panel">
+        <div class="main-card mb-3 card">
+            <div class="card-body">
+                <table id="tabela-consultas" class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Data</th>
+                        <th>ValorConsulta</th>
+                        <th>ConsultaConfirmada</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for consulta in consultas %}
+                        <tr>
+                            <td>{{ consulta.id }}</td>
+                            <td>{{ consulta.data ? consulta.data|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ consulta.valorConsulta }}</td>
+                            <td>{{ consulta.consultaConfirmada ? 'Yes' : 'No' }}</td>
+                            <td>
+                                <a href="{{ path('consultas_show', {'id': consulta.id}) }}">show</a>
+                                <a href="{{ path('consultas_edit', {'id': consulta.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <a href="{{ path('consultas_new') }}">Create new</a>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#tabela-consultas').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json"
+                },
+                "columnDefs": [
+                    {
+                        "targets": 4,
+                        "orderable": false
+                    },
+                ],
+                "responsive": true
+            });
+        });
+    </script>
 {% endblock %}
