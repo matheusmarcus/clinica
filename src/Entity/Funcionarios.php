@@ -57,6 +57,13 @@ class Funcionarios
     private $telefoneCelular;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="ativo", type="boolean", nullable=false)
+    */
+    private $ativo;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -150,6 +157,22 @@ class Funcionarios
     public function setTelefoneCelular(string $telefoneCelular): void
     {
         $this->telefoneCelular = $telefoneCelular;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAtivo(): ?bool
+    {
+        return $this->ativo;
+    }
+
+    /**
+     * @param bool $ativo
+     */
+    public function setAtivo(bool $ativo): void
+    {
+        $this->ativo = $ativo;
     }
 
     public function __toString()

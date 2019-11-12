@@ -62,14 +62,11 @@
                                                 class="fa fa-edit"></i></a>
 
                                     <a class="mb-2 mr-2 btn btn-danger"
-                                       href="#" title="Desativar" data-toggle="tooltip" data-placement="bottom"><i
+                                       href="{{ path('funcionarios_desativar', {'id': funcionario.id}) }}"
+                                       title="Desativar" data-toggle="tooltip" data-placement="bottom"><i
                                                 class="fas fa-user-slash"></i></a>
                                 </td>
                             </tr>
-{#                        {% else %}#}
-{#                            <tr>#}
-{#                                <td colspan="7">no records found</td>#}
-{#                            </tr>#}
                         {% endfor %}
                         </tbody>
                     </table>

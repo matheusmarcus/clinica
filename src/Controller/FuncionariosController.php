@@ -23,7 +23,9 @@ class FuncionariosController extends AbstractController
     {
         $funcionarios = $this->getDoctrine()
             ->getRepository(Funcionarios::class)
-            ->findAll();
+            ->findBy([
+                'ativo' => 1
+            ]);
 
         return $this->render('funcionarios/index.html.twig', [
             'funcionarios' => $funcionarios,
@@ -44,6 +46,8 @@ class FuncionariosController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $funcionario
+                ->setAtivo(1);
             $entityManager->persist($funcionario);
             $entityManager->flush();
             if ($form2->isSubmitted() && $form2->isValid()) {
@@ -109,6 +113,19 @@ class FuncionariosController extends AbstractController
             $entityManager->flush();
         }
 
+        return $this->redirectToRoute('funcionarios_index');
+    }
+
+    /**
+     * @Route("/desativar/{id}", name="funcionarios_desativar", methods={"GET","POST"})
+     */
+    public function desativar(Funcionarios $funcionario): Response
+    {
+        //TODO: Está funcional, mas falta verificar o por quê de demorar tanto para redirecionar para index
+        $em = $this->getDoctrine()->getManager();
+        $funcionario->setAtivo(0);
+        $em->persist($funcionario);
+        $em->flush();
         return $this->redirectToRoute('funcionarios_index');
     }
 }

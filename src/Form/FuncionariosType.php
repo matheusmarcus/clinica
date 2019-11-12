@@ -43,7 +43,8 @@ class FuncionariosType extends AbstractType
                     'class' => 'select2'
                 )
             ])
-            ->add('telefoneCelular');
+            ->add('telefoneCelular')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
