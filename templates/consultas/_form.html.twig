@@ -2,5 +2,8 @@
     {{ form_widget(form) }}
 <hr>
 <a class="btn btn-secondary" href="{{ path('consultas_index') }}">Voltar à Lista</a>
-    <button class="btn btn-success">{{ button_label|default('Salvar') }}</button>
+<button class="btn btn-success">{{ button_label|default('Salvar') }}</button>
+{% if app.request.pathinfo != '/consultas/new' %}
+    {{ include('consultas/_delete_form.html.twig') }}
+{% endif %}
 {{ form_end(form) }}
