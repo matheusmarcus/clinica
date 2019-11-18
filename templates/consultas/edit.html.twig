@@ -1,13 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Consultas{% endblock %}
+{#{% block title %}Edit Consultas{% endblock %}#}
 
 {% block body %}
-    <h1>Edit Consultas</h1>
+    {#    <h1>Edit Consultas</h1>#}
+    <div class="page-header">
+        <h1>
+            <span class="text-muted font-weight-light">Sessão / </span>Editar Sessão
+        </h1>
+    </div>
 
-    {{ include('consultas/_form.html.twig', {'button_label': 'Atualizar'}) }}
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            {{ include('consultas/_form.html.twig', {'button_label': 'Atualizar'}) }}
+            {{ include('consultas/_delete_form.html.twig') }}
+        </div>
+    </div>
+    {#    <a href="{{ path('consultas_index') }}">Voltar à Lista</a>#}
 
-    <a href="{{ path('consultas_index') }}">Voltar à Lista</a>
 
-    {{ include('consultas/_delete_form.html.twig') }}
 {% endblock %}

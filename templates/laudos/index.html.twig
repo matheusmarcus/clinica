@@ -33,6 +33,7 @@
                             {#                <th>Id</th>#}
                             <th>Descrição</th>
                             <th>Data</th>
+                            <th>Exames</th>
                             <th>Ações</th>
                         </tr>
                         </thead>
@@ -42,6 +43,7 @@
                                 {#                <td>{{ laudo.id }}</td>#}
                                 <td>{{ laudo.dsLaudo }}</td>
                                 <td>{{ laudo.data ? laudo.data|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ laudo.exames }}</td>
                                 <td>
                                     <a href="{{ path('laudos_show', {'id': laudo.id}) }}">show</a>
                                     <a href="{{ path('laudos_edit', {'id': laudo.id}) }}">edit</a>
@@ -66,7 +68,7 @@
                 },
                 "columnDefs": [
                     {
-                        "targets": 2,
+                        "targets": 3,
                         "orderable": false
                     },
                 ],

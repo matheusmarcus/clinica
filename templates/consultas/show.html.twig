@@ -1,34 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Consultas{% endblock %}
+{#{% block title %}Consultas{% endblock %}#}
 
 {% block body %}
-    <h1>Consultas</h1>
+    {#    <h1>Consultas</h1>#}
+    <div class="page-header">
+        <h1>
+            <span class="text-muted font-weight-light">Sessão / </span>Visualizar Sessão
+        </h1>
+    </div>
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ consulta.id }}</td>
+                </tr>
+                <tr>
+                    <th>Data</th>
+                    <td>{{ consulta.data ? consulta.data|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>ValorConsulta</th>
+                    <td>{{ consulta.valorConsulta }}</td>
+                </tr>
+                <tr>
+                    <th>ConsultaConfirmada</th>
+                    <td>{{ consulta.consultaConfirmada ? 'Yes' : 'No' }}</td>
+                </tr>
+                <tr>
+                    <th>Funcionário</th>
+                    <td>{{ consulta.funcionarios }}</td>
+                </tr>
+                <tr>
+                    <th>Paciente</th>
+                    <td>{{ consulta.idpacientes }}</td>
+                </tr>
+                <tr>
+                    <th>Tipo de Consulta</th>
+                    <td>{{ consulta.tipoConsultatipoConsulta }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <hr>
+            <a class="mb-2 mr-2 btn btn-secondary" href="{{ path('consultas_index') }}">Voltar à Lista</a>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ consulta.id }}</td>
-            </tr>
-            <tr>
-                <th>Data</th>
-                <td>{{ consulta.data ? consulta.data|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>ValorConsulta</th>
-                <td>{{ consulta.valorConsulta }}</td>
-            </tr>
-            <tr>
-                <th>ConsultaConfirmada</th>
-                <td>{{ consulta.consultaConfirmada ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('consultas_index') }}">Voltar à Lista</a>
-
-    <a href="{{ path('consultas_edit', {'id': consulta.id}) }}">edit</a>
+            <a class="mb-2 mr-2 btn btn-primary" href="{{ path('consultas_edit', {'id': consulta.id}) }}">Editar</a>
+        </div>
+    </div>
 
     {{ include('consultas/_delete_form.html.twig') }}
 {% endblock %}

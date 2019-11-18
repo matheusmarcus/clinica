@@ -34,6 +34,9 @@
                             <th>Data</th>
                             <th>Valor da Consulta</th>
                             <th>Consulta Confirmada</th>
+                            <th>Funcionário</th>
+                            <th>Paciente</th>
+                            <th>Tipo de Consulta</th>
                             <th>Ações</th>
                         </tr>
                         </thead>
@@ -42,10 +45,29 @@
                             <tr>
                                 <td>{{ consulta.data ? consulta.data|date('Y-m-d H:i:s') : '' }}</td>
                                 <td>{{ consulta.valorConsulta }}</td>
-                                <td>{{ consulta.consultaConfirmada ? 'Yes' : 'No' }}</td>
+                                <td>{{ consulta.consultaConfirmada ? 'Sim' : 'Não' }}</td>
+                                <td>{{ consulta.funcionarios }}</td>
+                                <td>{{ consulta.idpacientes }}</td>
+                                <td>{{ consulta.tipoConsultatipoConsulta }}</td>
                                 <td>
-                                    <a href="{{ path('consultas_show', {'id': consulta.id}) }}">show</a>
-                                    <a href="{{ path('consultas_edit', {'id': consulta.id}) }}">edit</a>
+
+
+                                    <a class="mb-2 mr-2 btn btn-primary"
+                                       href="{{ path('consultas_show', {'id': consulta.id}) }}" title="Ver"
+                                       data-toggle="tooltip" data-placement="bottom"><i
+                                                class="fa fa-eye"></i></a>
+
+                                    <a class="mb-2 mr-2 btn btn-success"
+                                       href="{{ path('consultas_edit', {'id': consulta.id}) }}" title="Editar"
+                                       data-toggle="tooltip" data-placement="bottom"><i
+                                                class="fa fa-edit"></i></a>
+
+
+
+
+
+{#                                    <a href="{{ path('consultas_show', {'id': consulta.id}) }}">show</a>#}
+{#                                    <a href="{{ path('consultas_edit', {'id': consulta.id}) }}">edit</a>#}
                                 </td>
                             </tr>
 {#                        {% else %}#}
@@ -71,7 +93,7 @@
                 },
                 "columnDefs": [
                     {
-                        "targets": 3,
+                        "targets": 6,
                         "orderable": false
                     },
                 ],

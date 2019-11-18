@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Prontuarios;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,7 +25,7 @@ class ProntuariosType extends AbstractType
                     'class' => 'datepicker'
                 )
             ))
-            ->add('laudos', null, array(
+            ->add('laudos', ChoiceType::class, array(
                 'label' => 'Laudo',
                 'multiple' => false,
                 'placeholder' => '-- Selecione --',
@@ -32,7 +33,7 @@ class ProntuariosType extends AbstractType
                     'class' => 'select2'
                 )
             ))
-            ->add('idpacientes', null, array(
+            ->add('idpacientes', ChoiceType::class, array(
                 'label' => 'Paciente',
                 'multiple' => false,
                 'placeholder' => '-- Selecione --',
