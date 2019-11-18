@@ -151,5 +151,7 @@
     <orderEntry type="library" name="1dbc7d90aa" level="application" />
     <orderEntry type="library" name="mdb" level="application" />
     <orderEntry type="library" name="bootstrap-datepicker" level="application" />
+    <orderEntry type="library" name="tippy-bundle.iife" level="application" />
+    <orderEntry type="library" name="tinymce" level="application" />
   </component>
 </module>

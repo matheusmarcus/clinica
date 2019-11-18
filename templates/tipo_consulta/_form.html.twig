@@ -1,4 +1,6 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<hr>
+    <a class="btn btn-secondary" href="{{ path('tipo_consulta_index') }}">Voltar à Lista</a>
+    <button class="btn btn-success">{{ button_label|default('Salvar') }}</button>
 {{ form_end(form) }}

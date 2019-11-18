@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Pacientes</h1>
 
-    {{ include('pacientes/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('pacientes/_form.html.twig', {'button_label': 'Atualizar'}) }}
 
-    <a href="{{ path('pacientes_index') }}">back to list</a>
+    <a href="{{ path('pacientes_index') }}">Voltar à Lista</a>
 
     {{ include('pacientes/_delete_form.html.twig') }}
 {% endblock %}

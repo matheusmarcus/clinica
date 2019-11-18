@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="page-title-actions">
-                    <a class="btn btn-success m-3" href="{{ path('receitas_index') }}"><i class="fa fa-plus"></i>
+                    <a class="btn btn-success m-3" href="{{ path('receitas_new') }}"><i class="fa fa-plus"></i>
                         Cadastrar</a>
                 </div>
             </div>
@@ -40,8 +40,15 @@
                             <tr>
                                 <td>{{ receita.dsReceita }}</td>
                                 <td>
-                                    <a href="{{ path('receitas_show', {'id': receita.id}) }}">show</a>
-                                    <a href="{{ path('receitas_edit', {'id': receita.id}) }}">edit</a>
+                                    <a class="mb-2 mr-2 btn btn-primary"
+                                       href="{{ path('receitas_show', {'id': receita.id}) }}" title="Ver"
+                                       data-toggle="tooltip" data-placement="bottom"><i
+                                                class="fa fa-eye"></i></a>
+
+                                    <a class="mb-2 mr-2 btn btn-success"
+                                       href="{{ path('receitas_edit', {'id': receita.id}) }}" title="Editar"
+                                       data-toggle="tooltip" data-placement="bottom"><i
+                                                class="fa fa-edit"></i></a>
                                 </td>
                             </tr>
                         {% endfor %}

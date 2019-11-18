@@ -1,18 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Pacientes{% endblock %}
+{#{% block title %}New Pacientes{% endblock %}#}
 
 {% block body %}
-    <h1>Create new Pacientes</h1>
+    {#    <h1>Create new Pacientes</h1>#}
+    <div class="page-header">
+        <h1>
+            <span class="text-muted font-weight-light">Paciente / </span>Cadastrar Paciente
+        </h1>
+    </div>
 
-    {{ include('pacientes/_form2.html.twig') }}
-
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            {{ include('pacientes/_form2.html.twig') }}
+        </div>
+    </div>
     <script>
 
-        $('#btnFormPaciente').click(function(){
+        $('#btnFormPaciente').click(function () {
             var form = $('form[name="pacientes"]');
-            form.validate({
-            });
+            form.validate({});
             form.submit();
         });
     </script>

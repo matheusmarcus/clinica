@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Laudos</h1>
 
-    {{ include('laudos/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('laudos/_form.html.twig', {'button_label': 'Atualizar'}) }}
 
-    <a href="{{ path('laudos_index') }}">back to list</a>
+    <a href="{{ path('laudos_index') }}">Voltar à Lista</a>
 
     {{ include('laudos/_delete_form.html.twig') }}
 {% endblock %}

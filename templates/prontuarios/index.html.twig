@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="page-title-actions">
-                    <a class="btn btn-success m-3" href="{{ path('prontuarios_index') }}"><i class="fa fa-plus"></i>
+                    <a class="btn btn-success m-3" href="{{ path('prontuarios_new') }}"><i class="fa fa-plus"></i>
                         Cadastrar</a>
                 </div>
             </div>
@@ -30,19 +30,30 @@
                     <table class="table" id="tabela-prontuarios">
                         <thead>
                         <tr>
-                            <th>DsProntuario</th>
                             <th>Data</th>
+                            <th>Laudos</th>
+                            <th>Pacientes</th>
+                            <th>Descrição</th>
                             <th>Ações</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for prontuario in prontuarios %}
                             <tr>
-                                <td>{{ prontuario.dsProntuario }}</td>
                                 <td>{{ prontuario.data ? prontuario.data|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ prontuario.laudos }}</td>
+                                <td>{{ prontuario.pacientespacientes }}</td>
+                                <td>{{ prontuario.dsProntuario }}</td>
                                 <td>
-                                    <a href="{{ path('prontuarios_show', {'id': prontuario.id}) }}">show</a>
-                                    <a href="{{ path('prontuarios_edit', {'id': prontuario.id}) }}">edit</a>
+                                    <a class="mb-2 mr-2 btn btn-primary"
+                                       href="{{ path('prontuarios_show', {'id': prontuario.id}) }}" title="Ver"
+                                       data-toggle="tooltip" data-placement="bottom"><i
+                                                class="fa fa-eye"></i></a>
+
+                                    <a class="mb-2 mr-2 btn btn-success"
+                                       href="{{ path('prontuarios_edit', {'id': prontuario.id}) }}" title="Editar"
+                                       data-toggle="tooltip" data-placement="bottom"><i
+                                                class="fa fa-edit"></i></a>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -60,7 +71,7 @@
                 },
                 "columnDefs": [
                     {
-                        "targets": 2,
+                        "targets": 4,
                         "orderable": false,
                         // "width" : "20%"
                     },

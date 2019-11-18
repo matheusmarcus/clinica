@@ -49,8 +49,9 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome-pro-5.11.1-web/css/all.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://nightly.datatables.net/responsive/css/responsive.bootstrap4.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese" rel="stylesheet">
-{#    <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/backdrop.css" />#}
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese"
+          rel="stylesheet">
+    {#    <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/backdrop.css" />#}
     <style>
         body {
             table-layout: fixed;
@@ -74,7 +75,7 @@
         <div class="app-header__logo">
             <div class="logo-src"></div>
             &nbsp;
-{#            <div style="color: #fff; font-family: 'Courier New', Courier, monospace;">JJM</div>#}
+            {#            <div style="color: #fff; font-family: 'Courier New', Courier, monospace;">JJM</div>#}
             <div style="color: #fff; font-family: 'Pacifico', cursive, monospace;font-size: 18px"> JJM</div>
             <div class="header__pane ml-auto">
                 <div>
@@ -255,15 +256,15 @@
         <div class="app-main__outer">
             <div class="app-main__inner">
                 {% block body %}
-{#                    TODO: IMPLEMENTAR#}
-{#                    {% for type, messages in app.session.flashbag.all() %}#}
-{#                        {% for message in messages %}#}
-{#                            <div class="alert alert-dismissible alert-{{ type }}" data-animate="true" style="">#}
-{#                                <button type="button" class="close" data-dismiss="alert" aria-label="Fechar" ><span aria-hidden="true">×</span></button>#}
-{#                                {{ message|raw }}#}
-{#                            </div>#}
-{#                        {% endfor %}#}
-{#                    {% endfor %}#}
+                    {#                    TODO: IMPLEMENTAR#}
+                    {#                    {% for type, messages in app.session.flashbag.all() %}#}
+                    {#                        {% for message in messages %}#}
+                    {#                            <div class="alert alert-dismissible alert-{{ type }}" data-animate="true" style="">#}
+                    {#                                <button type="button" class="close" data-dismiss="alert" aria-label="Fechar" ><span aria-hidden="true">×</span></button>#}
+                    {#                                {{ message|raw }}#}
+                    {#                            </div>#}
+                    {#                        {% endfor %}#}
+                    {#                    {% endfor %}#}
                 {% endblock %}
             </div>
             <div class="app-wrapper-footer">
@@ -360,6 +361,16 @@
 <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
 <script type="text/javascript" src="https://nightly.datatables.net/responsive/js/dataTables.responsive.min.js"></script>
 <script src="https://nightly.datatables.net/responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- Dominios configurados para o editor de texto: localhost e 127.0.0.1 -->
+<script src="https://cdn.tiny.cloud/1/o1mytidzopolvo2bas0r78aw1fceftxyg814halfc1ds42n8/tinymce/5/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        language: 'pt_BR',
+        language_url: '{{ asset('assets/langs/pt_BR.js') }}',
+        browser_spellcheck: true
+    });
+</script>
 {#<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>#}
 {#<script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>#}
 <!-- Fim do bloco de alterações -->
