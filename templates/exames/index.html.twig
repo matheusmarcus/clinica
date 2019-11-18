@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="page-title-actions">
-                    <a class="btn btn-success m-3" href="{{ path('exames_index') }}"><i class="fa fa-plus"></i>
+                    <a class="btn btn-success m-3" href="{{ path('exames_new') }}"><i class="fa fa-plus"></i>
                         Cadastrar</a>
                 </div>
             </div>
@@ -32,6 +32,8 @@
                         <tr>
                             <th>Data</th>
                             <th>Imagens</th>
+                            <th>Funcionário</th>
+                            <th>Paciente</th>
                             <th>Ações</th>
                         </tr>
                         </thead>
@@ -40,6 +42,8 @@
                             <tr>
                                 <td>{{ exame.data ? exame.data|date('Y-m-d H:i:s') : '' }}</td>
                                 <td>{{ exame.imagens }}</td>
+                                <td>{{ exame.funcionarios }}</td>
+                                <td>{{ exame.idpacientes }}</td>
                                 <td>
                                     <a href="{{ path('exames_show', {'id': exame.id}) }}">show</a>
                                     <a href="{{ path('exames_edit', {'id': exame.id}) }}">edit</a>
@@ -64,7 +68,7 @@
                 },
                 "columnDefs": [
                     {
-                        "targets": 2,
+                        "targets": 4,
                         "orderable": false
                     },
                 ],

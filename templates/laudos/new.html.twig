@@ -1,11 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Laudos{% endblock %}
+{#{% block title %}New Laudos{% endblock %}#}
 
 {% block body %}
-    <h1>Create new Laudos</h1>
+    {#    <h1>Create new Laudos</h1>#}
+    <div class="page-header">
+        <h1>
+            <span class="text-muted font-weight-light">Laudo / </span>Cadastrar Laudo
+        </h1>
+    </div>
 
-    {{ include('laudos/_form.html.twig') }}
-
-    <a href="{{ path('laudos_index') }}">Voltar à Lista</a>
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            {{ include('laudos/_form.html.twig') }}
+        </div>
+    </div>
+    {#    <a class="btn btn-secondary" href="{{ path('laudos_index') }}">Voltar à Lista</a>#}
 {% endblock %}

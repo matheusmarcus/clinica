@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Consultas{% endblock %}
+{#{% block title %}New Consultas{% endblock %}#}
 
 {% block body %}
-    <h1>Create new Consultas</h1>
+    {#    <h1>Create new Consultas</h1>#}
+    <div class="page-header">
+        <h1>
+            <span class="text-muted font-weight-light">Sessão / </span>Cadastrar Sessão
+        </h1>
+    </div>
 
-    {{ include('consultas/_form.html.twig') }}
-
-    <a href="{{ path('consultas_index') }}">Voltar à Lista</a>
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            {{ include('consultas/_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

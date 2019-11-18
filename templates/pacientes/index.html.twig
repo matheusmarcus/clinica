@@ -65,18 +65,18 @@
                                 <td>{{ paciente.cep }}</td>
                                 <td>{{ paciente.bairro }}</td>
                                 <td>
-                                    <a href="{{ path('pacientes_show', {'id': paciente.id}) }}">show</a>
-                                    <a href="{{ path('pacientes_edit', {'id': paciente.id}) }}">edit</a>
+{#                                    <a href="{{ path('pacientes_show', {'id': paciente.id}) }}">show</a>#}
+{#                                    <a href="{{ path('pacientes_edit', {'id': paciente.id}) }}">edit</a>#}
 
 
 
                                     <a class="mb-2 mr-2 btn btn-primary"
-                                       href="{{ path('pacientes_show', {'idperfil': paciente.idperfil}) }}" title="Ver"
+                                       href="{{ path('pacientes_show', {'id': paciente.id}) }}" title="Ver"
                                        data-toggle="tooltip" data-placement="bottom"><i
                                                 class="fa fa-eye"></i></a>
 
                                     <a class="mb-2 mr-2 btn btn-success"
-                                       href="{{ path('pacientes_edit', {'idperfil': paciente.idperfil}) }}" title="Editar"
+                                       href="{{ path('pacientes_edit', {'id': paciente.id}) }}" title="Editar"
                                        data-toggle="tooltip" data-placement="bottom"><i
                                                 class="fa fa-edit"></i></a>
                                 </td>

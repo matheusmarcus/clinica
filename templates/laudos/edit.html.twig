@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Laudos{% endblock %}
+{#{% block title %}Edit Laudos{% endblock %}#}
 
 {% block body %}
-    <h1>Edit Laudos</h1>
+    {#    <h1>Edit Laudos</h1>#}
+    <div class="page-header">
+        <h1>
+            <span class="text-muted font-weight-light">Laudo / </span>Editar Laudo
+        </h1>
+    </div>
 
-    {{ include('laudos/_form.html.twig', {'button_label': 'Atualizar'}) }}
-
-    <a href="{{ path('laudos_index') }}">Voltar à Lista</a>
-
-    {{ include('laudos/_delete_form.html.twig') }}
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            {{ include('laudos/_form.html.twig', {'button_label': 'Atualizar'}) }}
+            {{ include('laudos/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

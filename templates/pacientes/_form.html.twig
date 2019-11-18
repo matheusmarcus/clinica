@@ -1,7 +1,7 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
 <hr>
-<a href="{{ path('pacientes_index') }}">Voltar à Lista</a>
-<button class="btn">{{ button_label|default('Salvar') }}</button>
+<a class="btn btn-secondary" href="{{ path('pacientes_index') }}">Voltar à Lista</a>
+<button class="btn btn-success">{{ button_label|default('Salvar') }}</button>
 {{ include('pacientes/_delete_form.html.twig') }}
 {{ form_end(form) }}
