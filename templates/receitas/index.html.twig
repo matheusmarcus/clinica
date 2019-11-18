@@ -31,7 +31,8 @@
                     <table class="table" id="tabela-receitas">
                         <thead>
                         <tr>
-                            <th>DsReceita</th>
+                            <th>Descrição</th>
+                            <th>Paciente</th>
                             <th>Ações</th>
                         </tr>
                         </thead>
@@ -39,6 +40,7 @@
                         {% for receita in receitas %}
                             <tr>
                                 <td>{{ receita.dsReceita }}</td>
+                                <td>{{ receita.pacientespacientes }}</td>
                                 <td>
                                     <a class="mb-2 mr-2 btn btn-primary"
                                        href="{{ path('receitas_show', {'id': receita.id}) }}" title="Ver"
@@ -66,7 +68,7 @@
                 },
                 "columnDefs": [
                     {
-                        "targets": 1,
+                        "targets": 2,
                         "orderable": false,
                         // "width" : "20%"
                     },

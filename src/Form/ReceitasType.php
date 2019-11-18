@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Receitas;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -21,7 +22,7 @@ class ReceitasType extends AbstractType
                     'class' => 'datepicker'
                 )
             ))
-            ->add('pacientespacientes', null, array(
+            ->add('pacientespacientes', ChoiceType::class, array(
                 'label' => 'Paciente',
                 'attr' => array(
                     'class' => 'select2'
