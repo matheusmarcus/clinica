@@ -1,37 +1,86 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Exames index{% endblock %}
+{#{% block title %}Exames index{% endblock %}#}
 
 {% block body %}
-    <h1>Exames index</h1>
+    {#    <h1>Exames index</h1>#}
+    {#TODO: EDITAR#}
+    <div class="box box-primary">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-albums icon-gradient bg-night-fade">
+                        </i>
+                    </div>
+                    <div>Listagem de Exames
+                        <div class="page-title-subheading">Todas os exames da Clinica JJM.
+                        </div>
+                    </div>
+                </div>
+                <div class="page-title-actions">
+                    <a class="btn btn-success m-3" href="{{ path('exames_new') }}"><i class="fa fa-plus"></i>
+                        Cadastrar</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <table class="table" id="tabela-exames">
+                        <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Imagens</th>
+                            <th>Funcionário</th>
+                            <th>Paciente</th>
+                            <th>Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for exame in exames %}
+                            <tr>
+                                <td>{{ exame.data ? exame.data|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ exame.imagens }}</td>
+                                <td>{{ exame.funcionarios }}</td>
+                                <td>{{ exame.idpacientes }}</td>
+                                <td>
+{#                                    <a href="{{ path('exames_show', {'id': exame.id}) }}">show</a>#}
+{#                                    <a href="{{ path('exames_edit', {'id': exame.id}) }}">edit</a>#}
+                                    <a class="mb-2 mr-2 btn btn-primary"
+                                       href="{{ path('exames_show', {'id': exame.id}) }}" title="Ver"
+                                       data-toggle="tooltip" data-placement="bottom"><i
+                                                class="fa fa-eye"></i></a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Data</th>
-                <th>Imagens</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for exame in exames %}
-            <tr>
-                <td>{{ exame.id }}</td>
-                <td>{{ exame.data ? exame.data|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ exame.imagens }}</td>
-                <td>
-                    <a href="{{ path('exames_show', {'id': exame.id}) }}">show</a>
-                    <a href="{{ path('exames_edit', {'id': exame.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                                    <a class="mb-2 mr-2 btn btn-success"
+                                       href="{{ path('exames_edit', {'id': exame.id}) }}" title="Editar"
+                                       data-toggle="tooltip" data-placement="bottom"><i
+                                                class="fa fa-edit"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#tabela-exames').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json"
+                },
+                "columnDefs": [
+                    {
+                        "targets": 4,
+                        "orderable": false
+                    },
+                ],
+                "responsive": true
+            });
+        });
+    </script>
 
-    <a href="{{ path('exames_new') }}">Create new</a>
+    {#    <a href="{{ path('exames_new') }}">Create new</a>#}
 {% endblock %}

@@ -1,37 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Laudos index{% endblock %}
+{#{% block title %}Laudos index{% endblock %}#}
 
 {% block body %}
-    <h1>Laudos index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>DsLaudo</th>
-                <th>Data</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for laudo in laudos %}
-            <tr>
-                <td>{{ laudo.id }}</td>
-                <td>{{ laudo.dsLaudo }}</td>
-                <td>{{ laudo.data ? laudo.data|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('laudos_show', {'id': laudo.id}) }}">show</a>
-                    <a href="{{ path('laudos_edit', {'id': laudo.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('laudos_new') }}">Create new</a>
+    {#    <h1>Laudos index</h1>#}
+    {#TODO: EDITAR#}
+    <div class="box box-primary">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-note2 icon-gradient bg-happy-fisher">
+                        </i>
+                    </div>
+                    <div>Listagem de Laudos
+                        <div class="page-title-subheading">Todas os laudos da Clinica JJM.
+                        </div>
+                    </div>
+                </div>
+                <div class="page-title-actions">
+                    <a class="btn btn-success m-3" href="{{ path('laudos_new') }}"><i class="fa fa-plus"></i>
+                        Cadastrar</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <table class="table" id="tabela-laudos">
+                        <thead>
+                        <tr>
+                            {#                <th>Id</th>#}
+                            <th>Descrição</th>
+                            <th>Data</th>
+                            <th>Exames</th>
+                            <th>Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for laudo in laudos %}
+                            <tr>
+                                {#                <td>{{ laudo.id }}</td>#}
+                                <td>{{ laudo.dsLaudo }}</td>
+                                <td>{{ laudo.data ? laudo.data|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ laudo.exames }}</td>
+                                <td>
+                                    <a href="{{ path('laudos_show', {'id': laudo.id}) }}">show</a>
+                                    <a href="{{ path('laudos_edit', {'id': laudo.id}) }}">edit</a>
+                                </td>
+                            </tr>
+                            {#        {% else %}#}
+                            {#            <tr>#}
+                            {#                <td colspan="4">no records found</td>#}
+                            {#            </tr>#}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#tabela-laudos').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json"
+                },
+                "columnDefs": [
+                    {
+                        "targets": 3,
+                        "orderable": false
+                    },
+                ],
+                "responsive": true
+            });
+        });
+    </script>
+    {#    <a href="{{ path('laudos_new') }}">Create new</a>#}
 {% endblock %}

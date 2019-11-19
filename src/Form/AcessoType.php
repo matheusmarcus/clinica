@@ -20,19 +20,29 @@ class AcessoType extends AbstractType
 //            ->add('pacientes')
             ->add('perfil', null, [
                 'required' => true,
-                'placeholder' => 'Selecione'
+                'placeholder' => '-- Selecione --',
+                'attr' => array(
+                    'class' => 'select2',
+                ),
             ])
-            ->add('roles', ChoiceType::class,[
+            ->add('roles', ChoiceType::class, array(
                 'label' => 'Permissões:',
                 'multiple' => true,
-                'choices' => [
+                'placeholder' => '-- Selecione --',
+                'choices' => array(
+//                    '-- Selecione --' => '',
                     'Administrador' => 'ROLE_ADMIN',
                     'Psicologo' => 'ROLE_PSICOLOGO',
                     'Atendente' => 'ROLE_ATENDENTE',
                     'Paciente' => 'ROLE_PACIENTE',
-                ]
-            ])
-        ;
+                ),
+                'attr' => array(
+                    'class' => 'select2',
+                    'multiple' => 'multiple',
+                    'placeholder' => '-- Selecione --',
+                    'dir' => 'ltr'
+                )
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

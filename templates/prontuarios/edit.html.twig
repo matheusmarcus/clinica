@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Prontuarios{% endblock %}
+{#{% block title %}Edit Prontuarios{% endblock %}#}
 
 {% block body %}
-    <h1>Edit Prontuarios</h1>
+    {#    <h1>Edit Prontuarios</h1>#}
+    <div class="page-header">
+        <h1>
+            <span class="text-muted font-weight-light">Prontuário / </span>Editar Prontuário
+        </h1>
+    </div>
 
-    {{ include('prontuarios/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('prontuarios_index') }}">back to list</a>
-
-    {{ include('prontuarios/_delete_form.html.twig') }}
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            {{ include('prontuarios/_form.html.twig', {'button_label': 'Atualizar'}) }}
+        </div>
+    </div>
 {% endblock %}

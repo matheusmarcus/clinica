@@ -1,37 +1,79 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Perfil index{% endblock %}
-
 {% block body %}
-    <h1>Perfil index</h1>
+{#    TODO: EDITAR#}
+    <div class="box box-primary">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-id icon-gradient bg-alternate">
+                        </i>
+                    </div>
+                    <div>Listagem de Perfis
+                        <div class="page-title-subheading">Todos os perfis da Clinica JJM.
+                        </div>
+                    </div>
+                </div>
+                <div class="page-title-actions">
+                    <a class="btn btn-success m-3" href="{{ path('perfil_new') }}"><i class="fa fa-plus"></i>
+                        Cadastrar</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <table class="table" id="tabela-perfil">
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for perfil in perfils %}
+                            <tr>
+                                <td>{{ perfil.nome }}</td>
+                                <td>{{ perfil.descricao }}</td>
+                                <td>
+                                    <a class="mb-2 mr-2 btn btn-primary"
+                                       href="{{ path('perfil_show', {'idperfil': perfil.idperfil}) }}" title="Ver"
+                                       data-toggle="tooltip" data-placement="bottom"><i
+                                                class="fa fa-eye"></i></a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Idperfil</th>
-                <th>Nome</th>
-                <th>Descricao</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for perfil in perfils %}
-            <tr>
-                <td>{{ perfil.idperfil }}</td>
-                <td>{{ perfil.nome }}</td>
-                <td>{{ perfil.descricao }}</td>
-                <td>
-                    <a href="{{ path('perfil_show', {'idperfil': perfil.idperfil}) }}">show</a>
-                    <a href="{{ path('perfil_edit', {'idperfil': perfil.idperfil}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                                    <a class="mb-2 mr-2 btn btn-success"
+                                       href="{{ path('perfil_edit', {'idperfil': perfil.idperfil}) }}" title="Editar"
+                                       data-toggle="tooltip" data-placement="bottom"><i
+                                                class="fa fa-edit"></i></a>
+                                </td>
+                            </tr>
 
-    <a href="{{ path('perfil_new') }}">Create new</a>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#tabela-perfil').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json"
+                },
+                "columnDefs": [
+                    {
+                        "targets": 2,
+                        "orderable": false,
+                        // "width" : "20%"
+                    },
+                ],
+                "responsive": true,
+                "autoWidth": true
+            });
+        });
+    </script>
 {% endblock %}

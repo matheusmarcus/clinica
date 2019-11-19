@@ -1,97 +1,144 @@
 <!doctype html>
 <html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta http-equiv="Content-Language" content="en">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>{% block title %}Grupo{% endblock %}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
-        <meta name="description" content="This is an example dashboard created using build-in elements and components.">
-        <meta name="msapplication-tap-highlight" content="no">
-        <!--
-        =========================================================
-        * ArchitectUI HTML Theme Dashboard - v1.0.0
-        =========================================================
-        * Product Page: https://dashboardpack.com
-        * Copyright 2019 DashboardPack (https://dashboardpack.com)
-        * Licensed under MIT (https://github.com/DashboardPack/architectui-html-theme-free/blob/master/LICENSE)
-        =========================================================
-        * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-        -->
-        <link href="/assets/css/main.css" rel="stylesheet">
-        <script
-                src="https://code.jquery.com/jquery-3.4.1.js"
-                integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-                crossorigin="anonymous"></script>
-        <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{% block title %}Clinica JJM{% endblock %}</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <!--
+    =========================================================
+    * ArchitectUI HTML Theme Dashboard - v1.0.0
+    =========================================================
+    * Product Page: https://dashboardpack.com
+    * Copyright 2019 DashboardPack (https://dashboardpack.com)
+    * Licensed under MIT (https://github.com/DashboardPack/architectui-html-theme-free/blob/master/LICENSE)
+    =========================================================
+    * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    -->
 
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-            <div class="app-header header-shadow bg-night-sky header-text-light">
-                <div class="app-header__logo">
-                    <div class="logo-src"></div>
-                    <div style="color: #fff; font-family: 'Courier New', Courier, monospace;">JJM</div>
-                    <div class="header__pane ml-auto">
-                        <div>
-                            <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+
+    <!-- Bloco de Alterações - Vinicius Vasconcelos -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
+          integrity="sha256-bLNUHzSMEvxBhoysBE7EXYlIrmo7+n7F4oJra1IgOaM=" crossorigin="anonymous"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css.map">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+          integrity="sha256-siyOpF/pBWUPgIcQi17TLBkjvNgNQArcmwJB8YvkAgg=" crossorigin="anonymous"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.css"
+          integrity="sha256-9eB9aJkdMOPCUi0CBHbl6FWi/lIkXb+1oKi9bWFZ3HQ=" crossorigin="anonymous"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.css.map">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"
+          integrity="sha256-jO7D3fIsAq+jB8Xt3NI5vBf3k4tvtHwzp8ISLQG4UWU=" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/bootstrap-clockpicker.css"
+          integrity="sha256-WzVuf5oOPfz9nfgb4l3sFKzwoa++0DJdjLJkLWVgvhs=" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/bootstrap-clockpicker.min.css"
+          integrity="sha256-lBtf6tZ+SwE/sNMR7JFtCyD44snM3H2FrkB/W400cJA=" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/select2-bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fontawesome-pro-5.11.1-web/css/all.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://nightly.datatables.net/responsive/css/responsive.bootstrap4.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese"
+          rel="stylesheet">
+    {#    <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/backdrop.css" />#}
+    <style>
+        body {
+            table-layout: fixed;
+        }
+    </style>
+    <!-- Fim do bloco -->
+
+
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+    <div class="app-header header-shadow bg-night-sky header-text-light">
+        <div class="app-header__logo">
+            <div class="logo-src"></div>
+            &nbsp;
+            {#            <div style="color: #fff; font-family: 'Courier New', Courier, monospace;">JJM</div>#}
+            <div style="color: #fff; font-family: 'Pacifico', cursive, monospace;font-size: 18px"> JJM</div>
+            <div class="header__pane ml-auto">
+                <div>
+                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
+                            data-class="closed-sidebar">
                                     <span class="hamburger-box">
                                         <span class="hamburger-inner"></span>
                                     </span>
-                            </button>
-                        </div>
-                    </div>
+                    </button>
                 </div>
-                <div class="app-header__mobile-menu">
-                    <div>
-                        <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+            </div>
+        </div>
+        <div class="app-header__mobile-menu">
+            <div>
+                <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
                                 <span class="hamburger-box">
                                     <span class="hamburger-inner"></span>
                                 </span>
-                        </button>
-                    </div>
-                </div>
-                <div class="app-header__menu">
+                </button>
+            </div>
+        </div>
+        <div class="app-header__menu">
                         <span>
-                            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                            <button type="button"
+                                    class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
                                 <span class="btn-icon-wrapper">
                                     <i class="fa fa-ellipsis-v fa-w-6"></i>
                                 </span>
                             </button>
                         </span>
-                </div>
-                <div class="app-header__content">
-                    <div class="app-header-right">
-                        <div class="header-btn-lg pr-0">
-                            <div class="widget-content p-0">
-                                <div class="widget-content-wrapper">
-                                    <div class="widget-content-left">
-                                        <div class="btn-group">
-                                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                                <div class="widget-heading">
-                                                    {{ app.user.funcionarios ? app.user.funcionarios.nome : app.user.pacientes.nome }}
-                                                </div>
-                                                <div class="widget-subheading">
-                                                    {{ app.user.perfil.nome }}
-                                                </div>
-                                            </a>
-                                            <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                                {% if is_granted('ROLE_ATENDENTE') %}
-                                                    <a href="{{ path('funcionarios_show', {id: app.user.funcionarios.id}) }}" tabindex="0" class="dropdown-item">
-                                                        Perfil
-                                                    </a>
-                                                {% else %}
-                                                    <a href="{{ path('pacientes_show', {id: app.user.pacientes.id}) }}" tabindex="0" class="dropdown-item">
-                                                        Perfil
-                                                    </a>
-                                                {% endif %}
-                                                <a href="{{ path('app_logout') }}" tabindex="0" class="dropdown-item">
-                                                    Logout
-                                                </a>
-                                            </div>
+        </div>
+        <div class="app-header__content">
+            <div class="app-header-right">
+                <div class="header-btn-lg pr-0">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-wrapper">
+                            <div class="widget-content-left">
+                                <div class="btn-group">
+                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                       class="p-0 btn">
+                                        <div class="widget-heading">
+                                            {{ app.user.funcionarios ? app.user.funcionarios.nome : app.user.pacientes.nome }}
                                         </div>
+                                        <div class="widget-subheading">
+                                            {{ app.user.perfil.nome }}
+                                        </div>
+                                    </a>
+                                    <div tabindex="-1" role="menu" aria-hidden="true"
+                                         class="dropdown-menu dropdown-menu-right">
+                                        {% if is_granted('ROLE_ATENDENTE') %}
+                                            <a href="{{ path('funcionarios_show', {id: app.user.funcionarios.id}) }}"
+                                               tabindex="0" class="dropdown-item">
+                                                Perfil
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ path('pacientes_show', {id: app.user.pacientes.id}) }}"
+                                               tabindex="0" class="dropdown-item">
+                                                Perfil
+                                            </a>
+                                        {% endif %}
+                                        <a href="{{ path('app_logout') }}" tabindex="0" class="dropdown-item">
+                                            Logout
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -99,234 +146,243 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="app-main">
-                <div class="app-sidebar sidebar-shadow">
-                    <div class="app-header__logo">
-                        <div class="logo-src"></div>
-                        <div class="header__pane ml-auto">
-                            <div>
-                                <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+    <div class="app-main">
+        <div class="app-sidebar sidebar-shadow">
+            <div class="app-header__logo">
+                <div class="logo-src"></div>
+                <div class="header__pane ml-auto">
+                    <div>
+                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
+                                data-class="closed-sidebar">
                                     <span class="hamburger-box">
                                         <span class="hamburger-inner"></span>
                                     </span>
-                                </button>
-                            </div>
-                        </div>
+                        </button>
                     </div>
-                    <div class="app-header__mobile-menu">
-                        <div>
-                            <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                </div>
+            </div>
+            <div class="app-header__mobile-menu">
+                <div>
+                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
                                 <span class="hamburger-box">
                                     <span class="hamburger-inner"></span>
                                 </span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="app-header__menu">
+                    </button>
+                </div>
+            </div>
+            <div class="app-header__menu">
                         <span>
-                            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                            <button type="button"
+                                    class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
                                 <span class="btn-icon-wrapper">
                                     <i class="fa fa-ellipsis-v fa-w-6"></i>
                                 </span>
                             </button>
                         </span>
-                    </div>
-                    <div class="scrollbar-sidebar">
-                        <div class="app-sidebar__inner">
-                            <ul class="vertical-nav-menu">
-                                <li class="app-sidebar__heading">Dashboards</li>
-                                <li>
-                                    <a href="#" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        Dashboard Example 1
-                                    </a>
-                                </li>
-                                <li class="app-sidebar__heading">UI Components</li>
-                                <li>
-                                    <a href="#">
-                                        <i class="metismenu-icon pe-7s-diamond"></i>
-                                        Elements
-                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon"></i>
-                                                Buttons
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Dropdowns
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Icons
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Badges
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Cards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>List Groups
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Navigation Menus
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Utilities
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="metismenu-icon pe-7s-car"></i>
-                                        Components
-                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Tabs
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Accordions
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Notifications
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Modals
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Progress Bar
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Tooltips &amp; Popovers
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Carousel
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Calendar
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Pagination
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Scrollable
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Maps
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="{{ path('funcionarios_index') }}">
-                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                        Funcionarios
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+            </div>
+            <div class="scrollbar-sidebar">
+                <div class="app-sidebar__inner">
+                    <ul class="vertical-nav-menu">
+
+                        <li class="app-sidebar__heading">Menu</li>
+
+                        <li>
+                            <a href="{{ path('funcionarios_index') }}">
+                                <i class="metismenu-icon fas fa-users-medical"></i>
+                                Funcionarios
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('acesso_index') }}">
+                                <i class="metismenu-icon fas fa-cogs"></i>
+                                Acessos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('consultas_index') }}">
+                                <i class="metismenu-icon fas fa-user-md-chat"></i>
+                                Sessão
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('exames_index') }}">
+                                <i class="metismenu-icon fas fa-notes-medical"></i>
+                                Exames
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('laudos_index') }}">
+                                <i class="metismenu-icon fa fa-clipboard"></i>
+                                Laudos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pacientes_index') }}">
+                                <i class="metismenu-icon fas fa-book-medical"></i>
+                                Pacientes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('perfil_index') }}">
+                                <i class="metismenu-icon fas fa-address-card"></i>
+                                Perfis
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('prontuarios_index') }}">
+                                <i class="metismenu-icon far fa-files-medical"></i>
+                                Prontuários
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('receitas_index') }}">
+                                <i class="metismenu-icon far fa-clipboard-prescription"></i>
+                                Receitas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('tipo_consulta_index') }}">
+                                <i class="metismenu-icon far fa-user-md"></i>
+                                Tipos de Sessão
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="app-main__outer">
-                    <div class="app-main__inner">
-                        {% block body %}{% endblock %}
-                    </div>
-                    <div class="app-wrapper-footer">
-                        <div class="app-footer">
-                            <div class="app-footer__inner">
-                                <div class="app-footer-right">
-                                    <b>Copyright &copy; 2019 Grupo.</b> Todos os direitos reservados
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
             </div>
         </div>
-        <script type="text/javascript" src="/assets/scripts/main.js"></script>
-        <script>
-            $.extend( $.validator.messages, {
+        <div class="app-main__outer">
+            <div class="app-main__inner">
+                {% block body %}
+                    {#                    TODO: IMPLEMENTAR#}
+                    {#                    {% for type, messages in app.session.flashbag.all() %}#}
+                    {#                        {% for message in messages %}#}
+                    {#                            <div class="alert alert-dismissible alert-{{ type }}" data-animate="true" style="">#}
+                    {#                                <button type="button" class="close" data-dismiss="alert" aria-label="Fechar" ><span aria-hidden="true">×</span></button>#}
+                    {#                                {{ message|raw }}#}
+                    {#                            </div>#}
+                    {#                        {% endfor %}#}
+                    {#                    {% endfor %}#}
+                {% endblock %}
+            </div>
+            <div class="app-wrapper-footer">
+                <div class="app-footer">
+                    <div class="app-footer__inner">
+                        <div class="app-footer-right">
+                            <b>Copyright &copy; 2019 Grupo.</b> Todos os direitos reservados
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    </div>
+</div>
+<script type="text/javascript" src="{{ asset('assets/scripts/main.js') }}"></script>
+<script>
+    $.extend($.validator.messages, {
 
-                // Core
-                required: "<span class='text-danger'>Este campo &eacute; obrigat&oacute;rio!</span>",
-                remote: "<span class='text-danger'>Por favor, corrija este campo.</span>",
-                email: "<span class='text-danger'>Por favor, forne&ccedil;a um endere&ccedil;o de email v&aacute;lido.</span>",
-                url: "<span class='text-danger'>Por favor, forne&ccedil;a uma URL v&aacute;lida.</span>",
-                date: "<span class='text-danger'>Por favor, forne&ccedil;a uma data v&aacute;lida.</span>",
-                dateISO: "<span class='text-danger'>Por favor, forne&ccedil;a uma data v&aacute;lida (ISO).</span>",
-                number: "<span class='text-danger'>Forne&ccedil;a um n&uacute;mero v&aacute;lido</span>",
-                digits: "<span class='text-danger'>Forne&ccedil;a somente d&iacute;gitos</span>",
-                creditcard: "<span class='text-danger'>Por favor, forne&ccedil;a um cart&atilde;o de cr&eacute;dito v&aacute;lido.</span>",
-                equalTo: "<span class='text-danger'>Por favor, forne&ccedil;a o mesmo valor novamente.</span>",
-                maxlength: $.validator.format( "<span class='text-danger'>Por favor, forne&ccedil;a n&atilde;o mais que {0} caracteres.</span>" ),
-                minlength: $.validator.format( "<span class='text-danger'>Por favor, forne&ccedil;a ao menos {0} caracteres.</span>" ),
-                rangelength: $.validator.format( "<span class='text-danger'>Por favor, forne&ccedil;a um valor entre {0} e {1} caracteres de comprimento.</span>" ),
-                range: $.validator.format( "<span class='text-danger'>Por favor, forne&ccedil;a um valor entre {0} e {1}.</span>" ),
-                max: $.validator.format( "<span class='text-danger'>Forne&ccedil;a um valor menor ou igual a {0}</span>" ),
-                min: $.validator.format( "<span class='text-danger'>Forne&ccedil;a um valor maior ou igual a {0}</span>" )
+        // Core
+        required: "<span class='text-danger'>Este campo &eacute; obrigat&oacute;rio!</span>",
+        remote: "<span class='text-danger'>Por favor, corrija este campo.</span>",
+        email: "<span class='text-danger'>Por favor, forne&ccedil;a um endere&ccedil;o de email v&aacute;lido.</span>",
+        url: "<span class='text-danger'>Por favor, forne&ccedil;a uma URL v&aacute;lida.</span>",
+        date: "<span class='text-danger'>Por favor, forne&ccedil;a uma data v&aacute;lida.</span>",
+        dateISO: "<span class='text-danger'>Por favor, forne&ccedil;a uma data v&aacute;lida (ISO).</span>",
+        number: "<span class='text-danger'>Forne&ccedil;a um n&uacute;mero v&aacute;lido</span>",
+        digits: "<span class='text-danger'>Forne&ccedil;a somente d&iacute;gitos</span>",
+        creditcard: "<span class='text-danger'>Por favor, forne&ccedil;a um cart&atilde;o de cr&eacute;dito v&aacute;lido.</span>",
+        equalTo: "<span class='text-danger'>Por favor, forne&ccedil;a o mesmo valor novamente.</span>",
+        maxlength: $.validator.format("<span class='text-danger'>Por favor, forne&ccedil;a n&atilde;o mais que {0} caracteres.</span>"),
+        minlength: $.validator.format("<span class='text-danger'>Por favor, forne&ccedil;a ao menos {0} caracteres.</span>"),
+        rangelength: $.validator.format("<span class='text-danger'>Por favor, forne&ccedil;a um valor entre {0} e {1} caracteres de comprimento.</span>"),
+        range: $.validator.format("<span class='text-danger'>Por favor, forne&ccedil;a um valor entre {0} e {1}.</span>"),
+        max: $.validator.format("<span class='text-danger'>Forne&ccedil;a um valor menor ou igual a {0}</span>"),
+        min: $.validator.format("<span class='text-danger'>Forne&ccedil;a um valor maior ou igual a {0}</span>")
 
-            } );
-        </script>
-        {% block javascripts %}{% endblock %}
-    </body>
+    });
+</script>
+
+<!-- Bloco de Alterações - Vinicius Vasconcelos -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://kit.fontawesome.com/1dbc7d90aa.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"
+        integrity="sha256-JIBDRWRB0n67sjMusTy4xZ9L09V8BINF0nd/UUUOi48=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+        integrity="sha256-bqVeqGdJ7h/lYPq6xrPv/YGzMEb6dNxlfiTUHSgRCp8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/bootstrap-clockpicker.js"
+        integrity="sha256-OIIIhnfeTrz7TTtNh60DMH8U7bNMBH+noeMzo2uSJTI=" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            format: "dd/mm/yyyy",
+            todayBtn: "linked",
+            clearBtn: true,
+            language: "pt-BR",
+            autoclose: true,
+            todayHighlight: true
+        });
+        $('.datetimepicker').datetimepicker();
+        $('.clockpicker').clockpicker({
+            donetext: 'Fechar',
+            default: 'now',
+        });
+        $('.select2').select2({
+            width: 'resolve',
+            language: {
+                inputTooShort: function () {
+                    return "Nenhum resultado encontrado";
+                }
+            },
+            theme: 'bootstrap'
+        });
+    });
+</script>
+<script>
+    !function (a) {
+        a.fn.datepicker.dates["pt-BR"] = {
+            days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+            daysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
+            daysMin: ["Do", "Se", "Te", "Qu", "Qu", "Se", "Sa"],
+            months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+            monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+            today: "Hoje",
+            monthsTitle: "Meses",
+            clear: "Limpar",
+            format: "dd/mm/yyyy"
+        }
+    }(jQuery);
+</script>
+<script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+<script type="text/javascript" src="https://nightly.datatables.net/responsive/js/dataTables.responsive.min.js"></script>
+<script src="https://nightly.datatables.net/responsive/js/responsive.bootstrap4.min.js"></script>
+<!--
+Dominios configurados para o editor de texto: localhost e 127.0.0.1
+Cadastro e atualização da chave da API;
+    site: https://apps.tiny.cloud/my-account/api-key-manager/
+    login: porteirofrances@gmail.com
+    senha: Vinicius21
+-->
+<script src="https://cdn.tiny.cloud/1/o1mytidzopolvo2bas0r78aw1fceftxyg814halfc1ds42n8/tinymce/5/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        language: 'pt_BR',
+        language_url: '{{ asset('assets/langs/pt_BR.js') }}',
+        browser_spellcheck: true
+    });
+</script>
+{#<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>#}
+{#<script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>#}
+<!-- Fim do bloco de alterações -->
+{% block javascripts %}{% endblock %}
+</body>
 </html>
 

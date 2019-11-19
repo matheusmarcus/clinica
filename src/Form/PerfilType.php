@@ -13,8 +13,9 @@ class PerfilType extends AbstractType
     {
         $builder
             ->add('nome')
-            ->add('descricao')
-        ;
+            ->add('descricao', null, array(
+                'label' => 'Descrição'
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

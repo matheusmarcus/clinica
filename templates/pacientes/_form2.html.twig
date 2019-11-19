@@ -3,6 +3,7 @@
     {{ form_start(form2) }}
         {{ form_widget(form2) }}
     {{ form_end(form2) }}
+<hr>
     <a href="{{ path('pacientes_index') }}" class="btn btn-secondary">Voltar</a>
     <button class="btn btn-success" id="btnFormPaciente">{{ button_label|default('Salvar') }}</button>
 {{ form_end(form) }}
