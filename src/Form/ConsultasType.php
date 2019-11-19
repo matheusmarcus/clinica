@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Consultas;
+use App\Entity\Pacientes;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -40,10 +42,12 @@ class ConsultasType extends AbstractType
                     'class' => 'select2'
                 )
             ))
-            ->add('idpacientes', ChoiceType::class, array(
+            ->add('idpacientes', EntityType::class, array(
                 'label' => 'Paciente',
                 'multiple' => false,
                 'placeholder' => '-- Selecione --',
+                'class'=> Pacientes::class,
+                'choice_label' => 'nome',
                 'attr' => array(
                     'class' => 'select2'
                 )
