@@ -76,7 +76,7 @@ class PacientesType extends AbstractType
                 )
             ))
             ->add('cidade', null, array())
-            ->add('cep', null, array('label'=>'CEP'))
+            ->add('cep', null, array('label' => 'CEP'))
             ->add('bairro', null, array());
     }
 

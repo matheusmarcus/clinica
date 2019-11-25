@@ -14,13 +14,8 @@ class ReceitasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dsReceita', DateType::class, array(
-                'label' => 'Data da Receita',
-                'widget' => 'single_text',
-                'format' => 'dd/MM/yyyy',
-                'attr' => array(
-                    'class' => 'datepicker'
-                )
+            ->add('dsReceita', null, array(
+                'label' => 'Descrição',
             ))
             ->add('pacientespacientes', ChoiceType::class, array(
                 'label' => 'Paciente',
