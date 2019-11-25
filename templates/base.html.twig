@@ -307,6 +307,7 @@
 
 <!-- Bloco de Alterações - Vinicius Vasconcelos -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/i18n/pt-BR.js" integrity="sha256-/pqU7mByO80szYr1JmBQCoGGTtAgj2viXKUnyEK7I5k=" crossorigin="anonymous"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://kit.fontawesome.com/1dbc7d90aa.js" crossorigin="anonymous"></script>
@@ -336,12 +337,11 @@
         });
         $('.select2').select2({
             width: 'resolve',
-            language: {
-                inputTooShort: function () {
-                    return "Nenhum resultado encontrado";
-                }
-            },
-            theme: 'bootstrap'
+            language: 'pt-BR',
+            theme: 'bootstrap',
+            placeholder: function () {
+                $(this).data('placeholder');
+            }
         });
     });
 </script>

@@ -40,7 +40,8 @@ class AcessoType extends AbstractType
                     'class' => 'select2',
                     'multiple' => 'multiple',
                     'placeholder' => '-- Selecione --',
-                    'dir' => 'ltr'
+                    'dir' => 'ltr',
+                    'data-placeholder' => '-- Selecione --'
                 )
             ));
     }

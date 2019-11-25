@@ -26,9 +26,10 @@ class LaudosType extends AbstractType
             ))
             ->add('exames', ChoiceType::class, array(
                 'placeholder' => '-- Selecione --',
-                'multiple' => false,
+                'multiple' => true,
                 'attr' => array(
-                    'class' => 'select2'
+                    'class' => 'select2',
+                    'data-placeholder' => '-- Selecione --'
                 )
             ));
     }
