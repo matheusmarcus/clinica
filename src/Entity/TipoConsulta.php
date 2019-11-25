@@ -83,4 +83,9 @@ class TipoConsulta
         $this->descricao = $descricao;
     }
 
+    public function __toString()
+    {
+        return $this->getNome();
+    }
+
 }

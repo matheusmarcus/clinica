@@ -335,6 +335,9 @@ class Pacientes
     {
         $this->bairro = $bairro;
     }
-
+    public function __toString()
+    {
+        return $this->getNome();
+    }
 
 }
