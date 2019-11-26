@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Exames;
 use App\Form\ExamesType;
+use PhpParser\Node\Scalar\MagicConst\File;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,6 +40,27 @@ class ExamesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $exameFile = $form['imagens']->getData();
+            if($exameFile){
+                $originalFilename = pathinfo($exameFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$exameFile->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $exameFile->move(
+                        $this->getParameter('imagem_exame'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $exame->setImagens($newFilename);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($exame);
             $entityManager->flush();
@@ -68,8 +91,34 @@ class ExamesController extends AbstractController
     {
         $form = $this->createForm(ExamesType::class, $exame);
         $form->handleRequest($request);
+        $antigoNome = $exame->getImagens();
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $exameFile = $form['imagens']->getData();
+            if($exameFile){
+                $originalFilename = pathinfo($exameFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$exameFile->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $exameFile->move(
+                        $this->getParameter('imagem_exame'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $exame->setImagens($newFilename);
+            }else{
+                $exame->setImagens($antigoNome);
+
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('exames_index');

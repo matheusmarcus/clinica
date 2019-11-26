@@ -308,6 +308,7 @@
         integrity="sha256-bqVeqGdJ7h/lYPq6xrPv/YGzMEb6dNxlfiTUHSgRCp8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/bootstrap-clockpicker.js"
         integrity="sha256-OIIIhnfeTrz7TTtNh60DMH8U7bNMBH+noeMzo2uSJTI=" crossorigin="anonymous"></script>
+
 <script>
     $(document).ready(function () {
         $('.datepicker').datepicker({
@@ -318,6 +319,7 @@
             autoclose: true,
             todayHighlight: true
         });
+        $('.datetimepicker').datetimepicker();
         $('.clockpicker').clockpicker({
             donetext: 'Fechar',
             default: 'now',

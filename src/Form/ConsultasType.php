@@ -3,6 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Consultas;
+use App\Entity\Funcionarios;
+use App\Entity\Pacientes;
+use App\Repository\AcessoRepository;
+use App\Repository\FuncionarioRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -14,6 +19,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ConsultasType extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -32,24 +38,28 @@ class ConsultasType extends AbstractType
             ->add('consultaConfirmada', CheckboxType::class, array(
                 'label' => 'Consulta confirmada'
             ))
-            ->add('funcionarios', ChoiceType::class, array(
-                'label' => 'Funcionários',
+            ->add('funcionarios', EntityType::class, array(
+                'label' => 'Psicólogo',
                 'multiple' => false,
                 'placeholder' => '-- Selecione --',
+                'class'=> Funcionarios::class,
+                'choice_label' => 'nome',
                 'attr' => array(
                     'class' => 'select2'
                 ),
                 'choices' => $options['psicologos'],
             ))
-            ->add('idpacientes', ChoiceType::class, array(
+            ->add('idpacientes', EntityType::class, array(
                 'label' => 'Paciente',
                 'multiple' => false,
                 'placeholder' => '-- Selecione --',
+                'class'=> Pacientes::class,
+                'choice_label' => 'nome',
                 'attr' => array(
                     'class' => 'select2'
                 )
             ))
-            ->add('tipoConsultatipoConsulta', ChoiceType::class, array(
+            ->add('tipoConsultatipoConsulta', null, array(
                 'label' => 'Tipo de Consulta',
                 'multiple' => false,
                 'placeholder' => '-- Selecione --',
