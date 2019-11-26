@@ -153,5 +153,8 @@
     <orderEntry type="library" name="bootstrap-datepicker" level="application" />
     <orderEntry type="library" name="tippy-bundle.iife" level="application" />
     <orderEntry type="library" name="tinymce" level="application" />
+    <orderEntry type="library" name="tempusdominus-bootstrap-4" level="application" />
+    <orderEntry type="library" name="moment-with-locales" level="application" />
+    <orderEntry type="library" name="bootstrap-datetimepicker" level="application" />
   </component>
 </module>
