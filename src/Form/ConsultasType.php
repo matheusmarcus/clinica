@@ -28,7 +28,7 @@ class ConsultasType extends AbstractType
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
                 'attr' => array(
-                    'class' => 'datepicker'
+                    'class' => 'datetimepicker'
                 )
             ))
             ->add('valorConsulta', MoneyType::class, array(
@@ -46,7 +46,8 @@ class ConsultasType extends AbstractType
                 'choice_label' => 'nome',
                 'attr' => array(
                     'class' => 'select2'
-                )
+                ),
+                'choices' => $options['psicologos'],
             ))
             ->add('idpacientes', EntityType::class, array(
                 'label' => 'Paciente',
@@ -72,6 +73,7 @@ class ConsultasType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Consultas::class,
+            'psicologos' => array()
         ]);
     }
 }
