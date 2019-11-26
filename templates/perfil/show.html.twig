@@ -1,30 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Perfil{% endblock %}
+{#{% block title %}Perfil{% endblock %}#}
 
 {% block body %}
-    <h1>Perfil</h1>
+    {#    <h1>Perfil</h1>#}
+    <div class="page-header">
+        <h1>
+            <span class="text-muted font-weight-light">Perfil / </span>Visualizar Perfil
+        </h1>
+    </div>
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th>ID</th>
+                    <td>{{ perfil.idperfil }}</td>
+                </tr>
+                <tr>
+                    <th>Nome</th>
+                    <td>{{ perfil.nome }}</td>
+                </tr>
+                <tr>
+                    <th>Descrição</th>
+                    <td>{{ perfil.descricao }}</td>
+                </tr>
+                </tbody>
+            </table>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Idperfil</th>
-                <td>{{ perfil.idperfil }}</td>
-            </tr>
-            <tr>
-                <th>Nome</th>
-                <td>{{ perfil.nome }}</td>
-            </tr>
-            <tr>
-                <th>Descricao</th>
-                <td>{{ perfil.descricao }}</td>
-            </tr>
-        </tbody>
-    </table>
+            <a class="btn btn-secondary" href="{{ path('perfil_index') }}">Voltar à Lista</a>
 
-    <a href="{{ path('perfil_index') }}">back to list</a>
+            <a class="btn btn-primary" href="{{ path('perfil_edit', {'idperfil': perfil.idperfil}) }}">Editar</a>
+        </div>
+    </div>
 
-    <a href="{{ path('perfil_edit', {'idperfil': perfil.idperfil}) }}">edit</a>
-
-    {{ include('perfil/_delete_form.html.twig') }}
 {% endblock %}

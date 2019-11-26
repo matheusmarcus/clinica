@@ -33,12 +33,16 @@ class ConsultasController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $entityManager = $this->getDoctrine()->getManager();
         $consulta = new Consultas();
-        $form = $this->createForm(ConsultasType::class, $consulta);
+        $form = $this->createForm(ConsultasType::class, $consulta, array(
+            'psicologos' => $entityManager->getRepository('App:Acesso')->findBy([
+                'perfil' => 4
+            ])
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($consulta);
             $entityManager->flush();
 
@@ -86,7 +90,7 @@ class ConsultasController extends AbstractController
      */
     public function delete(Request $request, Consultas $consulta): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$consulta->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $consulta->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($consulta);
             $entityManager->flush();

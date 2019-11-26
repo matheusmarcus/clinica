@@ -3,11 +3,18 @@
 {% block title %}Edit Acesso{% endblock %}
 
 {% block body %}
-    <h1>Edit Acesso</h1>
+{#    <h1>Edit Acesso</h1>#}
 
-    {{ include('acesso/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="page-header">
+        <h1>
+            <span class="text-muted font-weight-light">Acesso / </span>Editar Acesso
+        </h1>
+    </div>
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            {{ include('acesso/_form.html.twig', {'button_label': 'Salvar'}) }}
+        </div>
+    </div>
 
-    <a href="{{ path('acesso_index') }}">back to list</a>
-
-    {{ include('acesso/_delete_form.html.twig') }}
+{#    {{ include('acesso/_delete_form.html.twig') }}#}
 {% endblock %}

@@ -1,4 +1,9 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<hr>
+<a class="btn btn-secondary" href="{{ path('pacientes_index') }}">Voltar à Lista</a>
+<button class="btn btn-success">{{ button_label|default('Salvar') }}</button>
+{% if app.request.pathinfo != '/pacientes/new' %}
+    {{ include('pacientes/_delete_form.html.twig') }}
+{% endif %}
 {{ form_end(form) }}

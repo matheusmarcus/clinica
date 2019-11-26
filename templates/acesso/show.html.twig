@@ -3,28 +3,35 @@
 {% block title %}Acesso{% endblock %}
 
 {% block body %}
-    <h1>Acesso</h1>
+    {#    <h1>Acesso</h1>#}
+    <div class="page-header">
+        <h1>
+            <span class="text-muted font-weight-light">Acesso / </span>Visualizar Acesso
+        </h1>
+    </div>
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th>ID</th>
+                    <td>{{ acesso.id }}</td>
+                </tr>
+                <tr>
+                    <th>Usuário</th>
+                    <td>{{ acesso.usuario }}</td>
+                </tr>
+                <tr>
+                    <th>Senha</th>
+                    <td>{{ acesso.password }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <hr>
+            <a class="mb-2 mr-2 btn btn-secondary" href="{{ path('acesso_index') }}">Voltar à Lista</a>
+            <a class="mb-2 mr-2 btn btn-primary" href="{{ path('acesso_edit', {'id': acesso.id}) }}">Editar</a>
+        </div>
+    </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ acesso.id }}</td>
-            </tr>
-            <tr>
-                <th>Usuario</th>
-                <td>{{ acesso.usuario }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ acesso.password }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('acesso_index') }}">back to list</a>
-
-    <a href="{{ path('acesso_edit', {'id': acesso.id}) }}">edit</a>
-
-    {{ include('acesso/_delete_form.html.twig') }}
+{#    {{ include('acesso/_delete_form.html.twig') }}#}
 {% endblock %}

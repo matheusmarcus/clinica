@@ -24,7 +24,7 @@ class Receitas
     /**
      * @var string
      *
-     * @ORM\Column(name="ds_receita", type="string", length=45, nullable=false)
+     * @ORM\Column(name="ds_receita", type="text", length=65535, nullable=false)
      */
     private $dsReceita;
 

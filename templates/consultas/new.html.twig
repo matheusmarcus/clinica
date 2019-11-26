@@ -1,11 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Consultas{% endblock %}
+{#{% block title %}New Consultas{% endblock %}#}
 
 {% block body %}
-    <h1>Create new Consultas</h1>
+    {#    <h1>Create new Consultas</h1>#}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" integrity="sha256-yMjaV542P+q1RnH6XByCPDfUFhmOafWbeLPmqKh11zo=" crossorigin="anonymous" />
+    <div class="page-header">
+        <h1>
+            <span class="text-muted font-weight-light">Sessão / </span>Cadastrar Sessão
+        </h1>
+    </div>
 
-    {{ include('consultas/_form.html.twig') }}
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            {{ include('consultas/_form.html.twig') }}
+        </div>
+    </div>
 
-    <a href="{{ path('consultas_index') }}">back to list</a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js" integrity="sha256-dgFbqbQVzjkZPQxWd8PBtzGiRBhChc4I2wO/q/s+Xeo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha256-5YmaxAwMjIpMrVlK84Y/+NjCpKnFYa8bWWBbUHSBGfU=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#consultas_data').datetimepicker({
+                // locale: 'pt-br',
+            });
+        });
+    </script>
+
 {% endblock %}

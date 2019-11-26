@@ -1,8 +1,67 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_start(form2) }}
-        {{ form_widget(form2) }}
-    {{ form_end(form2) }}
-    <a href="{{ path('pacientes_index') }}" class="btn btn-secondary">Voltar</a>
-    <button class="btn btn-success" id="btnFormPaciente">{{ button_label|default('Salvar') }}</button>
+<div class="row">
+
+    <div class="col-md-6">
+        {{ form_row(form.nome) }}
+    </div>
+
+    <div class="col-md-3">
+        {{ form_row(form.dataNascimento) }}
+    </div>
+
+    <div class="col-md-3">
+        {{ form_row(form.estadoCivil) }}
+
+    </div>
+
+
+
+
+    <div class="col-md-3">
+        {{ form_row(form.sexo) }}
+    </div>
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+
+
+    {{ form_row(form.dataCadastro) }}
+    {{ form_row(form.profissao) }}
+    {{ form_row(form.telefoneCelular) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.endereco) }}
+    {{ form_row(form.cidade) }}
+    {{ form_row(form.bairro) }}
+    {{ form_row(form.cep) }}
+    {{ form_row(form.uf) }}
+    {#    <div class="col">#}
+    {#        {{ form_start(form2) }}#}
+    {#        {{ form_widget(form2) }}#}
+    {#        {{ form_end(form2) }}#}
+    {#    </div>#}
+</div>
+
+<hr>
+<a href="{{ path('pacientes_index') }}" class="btn btn-secondary">Voltar</a>
+<button class="btn btn-success" id="btnFormPaciente">{{ button_label|default('Salvar') }}</button>
 {{ form_end(form) }}
