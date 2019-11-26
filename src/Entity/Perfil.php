@@ -35,6 +35,11 @@ class Perfil
      */
     private $descricao;
 
+    public function __construct()
+    {
+        return $this->nome;
+    }
+
     /**
      * @return int
      */

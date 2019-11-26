@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Acesso;
 use App\Entity\Consultas;
 use App\Form\ConsultasType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,8 +37,8 @@ class ConsultasController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $consulta = new Consultas();
         $form = $this->createForm(ConsultasType::class, $consulta, array(
-            'psicologos' => $entityManager->getRepository('App:Acesso')->findBy([
-                'perfil' => 4
+            'psicologos' => $entityManager->getRepository(Acesso::class)->findBy([
+                'perfil' => 2
             ])
         ));
         $form->handleRequest($request);

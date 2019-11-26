@@ -63,6 +63,11 @@ class Funcionarios
     */
     private $ativo;
 
+    public function __construct()
+    {
+        return $this->nome;
+    }
+
     /**
      * @return int
      */

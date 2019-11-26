@@ -6,6 +6,7 @@ use App\Entity\Consultas;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,13 +18,10 @@ class ConsultasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('data', DateType::class, array(
+            ->add('data', DateTimeType::class, array(
                 'label' => 'Data',
                 'widget' => 'single_text',
-                'format' => 'dd/MM/yyyy',
-                'attr' => array(
-                    'class' => 'datetimepicker'
-                )
+                'format' => 'dd/MM/yyyy H:i:s',
             ))
             ->add('valorConsulta', MoneyType::class, array(
                 'label' => 'Valor da Consulta',
