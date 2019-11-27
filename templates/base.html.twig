@@ -196,6 +196,21 @@
                                 Sessão
                             </a>
                         </li>
+                        {% if ('logo' in app.user.perfil.nome) %}
+                            <li>
+                                <a href="{{ path('agenda_especifica', {'psicologo': app.user.funcionarios.id}) }}">
+                                    <i class="metismenu-icon fas fa-calendar-alt"></i>
+                                    Minha Agenda
+                                </a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ path('agenda') }}">
+                                    <i class="metismenu-icon fas fa-calendar-alt"></i>
+                                    Agenda
+                                </a>
+                            </li>
+                        {% endif %}
                         <li>
                             <a href="{{ path('exames_index') }}">
                                 <i class="metismenu-icon fas fa-notes-medical"></i>
@@ -244,6 +259,7 @@
         </div>
         <div class="app-main__outer">
             <div class="app-main__inner">
+                {% include 'includes/message.html.twig' %}
                 {% block body %}
                     {#                    TODO: IMPLEMENTAR#}
                     {#                    {% for type, messages in app.session.flashbag.all() %}#}
@@ -310,6 +326,7 @@
         integrity="sha256-bqVeqGdJ7h/lYPq6xrPv/YGzMEb6dNxlfiTUHSgRCp8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/bootstrap-clockpicker.js"
         integrity="sha256-OIIIhnfeTrz7TTtNh60DMH8U7bNMBH+noeMzo2uSJTI=" crossorigin="anonymous"></script>
+
 <script>
     $(document).ready(function () {
         $('.datepicker').datepicker({
@@ -320,6 +337,7 @@
             autoclose: true,
             todayHighlight: true
         });
+        $('.datetimepicker').datetimepicker();
         $('.clockpicker').clockpicker({
             donetext: 'Fechar',
             default: 'now',

@@ -30,7 +30,6 @@
                         <thead>
                         <tr>
                             <th>Usuário</th>
-                            <th>Senha</th>
                             <th>Ações</th>
                         </tr>
                         </thead>
@@ -38,7 +37,6 @@
                         {% for acesso in acessos %}
                             <tr>
                                 <td>{{ acesso.usuario }}</td>
-                                <td>{{ acesso.password }}</td>
                                 <td>
                                     <a class="mb-2 mr-2 btn btn-primary"
                                        href="{{ path('acesso_show', {'id': acesso.id}) }}" title="Ver"

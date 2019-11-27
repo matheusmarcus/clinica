@@ -1,0 +1,9 @@
+{% for msg in app.session.flashBag.get('success') %}
+    <div class="alert alert-success text-center" style="font-size: 1.2em;">{{ msg|raw }}</div>
+{% endfor %}
+{% for msg in app.session.flashBag.get('warning') %}
+    <div class="alert alert-warning text-center" style="font-size: 1.2em;">{{ msg|raw }}</div>
+{% endfor %}
+{% for msg in app.session.flashBag.get('danger') %}
+    <div class="alert alert-danger text-center" style="font-size: 1.2em;">{{ msg|raw }}</div>
+{% endfor %}

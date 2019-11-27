@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Acesso;
 use App\Entity\Consultas;
+use App\Entity\Funcionarios;
+use App\Entity\Perfil;
 use App\Form\ConsultasType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,20 +32,73 @@ class ConsultasController extends AbstractController
     }
 
     /**
+     * @Route("/", name="agenda", methods={"GET"})
+     */
+    public function agenda(): Response
+    {
+        $consultas = $this->getDoctrine()
+            ->getRepository(Consultas::class)
+            ->findAll();
+
+        return $this->render('consultas/index.html.twig', [
+            'consultas' => $consultas,
+        ]);
+    }
+
+    /**
+     * @Route("/{psicologo}/agenda", name="agenda_especifica", methods={"GET"})
+     */
+    public function agendaEspecifica(Funcionarios $psicologo): Response
+    {
+        $consultas = $this->getDoctrine()
+            ->getRepository(Consultas::class)
+            ->findBy([
+                'funcionarios' => $psicologo->getId(),
+                'consultaConfirmada' => 1
+            ]);
+
+        return $this->render('consultas/index.html.twig', [
+            'consultas' => $consultas,
+        ]);
+    }
+
+    /**
      * @Route("/new", name="consultas_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $consulta = new Consultas();
+        $perfil = $this->getDoctrine()->getRepository(Perfil::class)
+            ->findOneBy([
+                'nome' => 'Psicólogo'
+            ]);
+
+        $acesso = $entityManager->getRepository(Acesso::class)->findBy([
+            'perfil' => $perfil->getIdperfil()
+        ]);
+
+        $funcionarios = [];
+        foreach ($acesso as $ac) {
+            $funcionarios[] = $ac->getFuncionarios();
+        }
+
         $form = $this->createForm(ConsultasType::class, $consulta, array(
-            'psicologos' => $entityManager->getRepository(Acesso::class)->findBy([
-                'perfil' => 2
-            ])
+            'psicologos' => $funcionarios
         ));
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $temConflito = $this->getDoctrine()->getRepository(Consultas::class)->findBy([
+                'data' => $consulta->getData(),
+                'funcionarios' => $consulta->getFuncionarios()->getId(),
+                'consultaConfirmada' => 1
+            ]);
+            if ($temConflito) {
+                $this->addFlash('warning', 'Esse psicólogo já tem esse horário ocupado.');
+                return $this->redirectToRoute('consultas_new');
+            }
             $entityManager->persist($consulta);
             $entityManager->flush();
 
@@ -84,6 +139,31 @@ class ConsultasController extends AbstractController
             'consulta' => $consulta,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}/confirma/{confirmada}", name="confirma_consulta", methods={"GET","POST"})
+     */
+    public function confirma(Consultas $consulta, $confirmada): Response
+    {
+        $temConflito = $this->getDoctrine()->getRepository(Consultas::class)->findBy([
+            'data' => $consulta->getData(),
+            'funcionarios' => $consulta->getFuncionarios()->getId(),
+            'consultaConfirmada' => 1
+        ]);
+        if ($temConflito && $confirmada) {
+            $this->addFlash('warning', 'Esse psicólogo já tem esse horário ocupado.');
+            return $this->redirectToRoute('consultas_index');
+        }
+        $consulta->setConsultaConfirmada($confirmada);
+        $this->getDoctrine()->getManager()->flush();
+        if ($confirmada) {
+            $this->addFlash('success', 'Consulta confirmada!');
+        } else {
+            $this->addFlash('success', 'Consulta desmarcada!');
+        }
+        return $this->redirectToRoute('consultas_index');
+
     }
 
     /**
