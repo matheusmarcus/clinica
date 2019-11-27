@@ -19,6 +19,9 @@
                     </div>
                 </div>
                 <div class="page-title-actions">
+                    <form action="">
+                        <input type="text">
+                    </form>
                     <a class="btn btn-success m-3" href="{{ path('consultas_new') }}"><i class="fa fa-plus"></i>
                         Cadastrar</a>
                 </div>
@@ -26,6 +29,7 @@
         </div>
 
         <div class="panel">
+
             <div class="main-card mb-3 card">
                 <div class="card-body">
                     <table id="tabela-consultas" class="table">
@@ -42,25 +46,47 @@
                         </thead>
                         <tbody>
                         {% for consulta in consultas %}
-                            <tr>
-                                <td>{{ consulta.data ? consulta.data|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ consulta.valorConsulta }}</td>
+                            {% if consulta.consultaConfirmada %}
+                            <tr class="text-success">
+                            {% else %}
+                            <tr class="text-danger">
+                            {% endif %}
+                                <td>{{ consulta.data ? consulta.data|date('d/m/Y H:i:s') : '' }}</td>
+                                <td>R$ {{ consulta.valorConsulta|number_format(2, ',', '.') }}</td>
                                 <td>{{ consulta.consultaConfirmada ? 'Sim' : 'Não' }}</td>
                                 <td>{{ consulta.funcionarios }}</td>
                                 <td>{{ consulta.idpacientes }}</td>
                                 <td>{{ consulta.tipoConsultatipoConsulta }}</td>
                                 <td>
 
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Ações
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            <a class="mb-2 bg-secondary text-white text-center dropdown-item"
+                                               href="{{ path('consultas_show', {'id': consulta.id}) }}" title="Ver"
+                                               data-toggle="tooltip" data-placement="top"><i
+                                                        class="fa fa-eye"></i> &nbsp;&nbsp; Ver</a>
 
-                                    <a class="mb-2 mr-2 btn btn-primary"
-                                       href="{{ path('consultas_show', {'id': consulta.id}) }}" title="Ver"
-                                       data-toggle="tooltip" data-placement="bottom"><i
-                                                class="fa fa-eye"></i></a>
+                                            <a class="mb-2 bg-primary text-white dropdown-item"
+                                               href="{{ path('consultas_edit', {'id': consulta.id}) }}" title="Editar"
+                                               data-toggle="tooltip" data-placement="top"><i
+                                                        class="fa fa-edit"></i>&nbsp;&nbsp; Editar</a>
 
-                                    <a class="mb-2 mr-2 btn btn-success"
-                                       href="{{ path('consultas_edit', {'id': consulta.id}) }}" title="Editar"
-                                       data-toggle="tooltip" data-placement="bottom"><i
-                                                class="fa fa-edit"></i></a>
+                                            <a class="mb-2 bg-success text-white dropdown-item"
+                                               href="{{ path('confirma_consulta', {'id': consulta.id, 'confirmada': 1}) }}" title="Confirmar"
+                                               data-toggle="tooltip" data-placement="top"><i
+                                                        class="fa fa-thumbs-up"></i> &nbsp;&nbsp; Confirmar</a>
+
+                                            <a class="mb-2 bg-danger text-white dropdown-item"
+                                               href="{{ path('confirma_consulta', {'id': consulta.id, 'confirmada': 0}) }}" title="Desmarcar"
+                                               data-toggle="tooltip" data-placement="top"><i
+                                                        class="fa fa-thumbs-down"></i>&nbsp;&nbsp; Desmarcar</a>
+                                        </div>
+                                    </div>
+
+
 
 
 
