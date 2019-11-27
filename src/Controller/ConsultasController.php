@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Acesso;
 use App\Entity\Consultas;
+use App\Entity\Funcionarios;
+use App\Entity\Perfil;
 use App\Form\ConsultasType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,11 +38,24 @@ class ConsultasController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $consulta = new Consultas();
+        $perfil = $this->getDoctrine()->getRepository(Perfil::class)
+                    ->findOneBy([
+                        'nome' => 'Psicólogo'
+                    ]);
+
+        $acesso = $entityManager->getRepository(Acesso::class)->findBy([
+            'perfil' => $perfil->getIdperfil()
+        ]);
+        $funcionarios = [];
+        foreach ($acesso as $ac){
+            $funcionarios[] = $ac->getFuncionarios();
+        }
+
         $form = $this->createForm(ConsultasType::class, $consulta, array(
-            'psicologos' => $entityManager->getRepository(Acesso::class)->findBy([
-                'perfil' => 4
-            ])
-        ));
+            'psicologos' => $funcionarios
+            )
+        );
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

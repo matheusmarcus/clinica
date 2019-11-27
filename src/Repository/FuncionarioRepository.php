@@ -33,6 +33,16 @@ class FuncionarioRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findByExampleField()
+    {
+        return $this->createQueryBuilder('f')
+            ->select('f')
+            ->leftJoin('f.acesso', 'a', 'ON', 'f.id = a.funcionario_id')
+//            ->where('c.username = :username')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     public function buscaPsicologos(){
         $conn = $this->getEntityManager()
@@ -40,8 +50,10 @@ class FuncionarioRepository extends ServiceEntityRepository
         $sql = "select * from clinica.funcionarios f 
                 inner join clinica.acesso a on f.id = a.funcionarios_id
                 inner join clinica.perfil p on a.perfil_idperfil = p.idperfil
-                where p.idperfil = 4";
+                where p.nome LIKE :nome";
         $stmt = $conn->prepare($sql);
+        $nome = '%logo%';
+        $stmt->bindParam(':nome', $nome);
         $stmt->execute();
         return $stmt->fetchAll();
     }
