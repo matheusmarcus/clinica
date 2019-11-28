@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,12 +25,12 @@ class PacientesType extends AbstractType
                     'class' => 'datepicker'
                 )
             ))
-            ->add('dataCadastro', DateType::class, array(
-                'widget' => 'single_text',
-                'format' => 'dd/MM/yyyy',
-                'attr' => array(
-                    'class' => 'datepicker'
-                )
+            ->add('dataCadastro', HiddenType::class, array(
+//                'widget' => 'single_text',
+//                'format' => 'dd/MM/yyyy',
+//                'attr' => array(
+//                    'class' => 'datepicker'
+//                )
             ))
             ->add('sexo', ChoiceType::class, [
                 'label' => 'Sexo',
