@@ -22,12 +22,14 @@
 
                     <div class="btn-group" role="group">
                         <label for="">Filtro por psicólogos: </label>&nbsp;&nbsp;&nbsp;
-                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Psicólogos
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                             {% for psi in psicologos %}
-                                <a class="dropdown-item" href="{{ path('agenda_especifica', {'psicologo': psi.id}) }}">{{ psi.nome }}</a>
+                                <a class="dropdown-item"
+                                   href="{{ path('agenda_especifica', {'psicologo': psi.id}) }}">{{ psi.nome }}</a>
                             {% endfor %}
                         </div>
                     </div>
@@ -57,59 +59,57 @@
                         <tbody>
                         {% for consulta in consultas %}
                             {% if consulta.consultaConfirmada %}
-                            <tr class="text-success">
+                                <tr class="text-success">
                             {% else %}
-                            <tr class="text-danger">
+                                <tr class="text-danger">
                             {% endif %}
-                                <td>{{ consulta.data ? consulta.data|date('d/m/Y H:i:s') : '' }}</td>
-                                <td>R$ {{ consulta.valorConsulta|number_format(2, ',', '.') }}</td>
-                                <td>{{ consulta.consultaConfirmada ? 'Sim' : 'Não' }}</td>
-                                <td>{{ consulta.funcionarios }}</td>
-                                <td>{{ consulta.idpacientes }}</td>
-                                <td>{{ consulta.tipoConsultatipoConsulta }}</td>
-                                <td>
+                            <td>{{ consulta.data ? consulta.data|date('d/m/Y H:i:s') : '' }}</td>
+                            <td>R$ {{ consulta.valorConsulta|number_format(2, ',', '.') }}</td>
+                            <td>{{ consulta.consultaConfirmada ? 'Sim' : 'Não' }}</td>
+                            <td>{{ consulta.funcionarios }}</td>
+                            <td>{{ consulta.idpacientes }}</td>
+                            <td>{{ consulta.tipoConsultatipoConsulta }}</td>
+                            <td>
 
-                                    <div class="btn-group" role="group">
-                                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Ações
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <a class="mb-2 bg-secondary text-white text-center dropdown-item"
-                                               href="{{ path('consultas_show', {'id': consulta.id}) }}" title="Ver"
-                                               data-toggle="tooltip" data-placement="top"><i
-                                                        class="fa fa-eye"></i> &nbsp;&nbsp; Ver</a>
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Ações
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <a class="mb-2 bg-secondary text-white text-center dropdown-item"
+                                           href="{{ path('consultas_show', {'id': consulta.id}) }}" title="Ver"
+                                           data-toggle="tooltip" data-placement="top"><i
+                                                    class="fa fa-eye"></i> &nbsp;&nbsp; Ver</a>
 
-                                            <a class="mb-2 bg-primary text-white dropdown-item"
-                                               href="{{ path('consultas_edit', {'id': consulta.id}) }}" title="Editar"
-                                               data-toggle="tooltip" data-placement="top"><i
-                                                        class="fa fa-edit"></i>&nbsp;&nbsp; Editar</a>
+                                        <a class="mb-2 bg-primary text-white dropdown-item"
+                                           href="{{ path('consultas_edit', {'id': consulta.id}) }}" title="Editar"
+                                           data-toggle="tooltip" data-placement="top"><i
+                                                    class="fa fa-edit"></i>&nbsp;&nbsp; Editar</a>
 
-                                            <a class="mb-2 bg-success text-white dropdown-item"
-                                               href="{{ path('confirma_consulta', {'id': consulta.id, 'confirmada': 1}) }}" title="Confirmar"
-                                               data-toggle="tooltip" data-placement="top"><i
-                                                        class="fa fa-thumbs-up"></i> &nbsp;&nbsp; Confirmar</a>
+                                        <a class="mb-2 bg-success text-white dropdown-item"
+                                           href="{{ path('confirma_consulta', {'id': consulta.id, 'confirmada': 1}) }}"
+                                           title="Confirmar"
+                                           data-toggle="tooltip" data-placement="top"><i
+                                                    class="fa fa-thumbs-up"></i> &nbsp;&nbsp; Confirmar</a>
 
-                                            <a class="mb-2 bg-danger text-white dropdown-item"
-                                               href="{{ path('confirma_consulta', {'id': consulta.id, 'confirmada': 0}) }}" title="Desmarcar"
-                                               data-toggle="tooltip" data-placement="top"><i
-                                                        class="fa fa-thumbs-down"></i>&nbsp;&nbsp; Desmarcar</a>
-                                        </div>
+                                        <a class="mb-2 bg-danger text-white dropdown-item"
+                                           href="{{ path('confirma_consulta', {'id': consulta.id, 'confirmada': 0}) }}"
+                                           title="Desmarcar"
+                                           data-toggle="tooltip" data-placement="top"><i
+                                                    class="fa fa-thumbs-down"></i>&nbsp;&nbsp; Desmarcar</a>
                                     </div>
+                                </div>
 
 
-
-
-
-
-
-{#                                    <a href="{{ path('consultas_show', {'id': consulta.id}) }}">show</a>#}
-{#                                    <a href="{{ path('consultas_edit', {'id': consulta.id}) }}">edit</a>#}
-                                </td>
+                                {#                                    <a href="{{ path('consultas_show', {'id': consulta.id}) }}">show</a>#}
+                                {#                                    <a href="{{ path('consultas_edit', {'id': consulta.id}) }}">edit</a>#}
+                            </td>
                             </tr>
-{#                        {% else %}#}
-{#                            <tr>#}
-{#                                <td colspan="5">no records found</td>#}
-{#                            </tr>#}
+                            {#                        {% else %}#}
+                            {#                            <tr>#}
+                            {#                                <td colspan="5">no records found</td>#}
+                            {#                            </tr>#}
                         {% endfor %}
                         </tbody>
                     </table>
@@ -118,7 +118,7 @@
         </div>
     </div>
 
-{#    <a href="{{ path('consultas_new') }}">Create new</a>#}
+    {#    <a href="{{ path('consultas_new') }}">Create new</a>#}
 
 
     <script>
