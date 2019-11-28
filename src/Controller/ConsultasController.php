@@ -25,9 +25,10 @@ class ConsultasController extends AbstractController
         $consultas = $this->getDoctrine()
             ->getRepository(Consultas::class)
             ->findAll();
-
+        $funcionarios = $this->buscaPsicologos();
         return $this->render('consultas/index.html.twig', [
             'consultas' => $consultas,
+            'psicologos' => $funcionarios
         ]);
     }
 
@@ -39,9 +40,11 @@ class ConsultasController extends AbstractController
         $consultas = $this->getDoctrine()
             ->getRepository(Consultas::class)
             ->findAll();
+        $psicologos = $this->buscaPsicologos();
 
         return $this->render('consultas/index.html.twig', [
             'consultas' => $consultas,
+            'psicologos' => $psicologos
         ]);
     }
 
@@ -56,9 +59,11 @@ class ConsultasController extends AbstractController
                 'funcionarios' => $psicologo->getId(),
                 'consultaConfirmada' => 1
             ]);
+        $psicologos = $this->buscaPsicologos();
 
         return $this->render('consultas/index.html.twig', [
             'consultas' => $consultas,
+            'psicologos' => $psicologos
         ]);
     }
 
@@ -69,18 +74,8 @@ class ConsultasController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $consulta = new Consultas();
-        $perfil = $this->getDoctrine()->getRepository(Perfil::class)
-                    ->findOneBy([
-                        'nome' => 'Psicólogo'
-                    ]);
 
-        $acesso = $entityManager->getRepository(Acesso::class)->findBy([
-            'perfil' => $perfil->getIdperfil()
-        ]);
-        $funcionarios = [];
-        foreach ($acesso as $ac){
-            $funcionarios[] = $ac->getFuncionarios();
-        }
+        $funcionarios = $this->buscaPsicologos();
 
         $form = $this->createForm(ConsultasType::class, $consulta, array(
             'psicologos' => $funcionarios
@@ -178,5 +173,23 @@ class ConsultasController extends AbstractController
         }
 
         return $this->redirectToRoute('consultas_index');
+    }
+
+    public function buscaPsicologos()
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $perfil = $this->getDoctrine()->getRepository(Perfil::class)
+            ->findOneBy([
+                'nome' => 'Psicólogo'
+            ]);
+
+        $acesso = $entityManager->getRepository(Acesso::class)->findBy([
+            'perfil' => $perfil->getIdperfil()
+        ]);
+        $funcionarios = [];
+        foreach ($acesso as $ac){
+            $funcionarios[] = $ac->getFuncionarios();
+        }
+        return $funcionarios;
     }
 }
