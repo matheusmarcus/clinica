@@ -19,9 +19,19 @@
                     </div>
                 </div>
                 <div class="page-title-actions">
-{#                    <form action="">#}
-{#                        <input type="text">#}
-{#                    </form>#}
+
+                    <div class="btn-group" role="group">
+                        <label for="">Filtro por psicólogos: </label>&nbsp;&nbsp;&nbsp;
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Psicólogos
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            {% for psi in psicologos %}
+                                <a class="dropdown-item" href="{{ path('agenda_especifica', {'psicologo': psi.id}) }}">{{ psi.nome }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+
                     <a class="btn btn-success m-3" href="{{ path('consultas_new') }}"><i class="fa fa-plus"></i>
                         Cadastrar</a>
                 </div>

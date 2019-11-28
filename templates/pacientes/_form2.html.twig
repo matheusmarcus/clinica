@@ -32,10 +32,10 @@
     <div class="col-md-6">{{ form_row(form2.roles) }}</div>
 </div>
 
-{{ form_end(form) }}
-            {{ form_end(form2) }}
 
 
 <hr>
 <a href="{{ path('pacientes_index') }}" class="btn btn-secondary">Voltar</a>
 <button class="btn btn-success" id="btnFormPaciente">{{ button_label|default('Salvar') }}</button>
+{{ form_end(form) }}
+            {{ form_end(form2) }}
