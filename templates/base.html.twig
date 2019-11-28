@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://nightly.datatables.net/responsive/css/responsive.bootstrap4.min.css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
     <style>
         body {
             table-layout: fixed;
@@ -260,17 +261,6 @@
         <div class="app-main__outer">
             <div class="app-main__inner">
                 {% include 'includes/message.html.twig' %}
-                {% block body %}
-                    {#                    TODO: IMPLEMENTAR#}
-                    {#                    {% for type, messages in app.session.flashbag.all() %}#}
-                    {#                        {% for message in messages %}#}
-                    {#                            <div class="alert alert-dismissible alert-{{ type }}" data-animate="true" style="">#}
-                    {#                                <button type="button" class="close" data-dismiss="alert" aria-label="Fechar" ><span aria-hidden="true">×</span></button>#}
-                    {#                                {{ message|raw }}#}
-                    {#                            </div>#}
-                    {#                        {% endfor %}#}
-                    {#                    {% endfor %}#}
-                {% endblock %}
             </div>
             <div class="app-wrapper-footer">
                 <div class="app-footer">
@@ -385,6 +375,7 @@ Cadastro e atualização da chave da API;
         browser_spellcheck: true
     });
 </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 
 {#<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>#}

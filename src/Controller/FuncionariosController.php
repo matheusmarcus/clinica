@@ -57,7 +57,7 @@ class FuncionariosController extends AbstractController
                 $entityManager->persist($acesso);
                 $entityManager->flush();
             }
-
+            $this->addFlash('success', 'Item cadastrado com sucesso');
             return $this->redirectToRoute('funcionarios_index');
         }
 

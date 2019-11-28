@@ -37,7 +37,7 @@ class AcessoType extends AbstractType
                 ),
                 'attr' => array(
                     'class' => 'select2',
-//                    'multiple' => 'multiple',
+                    'multiple' => 'multiple',
                     'placeholder' => '-- Selecione --',
                     'dir' => 'ltr',
                     'data-placeholder' => '-- Selecione --'

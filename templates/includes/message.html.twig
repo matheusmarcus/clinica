@@ -1,9 +1,35 @@
-{% for msg in app.session.flashBag.get('success') %}
-    <div class="alert alert-success text-center" style="font-size: 1.2em;">{{ msg|raw }}</div>
-{% endfor %}
-{% for msg in app.session.flashBag.get('warning') %}
-    <div class="alert alert-warning text-center" style="font-size: 1.2em;">{{ msg|raw }}</div>
-{% endfor %}
-{% for msg in app.session.flashBag.get('danger') %}
-    <div class="alert alert-danger text-center" style="font-size: 1.2em;">{{ msg|raw }}</div>
-{% endfor %}
+<script>
+    $(document).ready(function () {
+        {% for msg in app.session.flashBag.get('success') %}
+        toastr["success"]("{{ msg|raw }}");
+        {% endfor %}
+        {% for msg in app.session.flashBag.get('info') %}
+        toastr["info"]("{{ msg|raw }}");
+        {% endfor %}
+        {% for msg in app.session.flashBag.get('warning') %}
+        toastr["warning"]("{{ msg|raw }}");
+        {% endfor %}
+        {% for msg in app.session.flashBag.get('error') %}
+        toastr["error"]("{{ msg|raw }}");
+        {% endfor %}
+
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    });
+
+</script>
