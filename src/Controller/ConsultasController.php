@@ -108,6 +108,7 @@ class ConsultasController extends AbstractController
             }
             $entityManager->persist($consulta);
             $entityManager->flush();
+            $this->addFlash('success', 'Consulta Registrada, lembre-se de verificar a confirmação!');
 
             return $this->redirectToRoute('consultas_index');
         }
