@@ -499,8 +499,9 @@
                 </tbody>
             </table>
             <hr>
-            <a class="btn btn-secondary" href="{{ path('funcionarios_index') }}">Voltar à Lista</a>
-
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-secondary" href="{{ path('funcionarios_index') }}">Voltar à Lista</a>
+            {% endif %}
             <a class="btn btn-primary" href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}">Editar</a>
 
             {#            {{ include('funcionarios/_delete_form.html.twig') }}#}

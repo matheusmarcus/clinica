@@ -14,19 +14,15 @@
             <table class="table table-striped">
                 <tbody>
                 <tr>
-                    <th>Id</th>
-                    <td>{{ paciente.id }}</td>
-                </tr>
-                <tr>
                     <th>Nome</th>
                     <td>{{ paciente.nome }}</td>
                 </tr>
                 <tr>
-                    <th>DataNascimento</th>
+                    <th>Data de Nascimento</th>
                     <td>{{ paciente.dataNascimento ? paciente.dataNascimento|date('Y-m-d') : '' }}</td>
                 </tr>
                 <tr>
-                    <th>DataCadastro</th>
+                    <th>Data de Cadastro</th>
                     <td>{{ paciente.dataCadastro ? paciente.dataCadastro|date('Y-m-d H:i:s') : '' }}</td>
                 </tr>
                 <tr>
@@ -34,23 +30,23 @@
                     <td>{{ paciente.sexo }}</td>
                 </tr>
                 <tr>
-                    <th>EstadoCivil</th>
+                    <th>Estado Civil</th>
                     <td>{{ paciente.estadoCivil }}</td>
                 </tr>
                 <tr>
-                    <th>Profissao</th>
+                    <th>Profissão</th>
                     <td>{{ paciente.profissao }}</td>
                 </tr>
                 <tr>
-                    <th>TelefoneCelular</th>
+                    <th>Telefone Celular</th>
                     <td>{{ paciente.telefoneCelular }}</td>
                 </tr>
                 <tr>
-                    <th>Email</th>
+                    <th>E-mail</th>
                     <td>{{ paciente.email }}</td>
                 </tr>
                 <tr>
-                    <th>Endereco</th>
+                    <th>Endereço</th>
                     <td>{{ paciente.endereco }}</td>
                 </tr>
                 <tr>
@@ -72,7 +68,6 @@
                 </tbody>
             </table>
             <hr>
-            <a class="btn btn-secondary" href="{{ path('pacientes_index') }}">Voltar à Lista</a>
 
             <a class="btn btn-primary" href="{{ path('pacientes_edit', {'id': paciente.id}) }}">Editar</a>
 

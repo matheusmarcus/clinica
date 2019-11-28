@@ -22,9 +22,31 @@ class ConsultasController extends AbstractController
      */
     public function index(): Response
     {
-        $consultas = $this->getDoctrine()
-            ->getRepository(Consultas::class)
-            ->findAll();
+        if($this->isGranted('ROLE_PACIENTE')){
+            $consultas = $this->getDoctrine()
+                ->getRepository(Consultas::class)
+                ->findBy([
+                    'idpacientes' => $this->getUser()->getPacientes()->getId()
+                ]);
+
+        }else{
+            if($this->isGranted('ROLE_ADMIN')){
+                $consultas = $this->getDoctrine()
+                    ->getRepository(Consultas::class)
+                    ->findAll();
+            }elseif($this->isGranted('ROLE_PSICOLOGO')){
+                $consultas = $this->getDoctrine()
+                    ->getRepository(Consultas::class)
+                    ->findBy([
+                        'funcionarios' => $this->getUser()->getFuncionarios()->getId(),
+                    ]);
+            }else{
+                $consultas = $this->getDoctrine()
+                    ->getRepository(Consultas::class)
+                    ->findAll();
+            }
+
+        }
         $funcionarios = $this->buscaPsicologos();
         return $this->render('consultas/index.html.twig', [
             'consultas' => $consultas,
@@ -32,21 +54,6 @@ class ConsultasController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/", name="agenda", methods={"GET"})
-     */
-    public function agenda(): Response
-    {
-        $consultas = $this->getDoctrine()
-            ->getRepository(Consultas::class)
-            ->findAll();
-        $psicologos = $this->buscaPsicologos();
-
-        return $this->render('consultas/index.html.twig', [
-            'consultas' => $consultas,
-            'psicologos' => $psicologos
-        ]);
-    }
 
     /**
      * @Route("/{psicologo}/agenda", name="agenda_especifica", methods={"GET"})
@@ -57,7 +64,6 @@ class ConsultasController extends AbstractController
             ->getRepository(Consultas::class)
             ->findBy([
                 'funcionarios' => $psicologo->getId(),
-                'consultaConfirmada' => 1
             ]);
         $psicologos = $this->buscaPsicologos();
 
@@ -121,7 +127,10 @@ class ConsultasController extends AbstractController
      */
     public function edit(Request $request, Consultas $consulta): Response
     {
-        $form = $this->createForm(ConsultasType::class, $consulta);
+        $funcionarios = $this->buscaPsicologos();
+        $form = $this->createForm(ConsultasType::class, $consulta, [
+            'psicologos' => $funcionarios
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -40,7 +40,7 @@
                         <tbody>
                         {% for exame in exames %}
                             <tr>
-                                <td>{{ exame.data ? exame.data|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ exame.data ? exame.data|date('d/m/Y H:i:s') : '' }}</td>
                                 <td>{{ exame.imagens }}</td>
                                 <td>{{ exame.funcionarios }}</td>
                                 <td>{{ exame.idpacientes }}</td>

@@ -43,8 +43,16 @@
                                 <td>{{ tipo_consultum.nome }}</td>
                                 <td>{{ tipo_consultum.descricao }}</td>
                                 <td>
-                                    <a href="{{ path('tipo_consulta_show', {'idtipoConsulta': tipo_consultum.idtipoConsulta}) }}">show</a>
-                                    <a href="{{ path('tipo_consulta_edit', {'idtipoConsulta': tipo_consultum.idtipoConsulta}) }}">edit</a>
+                                    <a class="mb-2 mr-2 btn btn-primary"
+                                       href="{{ path('tipo_consulta_show', {'idtipoConsulta': tipo_consultum.idtipoConsulta}) }}" title="Ver"
+                                       data-toggle="tooltip" data-placement="bottom"><i
+                                                class="fa fa-eye"></i></a>
+
+                                    <a class="mb-2 mr-2 btn btn-success"
+                                       href="{{ path('tipo_consulta_edit', {'idtipoConsulta': tipo_consultum.idtipoConsulta}) }}" title="Editar"
+                                       data-toggle="tooltip" data-placement="bottom"><i
+                                                class="fa fa-edit"></i></a>
+
                                 </td>
                             </tr>
                             {#        {% else %}#}

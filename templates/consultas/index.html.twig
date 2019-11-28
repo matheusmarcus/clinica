@@ -20,20 +20,23 @@
                 </div>
                 <div class="page-title-actions">
 
-                    <div class="btn-group" role="group">
-                        <label for="">Filtro por psicólogos: </label>&nbsp;&nbsp;&nbsp;
-                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Psicólogos
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            {% for psi in psicologos %}
-                                <a class="dropdown-item" href="{{ path('agenda_especifica', {'psicologo': psi.id}) }}">{{ psi.nome }}</a>
-                            {% endfor %}
-                        </div>
-                    </div>
-
-                    <a class="btn btn-success m-3" href="{{ path('consultas_new') }}"><i class="fa fa-plus"></i>
-                        Cadastrar</a>
+                    {% if is_granted('ROLE_ATENDENTE') %}
+                        {% if ('tendente' in app.user.perfil.nome or is_granted('ROLE_ADMIN')) %}
+                            <div class="btn-group" role="group">
+                                <label for="">Filtro por psicólogos: </label>&nbsp;&nbsp;&nbsp;
+                                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Psicólogos
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                    {% for psi in psicologos %}
+                                        <a class="dropdown-item" href="{{ path('agenda_especifica', {'psicologo': psi.id}) }}">{{ psi.nome }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                        <a class="btn btn-success m-3" href="{{ path('consultas_new') }}"><i class="fa fa-plus"></i>
+                            Cadastrar</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -47,8 +50,8 @@
                         <tr>
                             <th>Data</th>
                             <th>Valor da Consulta</th>
-                            <th>Consulta Confirmada</th>
-                            <th>Funcionário</th>
+                            <th>Consulta Confirmada?</th>
+                            <th>Psicólogo</th>
                             <th>Paciente</th>
                             <th>Tipo de Consulta</th>
                             <th>Ações</th>
@@ -78,12 +81,12 @@
                                                href="{{ path('consultas_show', {'id': consulta.id}) }}" title="Ver"
                                                data-toggle="tooltip" data-placement="top"><i
                                                         class="fa fa-eye"></i> &nbsp;&nbsp; Ver</a>
-
-                                            <a class="mb-2 bg-primary text-white dropdown-item"
-                                               href="{{ path('consultas_edit', {'id': consulta.id}) }}" title="Editar"
-                                               data-toggle="tooltip" data-placement="top"><i
-                                                        class="fa fa-edit"></i>&nbsp;&nbsp; Editar</a>
-
+                                            {% if is_granted('ROLE_ATENDENTE') %}
+                                                <a class="mb-2 bg-primary text-white dropdown-item"
+                                                   href="{{ path('consultas_edit', {'id': consulta.id}) }}" title="Editar"
+                                                   data-toggle="tooltip" data-placement="top"><i
+                                                            class="fa fa-edit"></i>&nbsp;&nbsp; Editar</a>
+                                            {% endif %}
                                             <a class="mb-2 bg-success text-white dropdown-item"
                                                href="{{ path('confirma_consulta', {'id': consulta.id, 'confirmada': 1}) }}" title="Confirmar"
                                                data-toggle="tooltip" data-placement="top"><i
