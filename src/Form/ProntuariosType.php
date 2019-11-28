@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Pacientes;
 use App\Entity\Prontuarios;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -33,13 +35,14 @@ class ProntuariosType extends AbstractType
                     'class' => 'select2'
                 )
             ))
-            ->add('idpacientes', ChoiceType::class, array(
+            ->add('idpacientes', EntityType::class, array(
                 'label' => 'Paciente',
                 'multiple' => false,
-                'placeholder' => '-- Selecione --',
+                'class'=> Pacientes::class,
+                'choice_label' => 'nome',
                 'attr' => array(
                     'class' => 'select2'
-                )
+                ),
             ));
     }
 

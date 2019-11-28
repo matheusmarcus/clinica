@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Exames;
+use App\Entity\Pacientes;
 use App\Form\ExamesType;
 use PhpParser\Node\Scalar\MagicConst\File;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,6 +37,10 @@ class ExamesController extends AbstractController
     public function new(Request $request): Response
     {
         $exame = new Exames();
+        if($request->query->get('paciente')){
+            $paciente = $this->getDoctrine()->getRepository(Pacientes::class)->find($request->query->get('paciente'));
+            $exame->setIdpacientes($paciente);
+        }
         $form = $this->createForm(ExamesType::class, $exame);
         $form->handleRequest($request);
 

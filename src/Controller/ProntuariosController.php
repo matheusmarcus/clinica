@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Pacientes;
 use App\Entity\Prontuarios;
 use App\Form\ProntuariosType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,6 +35,10 @@ class ProntuariosController extends AbstractController
     public function new(Request $request): Response
     {
         $prontuario = new Prontuarios();
+        if($request->query->get('paciente')){
+            $paciente = $this->getDoctrine()->getRepository(Pacientes::class)->find($request->query->get('paciente'));
+            $prontuario->setIdpacientes($paciente);
+        }
         $form = $this->createForm(ProntuariosType::class, $prontuario);
         $form->handleRequest($request);
 
