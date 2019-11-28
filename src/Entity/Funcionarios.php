@@ -127,9 +127,10 @@ class Funcionarios
     /**
      * @param \DateTime $dataAdmissao
      */
-    public function setDataAdmissao(\DateTime $dataAdmissao): void
+    public function setDataAdmissao(\DateTime $dataAdmissao)
     {
         $this->dataAdmissao = $dataAdmissao;
+        return $this;
     }
 
     /**

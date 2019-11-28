@@ -24,13 +24,13 @@ class FuncionariosType extends AbstractType
                     'class' => 'datepicker'
                 )
             ))
-            ->add('dataAdmissao', DateType::class, array(
-                'widget' => 'single_text',
-                'format' => 'dd/MM/yyyy',
-                'attr' => array(
-                    'class' => 'datepicker'
-                )
-            ))
+//            ->add('dataAdmissao', DateType::class, array(
+//                'widget' => 'single_text',
+//                'format' => 'dd/MM/yyyy',
+//                'attr' => array(
+//                    'class' => 'datepicker'
+//                )
+//            ))
             ->add('sexo', ChoiceType::class, [
                 'label' => 'Sexo:',
                 'multiple' => false,

@@ -47,6 +47,7 @@ class FuncionariosController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $funcionario
+                ->setDataAdmissao(new \DateTime())
                 ->setAtivo(1);
             $entityManager->persist($funcionario);
             $entityManager->flush();

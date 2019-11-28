@@ -1,3 +1,4 @@
+{{ form_start(form) }}
 <h5 class="card-title">Dados Profissionais</h5>
 <div class="form-row">
     <div class="col-md-6">{{ form_row(form.nome) }}</div>
@@ -8,6 +9,7 @@
     <div class="col-md-6">{{ form_row(form.telefoneCelular) }}</div>
 </div>
 <hr>
+{{ form_start(form2) }}
 <h5 class="card-title">Dados de Acesso</h5>
 <div class="form-row">
     <div class="col-md-6">{{ form_row(form2.usuario) }}</div>
@@ -18,13 +20,10 @@
     <div class="col-md-6">{{ form_row(form2.roles) }}</div>
 </div>
 
-
-{#{{ form_start(form) }}#}
-{#    {{ form_widget(form) }}#}
-{#    {{ form_start(form2) }}#}
-{#        {{ form_widget(form2) }}#}
-    {{ form_end(form2) }}
-{{ form_end(form) }}
+    {{ form_widget(form) }}
+        {{ form_widget(form2) }}
 <hr>
 <a class="btn btn-secondary" href="{{ path('funcionarios_index') }}">Voltar à Lista</a>
 <button class="btn btn-success" id="btnFormFuncionario">{{ button_label|default('Salvar') }}</button>
+{{ form_end(form2) }}
+{{ form_end(form) }}
