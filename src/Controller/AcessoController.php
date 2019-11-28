@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Acesso;
+use App\Entity\Funcionarios;
 use App\Form\AcessoType;
+use App\Form\ChangePasswordType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

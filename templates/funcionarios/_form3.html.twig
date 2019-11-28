@@ -1,0 +1,29 @@
+<form action="{{ path('funcionario_change_password') }}" method="post">
+    <div class="form-row">
+        <div class="col-md-4">
+            <div class="position-relative form-group">
+                <label for="passwordcurrent" class="">Senha Atual</label>
+                <input name="email" id="passwordcurrent" placeholder="Digite a senha atual..." type="password"
+                       class="form-control" required>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="position-relative form-group">
+                <label for="newpassword" class="">Nova Senha</label>
+                <input name="email" id="newpassword" placeholder="Digite uma nova senha..." type="password"
+                       class="form-control" required>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="position-relative form-group">
+                <label for="confirmNewPassword" class="">Confirmar Senha</label>
+                <input name="email" id="confirmNewPassword" placeholder="Confirme a nova senha..." type="password"
+                       class="form-control" required>
+            </div>
+        </div>
+    </div>
+</form>
+
+<hr>
+<a class="btn btn-secondary" href="{{ path('funcionarios_index') }}">Voltar à Lista</a>
+<button class="btn btn-success" id="btnFormFuncionario">{{ button_label|default('Salvar') }}</button>

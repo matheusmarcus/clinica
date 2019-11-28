@@ -59,7 +59,7 @@
 
             <a class="btn btn-primary" href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}">Editar</a>
 
-            <a class="btn btn-alternate" href="#">Alterar Senha</a>
+            <a class="btn btn-alternate" href="{{ path('funcionario_change_password') }}">Alterar Senha</a>
         </div>
     </div>
 {% endblock %}

@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\Acesso;
 use App\Entity\Funcionarios;
 use App\Form\AcessoType;
+use App\Form\ChangePasswordType;
 use App\Form\FuncionariosType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -122,11 +124,26 @@ class FuncionariosController extends AbstractController
      */
     public function desativar(Funcionarios $funcionario): Response
     {
-        //TODO: Está funcional, mas falta verificar o por quê de demorar tanto para redirecionar para index
         $em = $this->getDoctrine()->getManager();
         $funcionario->setAtivo(0);
         $em->persist($funcionario);
         $em->flush();
+        $this->addFlash('success', 'O item foi atualizado com sucesso.');
         return $this->redirectToRoute('funcionarios_index');
+    }
+
+    /**
+     * @Route("/change-password/", name="funcionario_change_password", methods={"GET","POST"})
+     */
+    public function changePassword(Request $request): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $funcionarioid = $request->request->get('id');
+        $senha = $request->request->get('');
+        $confirmaSenha = $request->request->get('');
+
+        return $this->render('funcionarios/changePassword.html.twig', array(
+        ));
     }
 }
