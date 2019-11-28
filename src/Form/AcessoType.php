@@ -16,8 +16,6 @@ class AcessoType extends AbstractType
         $builder
             ->add('usuario')
             ->add('password', PasswordType::class)
-//            ->add('funcionarios')
-//            ->add('pacientes')
             ->add('perfil', null, [
                 'required' => true,
                 'placeholder' => '-- Selecione --',

@@ -3,7 +3,7 @@
 {% block title %}Edit Acesso{% endblock %}
 
 {% block body %}
-{#    <h1>Edit Acesso</h1>#}
+    {#    <h1>Edit Acesso</h1>#}
 
     <div class="page-header">
         <h1>
@@ -16,5 +16,10 @@
         </div>
     </div>
 
-{#    {{ include('acesso/_delete_form.html.twig') }}#}
+    <script>
+        $('#acesso_password').prop({
+            'readonly': true,
+            'placeholder': '•••••••••••••••••••'
+        });
+    </script>
 {% endblock %}

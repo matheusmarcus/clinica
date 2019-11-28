@@ -88,7 +88,7 @@ class AcessoController extends AbstractController
      */
     public function delete(Request $request, Acesso $acesso): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$acesso->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $acesso->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($acesso);
             $entityManager->flush();
