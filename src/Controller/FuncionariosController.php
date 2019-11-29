@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Acesso;
 use App\Entity\Funcionarios;
 use App\Form\AcessoType;
-use App\Form\ChangePasswordType;
 use App\Form\FuncionariosType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
@@ -132,18 +131,5 @@ class FuncionariosController extends AbstractController
         return $this->redirectToRoute('funcionarios_index');
     }
 
-    /**
-     * @Route("/change-password/", name="funcionario_change_password", methods={"GET","POST"})
-     */
-    public function changePassword(Request $request): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
 
-        $funcionarioid = $request->request->get('id');
-        $senha = $request->request->get('');
-        $confirmaSenha = $request->request->get('');
-
-        return $this->render('funcionarios/changePassword.html.twig', array(
-        ));
-    }
 }
