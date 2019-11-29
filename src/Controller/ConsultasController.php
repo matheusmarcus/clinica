@@ -80,14 +80,26 @@ class ConsultasController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $consulta = new Consultas();
+        $perfil = $this->getDoctrine()->getRepository(Perfil::class)
+            ->findOneBy([
+                'nome' => 'Psicólogo'
+            ]);
+
+        $acesso = $entityManager->getRepository(Acesso::class)->findBy([
+            'perfil' => $perfil->getIdperfil()
+        ]);
+
+        $funcionarios = [];
+        foreach ($acesso as $ac) {
+            $funcionarios[] = $ac->getFuncionarios();
+        }
 
         $funcionarios = $this->buscaPsicologos();
 
         $form = $this->createForm(ConsultasType::class, $consulta, array(
             'psicologos' => $funcionarios
-            )
-        );
-        
+        ));
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -96,12 +108,13 @@ class ConsultasController extends AbstractController
                 'funcionarios' => $consulta->getFuncionarios()->getId(),
                 'consultaConfirmada' => 1
             ]);
-            if($temConflito){
+            if ($temConflito) {
                 $this->addFlash('warning', 'Esse psicólogo já tem esse horário ocupado.');
                 return $this->redirectToRoute('consultas_new');
             }
             $entityManager->persist($consulta);
             $entityManager->flush();
+            $this->addFlash('success', 'Consulta Registrada, lembre-se de verificar a confirmação!');
 
             return $this->redirectToRoute('consultas_index');
         }
@@ -150,23 +163,23 @@ class ConsultasController extends AbstractController
      */
     public function confirma(Consultas $consulta, $confirmada): Response
     {
-            $temConflito = $this->getDoctrine()->getRepository(Consultas::class)->findBy([
-                'data' => $consulta->getData(),
-                'funcionarios' => $consulta->getFuncionarios()->getId(),
-                'consultaConfirmada' => 1
-            ]);
-            if($temConflito && $confirmada){
-                $this->addFlash('warning', 'Esse psicólogo já tem esse horário ocupado.');
-                return $this->redirectToRoute('consultas_index');
-            }
-            $consulta->setConsultaConfirmada($confirmada);
-            $this->getDoctrine()->getManager()->flush();
-            if($confirmada){
-                $this->addFlash('success', 'Consulta confirmada!');
-            }else{
-                $this->addFlash('success', 'Consulta desmarcada!');
-            }
+        $temConflito = $this->getDoctrine()->getRepository(Consultas::class)->findBy([
+            'data' => $consulta->getData(),
+            'funcionarios' => $consulta->getFuncionarios()->getId(),
+            'consultaConfirmada' => 1
+        ]);
+        if ($temConflito && $confirmada) {
+            $this->addFlash('warning', 'Esse psicólogo já tem esse horário ocupado.');
             return $this->redirectToRoute('consultas_index');
+        }
+        $consulta->setConsultaConfirmada($confirmada);
+        $this->getDoctrine()->getManager()->flush();
+        if ($confirmada) {
+            $this->addFlash('success', 'Consulta confirmada!');
+        } else {
+            $this->addFlash('success', 'Consulta desmarcada!');
+        }
+        return $this->redirectToRoute('consultas_index');
 
     }
 
@@ -196,7 +209,7 @@ class ConsultasController extends AbstractController
             'perfil' => $perfil->getIdperfil()
         ]);
         $funcionarios = [];
-        foreach ($acesso as $ac){
+        foreach ($acesso as $ac) {
             $funcionarios[] = $ac->getFuncionarios();
         }
         return $funcionarios;

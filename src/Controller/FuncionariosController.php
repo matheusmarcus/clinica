@@ -7,6 +7,7 @@ use App\Entity\Funcionarios;
 use App\Form\AcessoType;
 use App\Form\FuncionariosType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,6 +48,7 @@ class FuncionariosController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $funcionario
+                ->setDataAdmissao(new \DateTime())
                 ->setAtivo(1);
             $entityManager->persist($funcionario);
             $entityManager->flush();
@@ -57,7 +59,7 @@ class FuncionariosController extends AbstractController
                 $entityManager->persist($acesso);
                 $entityManager->flush();
             }
-
+            $this->addFlash('success', 'Item cadastrado com sucesso');
             return $this->redirectToRoute('funcionarios_index');
         }
 
@@ -121,11 +123,13 @@ class FuncionariosController extends AbstractController
      */
     public function desativar(Funcionarios $funcionario): Response
     {
-        //TODO: Está funcional, mas falta verificar o por quê de demorar tanto para redirecionar para index
         $em = $this->getDoctrine()->getManager();
         $funcionario->setAtivo(0);
         $em->persist($funcionario);
         $em->flush();
+        $this->addFlash('success', 'O item foi atualizado com sucesso.');
         return $this->redirectToRoute('funcionarios_index');
     }
+
+
 }

@@ -27,6 +27,8 @@ class ConsultasType extends AbstractType
         $builder
             ->add('data', DateTimeType::class, array(
                 'label' => 'Data',
+//                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy H:i:s',
                 'widget' => 'choice',
                 'hours' => range(8, 16),
                 'minutes' => [0],
@@ -54,7 +56,7 @@ class ConsultasType extends AbstractType
                 'label' => 'Psicólogo',
                 'multiple' => false,
                 'placeholder' => '-- Selecione --',
-                'class'=> Funcionarios::class,
+                'class' => Funcionarios::class,
                 'choice_label' => 'nome',
                 'attr' => array(
                     'class' => 'select2'
@@ -65,7 +67,7 @@ class ConsultasType extends AbstractType
                 'label' => 'Paciente',
                 'multiple' => false,
                 'placeholder' => '-- Selecione --',
-                'class'=> Pacientes::class,
+                'class' => Pacientes::class,
                 'choice_label' => 'nome',
                 'attr' => array(
                     'class' => 'select2'

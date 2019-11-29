@@ -63,6 +63,11 @@ class Funcionarios
     */
     private $ativo;
 
+    public function __construct()
+    {
+        return $this->nome;
+    }
+
     /**
      * @return int
      */
@@ -122,9 +127,10 @@ class Funcionarios
     /**
      * @param \DateTime $dataAdmissao
      */
-    public function setDataAdmissao(\DateTime $dataAdmissao): void
+    public function setDataAdmissao(\DateTime $dataAdmissao)
     {
         $this->dataAdmissao = $dataAdmissao;
+        return $this;
     }
 
     /**

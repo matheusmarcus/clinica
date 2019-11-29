@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{1dbc7d90aa, bootstrap-clockpicker, bootstrap-datepicker, bootstrap-datetimepicker, dataTables.bootstrap4, dataTables.responsive, jquery-3.4.1, jquery.dataTables, jquery.validate, materialize, mdb, moment-with-locales, popper, responsive.bootstrap4, select2, svgembedder, tempusdominus-bootstrap-4, tinymce, tippy-bundle.iife}" />
+    <file url="PROJECT" libraries="{1dbc7d90aa, bootstrap-clockpicker, bootstrap-datepicker, dataTables.bootstrap4, jquery.dataTables, mdb, popper, select2, svgembedder, toastr}" />
   </component>
 </project>

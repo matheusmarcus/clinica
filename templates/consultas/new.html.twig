@@ -4,7 +4,10 @@
 
 {% block body %}
     {#    <h1>Create new Consultas</h1>#}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" integrity="sha256-yMjaV542P+q1RnH6XByCPDfUFhmOafWbeLPmqKh11zo=" crossorigin="anonymous" />
+
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" integrity="sha256-yMjaV542P+q1RnH6XByCPDfUFhmOafWbeLPmqKh11zo=" crossorigin="anonymous" />#}
+    <link rel="stylesheet" href="{{ asset('assets/datetimepicker/bootstrap-datetimepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/datetimepicker/bootstrap-datetimepicker-standalone.css') }}">
     <div class="page-header">
         <h1>
             <span class="text-muted font-weight-light">Sessão / </span>Cadastrar Sessão
@@ -16,8 +19,23 @@
             {{ include('consultas/_form.html.twig') }}
         </div>
     </div>
-
+{#        <script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha256-5YmaxAwMjIpMrVlK84Y/+NjCpKnFYa8bWWBbUHSBGfU=" crossorigin="anonymous"></script>#}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js" integrity="sha256-dgFbqbQVzjkZPQxWd8PBtzGiRBhChc4I2wO/q/s+Xeo=" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/datetimepicker/bootstrap-datetimepicker.js') }}"></script>
+    <script>
+        $(function () {
+            $('#consultas_data').datetimepicker({
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-arrow-up",
+                    down: "fa fa-arrow-down"
+                },
+                locale: 'pt-br',
+                format: 'DD/MM/YYYY HH:mm'
+            });
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha256-5YmaxAwMjIpMrVlK84Y/+NjCpKnFYa8bWWBbUHSBGfU=" crossorigin="anonymous"></script>
 
     {#<script>#}

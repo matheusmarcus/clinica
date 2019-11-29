@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Acesso;
+use App\Entity\Funcionarios;
 use App\Form\AcessoType;
+use App\Form\ChangePasswordType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -88,12 +91,47 @@ class AcessoController extends AbstractController
      */
     public function delete(Request $request, Acesso $acesso): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$acesso->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $acesso->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($acesso);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('acesso_index');
+    }
+
+    /**
+     * @Route("/change/password", name="change_password", methods={"GET","POST"})
+     */
+    public function changePassword(Request $request): Response
+    {
+        if($request->getMethod() == 'GET'){
+            return $this->render('acesso/changePassword.html.twig', array(
+            ));
+        }elseif ($request->getMethod() == 'POST'){
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $antigaSenha = $request->request->get('senhaAntiga');
+            $senha = $request->request->get('senhaNova');
+            $confirmaSenha = $request->request->get('senhaConfirmada');
+
+            if(sha1(md5($antigaSenha)) == $this->getUser()->getPassword()){
+                if($senha == $confirmaSenha){
+                    $this->getUser()->setPassword(sha1(md5($senha)));
+                    $entityManager->merge($this->getUser());
+                    $entityManager->flush();
+                    $this->addFlash('success', 'Senha alterada com sucesso!');
+                }else{
+                    $this->addFlash('error', 'As senhas de confirmação não correspondem!');
+                    return $this->redirectToRoute('change_password');
+                }
+            }else{
+                $this->addFlash('error', 'A senha antiga não confere!');
+                return $this->redirectToRoute('change_password');
+            }
+
+        }
+        return $this->redirectToRoute('consultas_index');
+
     }
 }

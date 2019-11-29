@@ -1,67 +1,43 @@
-<div class="row">
+{{ form_start(form) }}
+<h5 class="card-title">Dados Profissionais</h5>
+<div class="form-row">
+    <div class="col-md-3">{{ form_row(form.nome) }}</div>
+    <div class="col-md-2">{{ form_row(form.dataNascimento) }}</div>
+    <div class="col-md-2">{{ form_row(form.sexo) }}</div>
+    <div class="col-md-2">{{ form_row(form.estadoCivil) }}</div>
+    <div class="col-md-3">{{ form_row(form.profissao) }}</div>
+</div>
 
-    <div class="col-md-6">
-        {{ form_row(form.nome) }}
-    </div>
+<div class="form-row">
+    <div class="col-md-4">{{ form_row(form.endereco) }}</div>
+    <div class="col-md-2">{{ form_row(form.cidade) }}</div>
+    <div class="col-md-2">{{ form_row(form.bairro) }}</div>
+    <div class="col-md-2">{{ form_row(form.uf) }}</div>
+    <div class="col-md-2">{{ form_row(form.cep) }}</div>
+</div>
 
-    <div class="col-md-3">
-        {{ form_row(form.dataNascimento) }}
-    </div>
-
-    <div class="col-md-3">
-        {{ form_row(form.estadoCivil) }}
-
-    </div>
-
-
-
-
-    <div class="col-md-3">
-        {{ form_row(form.sexo) }}
-    </div>
-    <div class="col-md-3">
-
-    </div>
-    <div class="col-md-3">
-
-    </div>
-    <div class="col-md-3">
-
-    </div>
-    <div class="col-md-3">
-
-    </div>
-    <div class="col-md-3">
-
-    </div>
-    <div class="col-md-3">
-
-    </div>
-    <div class="col-md-3">
-
-    </div>
-    <div class="col-md-3">
-
-    </div>
-
-
-    {{ form_row(form.dataCadastro) }}
-    {{ form_row(form.profissao) }}
-    {{ form_row(form.telefoneCelular) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.endereco) }}
-    {{ form_row(form.cidade) }}
-    {{ form_row(form.bairro) }}
-    {{ form_row(form.cep) }}
-    {{ form_row(form.uf) }}
-    {#    <div class="col">#}
-    {#        {{ form_start(form2) }}#}
-    {#        {{ form_widget(form2) }}#}
-    {#        {{ form_end(form2) }}#}
-    {#    </div>#}
+<div class="form-row">
+    <div class="col-md-9">{{ form_row(form.email) }}</div>
+    <div class="col-md-3">{{ form_row(form.telefoneCelular) }}</div>
 </div>
 
 <hr>
+{{ form_start(form2) }}
+<h5 class="card-title">Dados de Acesso</h5>
+<div class="form-row">
+    <div class="col-md-6">{{ form_row(form2.usuario) }}</div>
+    <div class="col-md-6">{{ form_row(form2.password) }}</div>
+</div>
+
+<div class="form-row">
+    <div class="col-md-6">{{ form_row(form2.perfil) }}</div>
+    <div class="col-md-6">{{ form_row(form2.roles) }}</div>
+</div>
+
+{{ form_widget(form) }}
+{{ form_widget(form2) }}
+<hr>
 <a href="{{ path('pacientes_index') }}" class="btn btn-secondary">Voltar</a>
-<button class="btn btn-success" id="btnFormPaciente">{{ button_label|default('Salvar') }}</button>
+<button type="submit" class="btn btn-success" id="btnFormPaciente">{{ button_label|default('Salvar') }}</button>
+{{ form_end(form2) }}
 {{ form_end(form) }}

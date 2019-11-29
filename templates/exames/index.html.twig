@@ -41,7 +41,9 @@
                         {% for exame in exames %}
                             <tr>
                                 <td>{{ exame.data ? exame.data|date('d/m/Y H:i:s') : '' }}</td>
-                                <td>{{ exame.imagens }}</td>
+                                <td>
+                                    <a href="{{ asset('uploads/exame/' ~ exame.imagens) }}" target="_blank">{{ exame.imagens }}</a>
+                                </td>
                                 <td>{{ exame.funcionarios }}</td>
                                 <td>{{ exame.idpacientes }}</td>
                                 <td>

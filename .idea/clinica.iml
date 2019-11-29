@@ -115,31 +115,12 @@
     <orderEntry type="library" name="jquery.dataTables" level="application" />
     <orderEntry type="library" name="select2" level="application" />
     <orderEntry type="library" name="dataTables.bootstrap4" level="application" />
-    <orderEntry type="library" name="dataTables.semanticui" level="application" />
-    <orderEntry type="library" name="semantic" level="application" />
-    <orderEntry type="library" name="dataTables.material" level="application" />
-    <orderEntry type="library" name="jquery.inputmask.bundle" level="application" />
-    <orderEntry type="library" name="jquery.inputmask" level="application" />
-    <orderEntry type="library" name="inputmask.numeric.extensions" level="application" />
-    <orderEntry type="library" name="inputmask" level="application" />
-    <orderEntry type="library" name="inputmask.extensions" level="application" />
-    <orderEntry type="library" name="inputmask.date.extensions" level="application" />
-    <orderEntry type="library" name="window" level="application" />
-    <orderEntry type="library" name="inputmask.dependencyLib" level="application" />
-    <orderEntry type="library" name="inputmask.dependencyLib.jquery" level="application" />
-    <orderEntry type="library" name="inputmask.dependencyLib.jqlite" level="application" />
-    <orderEntry type="library" name="inputmask.binding" level="application" />
-    <orderEntry type="library" name="datatables.mark" level="application" />
     <orderEntry type="library" name="1dbc7d90aa" level="application" />
     <orderEntry type="library" name="popper" level="application" />
     <orderEntry type="library" name="mdb" level="application" />
-    <orderEntry type="library" name="bootstrap-datepicker.pt-BR" level="application" />
     <orderEntry type="library" name="bootstrap-datepicker" level="application" />
     <orderEntry type="library" name="bootstrap-clockpicker" level="application" />
     <orderEntry type="library" name="svgembedder" level="application" />
-    <orderEntry type="library" name="waypoints" level="application" />
-    <orderEntry type="library" name="countUp" level="application" />
-    <orderEntry type="library" name="countUp.withPolyfill" level="application" />
     <orderEntry type="library" name="svgembedder" level="application" />
     <orderEntry type="library" name="materialize" level="application" />
     <orderEntry type="library" name="dataTables.responsive" level="application" />
@@ -156,5 +137,9 @@
     <orderEntry type="library" name="tempusdominus-bootstrap-4" level="application" />
     <orderEntry type="library" name="moment-with-locales" level="application" />
     <orderEntry type="library" name="bootstrap-datetimepicker" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="bootstrap-datetimepicker.pt-BR" level="application" />
+    <orderEntry type="library" name="pt-BR" level="application" />
+    <orderEntry type="library" name="toastr" level="application" />
   </component>
 </module>
